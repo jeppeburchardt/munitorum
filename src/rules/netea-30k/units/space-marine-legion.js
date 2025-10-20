@@ -1894,6 +1894,40 @@ export class LegionSabreStrikeTank extends LegionUnit {
   }
 }
 
+export class LgeionKratosTank extends LegionUnit {
+  constructor(detachment) {
+    super(detachment, 100, 2, 4)
+    this.rules = [
+      new ReinforcedArmour(),
+      new DamageCapacity(2),
+      new ThickRearArmour()
+    ]
+
+     this.stats = {
+      type: 'WE',
+      speed: 25,
+      armour: 4,
+      cc: 6,
+      ff: 5
+    }
+    this.weapons = [
+      new MultipleChoiceWeapon(
+        new Weapon('Kratos Battlecannon', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('3+'), new AntiPersonnel('3+'), new Armourbane()))),
+        new Weapon('Melta Cannon', new RangedWeapon('30cm', new MultipleShot('4x', new MacroWeapon('4+'), new Armourbane())))
+      ),
+      new Weapon('Co-ax Autocannon', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('6+'))),
+      new MultipleChoiceWeapon(
+        new Weapon('Hull Heavy Bolter', new RangedWeapon('30cm', new MultipleShot('2x', new AntiPersonnel('5+'), new FixedForwardFireArc()))),
+        new Weapon('Hull Lascannon', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('5+'), new FixedForwardFireArc())))
+      ),
+      new MultipleChoiceWeapon(
+        new Weapon('Sponson Heavy Bolter', new RangedWeapon('30cm', new MultipleShot('2x', new AntiPersonnel('5+'), new FixedForwardFireArc()))),
+        new Weapon('Sponson Lascannon', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('5+'), new FixedForwardFireArc())))
+      )
+    ]
+  }
+}
+
 withType(LegionArtilleryUnit)
 withType(LegionAssaultSquad)
 withType(LegionAssaultSupportSquad)
@@ -1977,3 +2011,4 @@ withType(LegionXiphonInterceptor)
 withType(LegionTacticalDetachmentUnit)
 withType(LegionArquitorBombard)
 withType(LegionSabreStrikeTank)
+withType(LgeionKratosTank)
