@@ -110,7 +110,6 @@ export class KnightHouseholdCerastusLancerKnights extends KnightHouseholdDetachm
 
     this.setMandatoryUnits(
       new KnightHouseholdCerastusLancerKnight(this),
-      new KnightHouseholdCerastusLancerKnight(this),
       new KnightHouseholdCerastusLancerKnight(this)
     )
     this.setUpgrades(
@@ -125,7 +124,6 @@ export class KnightHouseholdCerastusCastigatorKnights extends KnightHouseholdDet
     super(list)
 
     this.setMandatoryUnits(
-      new KnightHouseholdCerastusCastigatorKnight(this),
       new KnightHouseholdCerastusCastigatorKnight(this),
       new KnightHouseholdCerastusCastigatorKnight(this)
     )
