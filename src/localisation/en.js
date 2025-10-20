@@ -7,6 +7,9 @@ export default {
     'imperious-dominatus': 'Imperious Dominatus',
     'imperious-dominatus-description': 'Warfare in the Age of Horus',
 
+    'netea-30k': 'Epic 30K', 
+    'netea-30k-description': 'Army lists for Net Epic Armageddon aligned with the latest epic scale releases', 
+
     'netea-epicau-horus-heresy': 'EpicAU Horus Heresy',
     'netea-epicau-horus-heresy-description': 'Horus Heresy supplement for Net Epic Armageddon developed by the EpicAU community',
     'is-unofficial': 'This website is unofficial and is in no way endorsed by Games Workshop Limited',
@@ -68,6 +71,7 @@ export default {
     'too-many-extra-seeker-chariots-or-fiends-of-slaanesh': 'You may only take 1-6 extra Seeker Chariots and/or Fiends of Slaanesh',
     'too-many-extra-horrors-or-flamers-or-screamers-of-tzeench': 'You may only take 1-6 extra Horror, Flamer and/or Screamers of Tzeench',
 
+    'space-marine-legion': 'Legiones Astartes',
     'alpha-legion': 'Alpha Legion',
     'blood-angels': 'Blood Angels',
     'daemonic-hordes': 'Daemons Of The Ruinstorm',
