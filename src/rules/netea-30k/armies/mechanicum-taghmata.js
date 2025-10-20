@@ -20,25 +20,6 @@ import {
   MechanicumTaghmataOrdinatusMajorisDetachment,
   MechanicumTaghmataVultaraxStratosAutomataDetachment
 } from '../detachments/mechanicum-taghmata'
-import AlphaLegion from './alpha-legion'
-import BloodAngels from './blood-angels'
-import DarkAngels from './dark-angels'
-import DeathGuard from './death-guard'
-import EmperorsChildren from './emperors-children'
-import ImperialFists from './imperial-fists'
-import IronHands from './iron-hands'
-import IronWarriors from './iron-warriors'
-import NightLords from './night-lords'
-import RavenGuard from './raven-guard'
-import Salamanders from './salamanders'
-import SonsOfHorus from './sons-of-horus'
-import SpaceWolves from './space-wolves'
-import ThousandSons from './thousand-sons'
-import Ultramarines from './ultramarines'
-import WhiteScars from './white-scars'
-import WordBearers from './word-bearers'
-import WorldEaters from './world-eaters'
-import ImperialMilitia from './imperial-militia'
 import SolarAuxilia from './solar-auxilia'
 import KnightHousehold from './knight-household'
 import LegioTitanicus from './legio-titanicus'
@@ -76,25 +57,6 @@ export default class MechanicumTaghmata extends Army {
       MechanicumTaghmataOrdinatusMajorisDetachment
     ]
     this.allies.push(
-      AlphaLegion,
-      BloodAngels,
-      DarkAngels,
-      DeathGuard,
-      EmperorsChildren,
-      ImperialFists,
-      IronHands,
-      IronWarriors,
-      NightLords,
-      RavenGuard,
-      Salamanders,
-      SonsOfHorus,
-      SpaceWolves,
-      ThousandSons,
-      Ultramarines,
-      WhiteScars,
-      WordBearers,
-      WorldEaters,
-      ImperialMilitia,
       SolarAuxilia,
       KnightHousehold,
       LegioTitanicus

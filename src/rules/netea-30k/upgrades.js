@@ -33,28 +33,9 @@ import {
   LegionLieutenantCommander
 } from './units/space-marine-legion'
 import {
-  UltramarinesDamoclesRhino,
-  UltramarinesRhinoTransports
-} from './units/ultramarines'
-import {
   LegioTitanicusAirDefence,
   LegioTitanicusSacredIcon
 } from './units/legio-titanicus'
-import {
-  LegioCustodesCaptainGeneral,
-  LegioCustodesTribune,
-  LegioCustodesCoronusGravCarrier
-} from './units/legio-custodes'
-import {
-  ImperialMilitiaGorgon,
-  ImperialMilitiaArvusLighter,
-  ImperialMilitiaRhino,
-  ImperialMilitiaLandRaiderProteus,
-  ImperialMilitiaFireSupport,
-  ImperialMilitiaSupportAuxiliaries,
-  ImperialMilitiaReconAuxiliaries,
-  ImperialMilitiaOgrynBruteSquad
-} from './units/imperial-militia'
 import {
   MechanicumTaghmataArchmagosPrime,
   MechanicumTaghmataMagosPrime,
