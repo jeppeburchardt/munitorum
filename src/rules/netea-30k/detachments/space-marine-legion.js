@@ -277,7 +277,6 @@ export class LegionJavelinAttackSpeederSquadron extends SpaceMarineLegionDetachm
       new LegionJavelinAttackSpeeder(this),
       new LegionJavelinAttackSpeeder(this),
       new LegionJavelinAttackSpeeder(this),
-      new LegionJavelinAttackSpeeder(this),
       new LegionJavelinAttackSpeeder(this)
     )
     this.setUpgrades(
@@ -357,7 +356,6 @@ export class LegionLandSpeederSquadron extends SpaceMarineLegionDetachment {
     super(list)
 
     this.setMandatoryUnits(
-      new LegionLandSpeeder(this),
       new LegionLandSpeeder(this),
       new LegionLandSpeeder(this),
       new LegionLandSpeeder(this),

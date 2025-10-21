@@ -127,23 +127,6 @@ export class LegionAssaultSupportSquad extends LegionAssaultSquad {
   }
 }
 
-export class LegionAttackBike extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 175, 5)
-
-    this.rules = []
-    this.stats = {
-      type: 'LV',
-      speed: 35,
-      armour: 4,
-      cc: 5,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+')))
-    ]
-  }
-}
 
 export class LegionBasilisk extends LegionUnit {
   constructor (detachment) {
@@ -201,9 +184,9 @@ export class LegionBattleBarge extends SpacecraftUnit {
   }
 }
 
-export class LegionBike extends LegionUnit {
+export class LegionOutriderUnit extends LegionUnit {
   constructor (detachment) {
-    super(detachment, 175, 5)
+    super(detachment, 140, 4)
 
     this.rules = [
       new Scout(),
@@ -1131,15 +1114,6 @@ export class LegionMedusa extends LegionUnit {
   }
 }
 
-export class LegionOutriderUnit extends MultipleChoiceUnit {
-  constructor (detachment) {
-    super(detachment,
-      new LegionAttackBike(detachment),
-      new LegionBike(detachment)
-    )
-  }
-}
-
 export class LegionPredatorExecutioner extends LegionUnit {
   constructor (detachment) {
     super(detachment, 80, 1)
@@ -1931,10 +1905,8 @@ export class LgeionKratosTank extends LegionUnit {
 withType(LegionArtilleryUnit)
 withType(LegionAssaultSquad)
 withType(LegionAssaultSupportSquad)
-withType(LegionAttackBike)
 withType(LegionBasilisk)
 withType(LegionBattleBarge)
-withType(LegionBike)
 withType(LegionBreacherSquad)
 withType(LegionBreacherSupportSquad)
 withType(LegionCaestus)
