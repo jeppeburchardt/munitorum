@@ -37,6 +37,9 @@ import {
   LegionSabreStrikeSquadron,
   LegionKratosDetachment
 } from '../detachments/space-marine-legion'
+import LegioTitanicus from './legio-titanicus'
+import MechanicumTaghmata from './mechanicum-taghmata'
+import KnightHousehold from './knight-household'
 import {
   LordsOfWarLimit,
   SupportDetachmentsLimit,
@@ -90,7 +93,11 @@ export default class SpaceMarineLegion extends Army {
       LegionSuperHeavyTankDestroyer,
       LegionSuperHeavyTankBattery
     ]
-    this.allies = []
+    this.allies = [
+      LegioTitanicus,
+      MechanicumTaghmata,
+      KnightHousehold,
+    ]
     this.validations.push(
       new LordsOfWarLimit(1 / 3),
       new SupportDetachmentsLimit(3),
