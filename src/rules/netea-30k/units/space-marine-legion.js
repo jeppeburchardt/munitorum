@@ -1005,11 +1005,71 @@ export class LegionSicaranBattleTankSquadronUnit extends MultipleChoiceUnit {
   constructor (detachment) {
     super(detachment,
       new LegionSicaran(detachment),
-      new LegionSicaranVenator(detachment),
       new LegionSicaranOmega(detachment)
     )
 
     this.types[0].cost = 75
+  }
+}
+
+export class LegionSicaranPunisherUnit extends LegionUnit {
+  constructor(detachment) {
+    super(detachment, 80, 1)
+
+    this.rules = [
+      new ReinforcedArmour()
+    ]
+    this.stats = {
+      type: 'AV',
+      speed: 35,
+      armour: 5,
+      cc: 6,
+      ff: 5
+    }
+    this.weapons = [
+      new Weapon('punisher-cannon', new RangedWeapon('30cm', new MultipleShot('3x', new AntiPersonnel('4+')))),
+      new MultipleChoiceWeapon(
+         new Weapon('sponson-heavy-bolters', new StatsModifier({
+          ff: -2
+        }), new SmallArms('15cm', new AntiPersonnel('5+'))),
+        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+'))),
+      ),
+    ]
+  }
+}
+
+export class LegionSicaranArcusUnit extends LegionUnit {
+  constructor(detachment) {
+    super(detachment, 80, 1)
+
+    this.rules = [
+      new ReinforcedArmour()
+    ]
+    this.stats = {
+      type: 'AV',
+      speed: 35,
+      armour: 5,
+      cc: 6,
+      ff: 5
+    }
+    this.weapons = [
+      new Weapon('arcus-launcher', new RangedWeapon('45cm', new MultipleShot('2x', new AntiPersonnel('5+'), new AntiTank('4+'), new IndirectFire()))),
+      new MultipleChoiceWeapon(
+         new Weapon('sponson-heavy-bolters', new StatsModifier({
+          ff: -2
+        }), new SmallArms('15cm', new AntiPersonnel('5+'))),
+        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+'))),
+      ),
+    ]
+  }
+}
+
+export class LegionSicaranStrikeTankSquadronUnit extends MultipleChoiceUnit {
+  constructor (detachment) {
+    super(detachment,
+      new LegionSicaranPunisherUnit(detachment),
+      new LegionSicaranArcusUnit(detachment)
+    )
   }
 }
 
@@ -1029,29 +1089,12 @@ export class LegionSicaranOmega extends LegionUnit {
     }
     this.weapons = [
       new Weapon('omega-plasma-array', new RangedWeapon('30cm', new MultipleShot('x2', new AntiTank('3+'), new Armourbane(), new Lance()))),
-      new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+')))
-    ]
-  }
-}
-
-export class LegionSicaranVenator extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 75, 1)
-
-    this.rules = [
-      new ReinforcedArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 35,
-      armour: 5,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('neutron-beam', new RangedWeapon('30cm', new AntiPersonnel('5+'), new AntiTank('4+'), new Armourbane(), new Disrupt(), new FixedForwardFireArc())),
-      new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+')))
-    ]
+      new MultipleChoiceWeapon(
+         new Weapon('sponson-heavy-bolters', new StatsModifier({
+          ff: -2
+        }), new SmallArms('15cm', new AntiPersonnel('5+'))),
+        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+'))),
+      ),    ]
   }
 }
 
@@ -1067,11 +1110,16 @@ export class LegionSicaran extends LegionUnit {
       speed: 35,
       armour: 5,
       cc: 6,
-      ff: 3
+      ff: 5
     }
     this.weapons = [
       new Weapon('accelerator-cannon', new RangedWeapon('45cm', new MultipleShot('2x', new AntiPersonnel('4'), new AntiTank('5')))),
-      new Weapon('3-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('5+')))
+      new MultipleChoiceWeapon(
+         new Weapon('sponson-heavy-bolters', new StatsModifier({
+          ff: -2
+        }), new SmallArms('15cm', new AntiPersonnel('5+'))),
+        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+'))),
+      ),
     ]
   }
 }
@@ -1526,7 +1574,7 @@ export class LegionSabreStrikeTank extends LegionUnit {
     this.weapons = [
       new MultipleChoiceWeapon(
         new Weapon('anvilus-auto-cannon', new RangedWeapon('15cm', new MultipleShot('2x', new AntiPersonnel('4+'), new AntiTank('5+'), new FixedForwardFireArc()))),
-        new Weapon('neutron-blaster', new RangedWeapon('15cm', new AntiPersonnel('5+'), new AntiTank('5+'), new FixedForwardFireArc(), new Disrupt()))
+        new Weapon('neutron-blaster', new RangedWeapon('20cm', new AntiPersonnel('5+'), new AntiTank('5+'), new FixedForwardFireArc(), new Disrupt(), new Feedback()))
       ),
       new Weapon('sabre-missiles', new RangedWeapon('30cm', new AntiTank('4+'), new FixedForwardFireArc()))
     ]
@@ -1608,8 +1656,10 @@ withType(LegionRapier)
 withType(LegionRhino)
 withType(LegionScimitarJetbike)
 withType(LegionSicaranBattleTankSquadronUnit)
+withType(LegionSicaranPunisherUnit)
+withType(LegionSicaranArcusUnit)
+withType(LegionSicaranStrikeTankSquadronUnit)
 withType(LegionSicaranOmega)
-withType(LegionSicaranVenator)
 withType(LegionSicaran)
 withType(LegionSpacecraftUnit)
 withType(LegionSpartan)
