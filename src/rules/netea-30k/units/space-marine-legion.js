@@ -160,7 +160,6 @@ export class LegionBattleBarge extends SpacecraftUnit {
       rhino: 60,
       landRaider: 60,
       thunderhawk: 9,
-      stormBird: 4,
       assaultRam: Infinity,
       assaultClaw: Infinity,
       dropPod: Infinity,
@@ -414,52 +413,6 @@ export class LegionDropPod extends TransportUnit {
   }
 }
 
-export class LegionFalchion extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 300, 1)
-
-    this.rules = [
-      new ReinforcedArmour(),
-      new DamageCapacity(4)
-    ]
-    this.stats = {
-      type: 'WE',
-      speed: 20,
-      armour: 4,
-      cc: 6,
-      ff: 6
-    }
-    this.weapons = [
-      new Weapon('twin-linked-volcano-cannon', new RangedWeapon('90cm', new AntiPersonnel('2+'), new AntiTank('2+'), new MacroWeapon(), new TitanKiller('D3+1'), new FixedForwardFireArc())),
-      new Weapon('sponson-quad-lascannons', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('4+'))))
-    ]
-  }
-}
-
-export class LegionFellblade extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 250, 1)
-
-    this.rules = [
-      new ReinforcedArmour(),
-      new DamageCapacity(4)
-    ]
-    this.stats = {
-      type: 'WE',
-      speed: 20,
-      armour: 4,
-      cc: 5,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('fellblade-cannon', new RangedWeapon('75cm', new AntiPersonnel('2+'), new AntiTank('2+'), new MacroWeapon(), new TitanKiller())),
-      new Weapon('sponson-quad-lascannons', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('4+')))),
-      new Weapon('twin-linked-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('3+'), new FixedForwardFireArc())),
-      new Weapon('demolisher-cannon', new RangedWeapon('30cm', new AntiPersonnel('3+'), new AntiTank('4+'), new Disrupt(), new IgnoreCover(), new FixedForwardFireArc()))
-    ]
-  }
-}
-
 export class LegionGunship extends LegionUnit {
   constructor (detachment) {
     super(detachment, 300, 2)
@@ -479,35 +432,10 @@ export class LegionGunship extends LegionUnit {
       new Weapon('hellstrike-missile-pod', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('4+')), new ForwardFireArc())),
       new MultipleChoiceWeapon(
         new Weapon('sponson-quad-heavy-bolters', new RangedWeapon('15cm', new AntiPersonnel('4+'), new AntiAircraft('6+'), new LeftFireArc(), new RightFireArc())),
-        new Weapon('sponson-reaper-autocannons', new RangedWeapon('30cm', new AntiPersonnel('5+'), new AntiTank('6+'), new LeftFireArc(), new RightFireArc()))
+        new Weapon('sponson-reaper-autocannons', new RangedWeapon('30cm', new AntiPersonnel('5+'), new AntiTank('6+'), new LeftFireArc(), new RightFireArc())),
+        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+'), new LeftFireArc(), new RightFireArc()))
+
       )
-    ]
-  }
-}
-
-export class LegionGlaive extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 250, 1)
-
-    this.rules = [
-      new ReinforcedArmour(),
-      new ThickRearArmour(),
-      new DamageCapacity(4)
-    ]
-    this.stats = {
-      type: 'WE',
-      speed: 20,
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('volkite-carronade',
-        new RangedWeapon('45cm', new MultipleShot('4x', new AntiPersonnel('3+'), new AntiTank('5+')), new Disrupt(), new IgnoreCover()),
-        new SmallArms('15cm', new IgnoreCover())
-      ),
-      new Weapon('sponson-quad-lascannons', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('4+')))),
-      new Weapon('twin-linked-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('3+'), new FixedForwardFireArc()))
     ]
   }
 }
@@ -1214,38 +1142,6 @@ export class LegionStormEagleAttackShip extends LegionUnit {
   }
 }
 
-export class LegionStormbird extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 450, 1)
-
-    this.transportTypes = {
-      tactical: 10,
-      assault: 10,
-      terminator: 5,
-      dreadnought: 5,
-      outrider: 10
-    }
-    this.rules = [
-      new DamageCapacity(4),
-      new Planetfall(),
-      new ReinforcedArmour(),
-      new VoidShields(1)
-    ]
-    this.stats = {
-      type: 'AC/WE',
-      speed: 'bomber',
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('dreadstrike-missile-array', new RangedWeapon('45cm', new MultipleShot('4x', new AntiTank('4+')))),
-      new Weapon('4-twin-linked-lascannons', new RangedWeapon('30cm', new AntiTank('4+'), new AntiAircraft('4+'))),
-      new Weapon('3-twin-linked-heavy-bolters', new RangedWeapon('15cm', new AntiPersonnel('4+'), new FixedForwardFireArc()))
-    ]
-  }
-}
-
 export class LegionStrikeCruiser extends SpacecraftUnit {
   constructor (detachment) {
     super(detachment, 200, 1)
@@ -1260,7 +1156,6 @@ export class LegionStrikeCruiser extends SpacecraftUnit {
       rhino: 20,
       landRaider: 20,
       thunderhawk: 6,
-      stormBird: 2,
       assaultRam: Infinity,
       assaultClaw: Infinity,
       dropPod: Infinity,
@@ -1294,15 +1189,6 @@ export class LegionSuperHeavyTankBatteryUnit extends MultipleChoiceUnit {
     this.types[1].cost = 400
     this.types[1].min = 3
     this.types[1].quantity = 3
-  }
-}
-
-export class LegionSuperHeavyTankUnit extends MultipleChoiceUnit {
-  constructor (detachment) {
-    super(detachment,
-      new LegionFellblade(detachment),
-      new LegionGlaive(detachment)
-    )
   }
 }
 
@@ -1695,10 +1581,7 @@ withType(LegionContemptorDreadnought)
 withType(LegionDamoclesCommandRhino)
 withType(LegionDeredeoDreadnought)
 withType(LegionDropPod)
-withType(LegionFalchion)
-withType(LegionFellblade)
 withType(LegionGunship)
-withType(LegionGlaive)
 withType(LegionHeavySupportSquad)
 withType(LegionJavelinAttackSpeeder)
 withType(LegionKharybdis)
@@ -1731,10 +1614,8 @@ withType(LegionSicaran)
 withType(LegionSpacecraftUnit)
 withType(LegionSpartan)
 withType(LegionStormEagleAttackShip)
-withType(LegionStormbird)
 withType(LegionStrikeCruiser)
 withType(LegionSuperHeavyTankBatteryUnit)
-withType(LegionSuperHeavyTankUnit)
 withType(LegionTacticalSquad)
 withType(LegionTacticalSupportSquad)
 withType(LegionTeleport)

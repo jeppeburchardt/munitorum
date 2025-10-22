@@ -22,10 +22,8 @@ import {
   LegionScimitarJetbike,
   LegionSpacecraftUnit,
   LegionStormEagleAttackShip,
-  LegionStormbird,
   LegionSuperHeavyTankBatteryUnit,
   LegionFalchion,
-  LegionSuperHeavyTankUnit,
   LegionTacticalSquad,
   LegionTerminatorSquad,
   LegionThunderhawkGunship,
@@ -422,42 +420,12 @@ export class LegionStormEagleAttackWing extends SpaceMarineLegionDetachment {
   }
 }
 
-export class LegionStormbirdWing extends SpaceMarineLegionDetachment {
-  constructor (list) {
-    super(list)
-
-    this.setMandatoryUnits(
-      new LegionStormbird(this)
-    )
-  }
-}
-
 export class LegionSuperHeavyTankBattery extends SpaceMarineLegionDetachment {
   constructor (list) {
     super(list)
 
     this.setMandatoryUnits(
       new LegionSuperHeavyTankBatteryUnit(this)
-    )
-  }
-}
-
-export class LegionSuperHeavyTankDestroyer extends SpaceMarineLegionDetachment {
-  constructor (list) {
-    super(list)
-
-    this.setMandatoryUnits(
-      new LegionFalchion(this)
-    )
-  }
-}
-
-export class LegionSuperHeavyTank extends SpaceMarineLegionDetachment {
-  constructor (list) {
-    super(list)
-
-    this.setMandatoryUnits(
-      new LegionSuperHeavyTankUnit(this)
     )
   }
 }
@@ -610,10 +578,7 @@ withType(LegionSicaranBattleTankSquadron)
 withType(LegionSkyHunterAttackSquadron)
 withType(LegionSpacecraft)
 withType(LegionStormEagleAttackWing)
-withType(LegionStormbirdWing)
 withType(LegionSuperHeavyTankBattery)
-withType(LegionSuperHeavyTankDestroyer)
-withType(LegionSuperHeavyTank)
 withType(LegionTacticalDetachment)
 withType(LegionTerminatorDetachment)
 withType(LegionThunderhawkGunshipWing)

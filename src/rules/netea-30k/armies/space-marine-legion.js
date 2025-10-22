@@ -25,9 +25,6 @@ import {
   LegionVindicatorSquadron,
   LegionGunshipWing,
   LegionInterceptorAttackWing,
-  LegionStormbirdWing,
-  LegionSuperHeavyTank,
-  LegionSuperHeavyTankDestroyer,
   LegionSuperHeavyTankBattery,
   LegionSabreStrikeSquadron,
   LegionKratosDetachment
@@ -78,9 +75,6 @@ export default class SpaceMarineLegion extends Army {
     this.lordsOfWar = [
       LegionGunshipWing,
       LegionInterceptorAttackWing,
-      LegionStormbirdWing,
-      LegionSuperHeavyTank,
-      LegionSuperHeavyTankDestroyer,
       LegionSuperHeavyTankBattery
     ]
     this.allies = [
