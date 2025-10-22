@@ -5,12 +5,9 @@ import {
   LegionTacticalDetachment,
   LegionTerminatorDetachment,
   LegionAssaultDetachment,
-  LegionBreacherDetachment,
   LegionArtilleryBattery,
   LegionAssaultSupportDetachment,
-  LegionBreacherSupportDetachment,
   LegionLeviathanDreadnoughtTalon,
-  LegionDestroyerDetachment,
   LegionContemptorDreadnoughtTalon,
   LegionJavelinAttackSpeederSquadron,
   LegionLandSpeederSquadron,
@@ -19,7 +16,6 @@ import {
   LegionOutriderSquadron,
   LegionPredatorStrikeSquadron,
   LegionRapierWeaponsBattery,
-  LegionReconnaissanceDetachment,
   LegionSicaranBattleTankSquadron,
   LegionSkyHunterAttackSquadron,
   LegionStormEagleAttackWing,
@@ -55,15 +51,12 @@ export default class SpaceMarineLegion extends Army {
     this.lineDetachments = [
       LegionTacticalDetachment,
       LegionTerminatorDetachment,
-      LegionAssaultDetachment,
-      LegionBreacherDetachment
+      LegionAssaultDetachment
     ]
     this.supportDetachments = [
       LegionArtilleryBattery,
       LegionAssaultSupportDetachment,
-      LegionBreacherSupportDetachment,
       LegionLeviathanDreadnoughtTalon,
-      LegionDestroyerDetachment,
       LegionContemptorDreadnoughtTalon,
       LegionJavelinAttackSpeederSquadron,
       LegionLandSpeederSquadron,
@@ -72,7 +65,6 @@ export default class SpaceMarineLegion extends Army {
       LegionOutriderSquadron,
       LegionPredatorStrikeSquadron,
       LegionRapierWeaponsBattery,
-      LegionReconnaissanceDetachment,
       LegionSicaranBattleTankSquadron,
       LegionSkyHunterAttackSquadron,
       LegionStormEagleAttackWing,

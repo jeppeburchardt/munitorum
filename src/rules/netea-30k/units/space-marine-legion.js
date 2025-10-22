@@ -152,7 +152,6 @@ export class LegionBattleBarge extends SpacecraftUnit {
 
     this.transportTypes = {
       tactical: 60,
-      breacher: 60,
       assault: 60,
       terminator: 60,
       rapier: 60,
@@ -204,41 +203,11 @@ export class LegionOutriderUnit extends LegionUnit {
   }
 }
 
-export class LegionBreacherSquad extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 300, 8)
-
-    this.transportType = 'breacher'
-    this.rules = []
-    this.stats = {
-      type: 'INF',
-      speed: 15,
-      armour: 4,
-      cc: 4,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('melta-cutters', new AssaultWeapon(new Armourbane()))
-    ]
-  }
-}
-
-export class LegionBreacherSupportSquad extends LegionBreacherSquad {
-  constructor (detachment) {
-    super(detachment)
-
-    this.cost = 225
-    this.min = 4
-    this.quantity = 4
-  }
-}
-
 export class LegionCaestus extends TransportUnit {
   constructor (detachment) {
     super(detachment, 50)
 
     this.transportTypes = {
-      breacher: 2,
       terminator: 2
     }
     this.rules = [
@@ -419,62 +388,12 @@ export class LegionDeredeoDreadnought extends LegionUnit {
   }
 }
 
-export class LegionDespoilerSquad extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 275, 8)
-
-    this.transportType = 'tactical'
-    this.rules = []
-    this.stats = {
-      type: 'INF',
-      speed: 15,
-      armour: 4,
-      cc: 3,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('chainswords-and-bolt-pistols', new AssaultWeapon())
-    ]
-  }
-}
-
-export class LegionTacticalDetachmentUnit extends MultipleChoiceUnit {
-  constructor (detachment) {
-    super(detachment,
-      new LegionTacticalSquad(detachment),
-      new LegionDespoilerSquad(detachment)
-    )
-  }
-}
-
-export class LegionDestroyerSquad extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 225, 4)
-
-    this.transportType = 'assault'
-    this.rules = [
-      new JumpPacks()
-    ]
-    this.stats = {
-      type: 'INF',
-      speed: 30,
-      armour: 4,
-      cc: 3,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('assault-launcher', new RangedWeapon('15cm', new AntiPersonnel('4+'), new Fleshbane()))
-    ]
-  }
-}
-
 export class LegionDropPod extends TransportUnit {
   constructor (detachment) {
     super(detachment, 0)
 
     this.transportTypes = {
       tactical: 2,
-      breacher: 2,
       assault: 2,
       rapier: 1,
       dreadnought: 1
@@ -644,7 +563,6 @@ export class LegionKharybdis extends TransportUnit {
 
     this.transportTypes = {
       tactical: 4,
-      breacher: 4,
       assault: 4,
       terminator: 2,
       rapier: 4,
@@ -679,7 +597,6 @@ export class LegionLandRaiderAchillesTransport extends LegionUnit {
     ]
     this.transportTypes = {
       tactical: 2,
-      breacher: 2,
       terminator: 1
     }
     this.stats = {
@@ -747,7 +664,6 @@ export class LegionLandRaiderPhobosTransport extends TransportUnit {
 
     this.transportTypes = {
       tactical: 2,
-      breacher: 2,
       terminator: 1
     }
     this.rules = [
@@ -815,7 +731,6 @@ export class LegionLandRaiderProteusTransport extends TransportUnit {
     this.maxAchilles = 2
     this.transportTypes = {
       tactical: 2,
-      breacher: 2,
       terminator: 1
     }
     this.rules = [
@@ -1005,7 +920,6 @@ export class LegionMastodon extends TransportUnit {
 
     this.transportTypes = {
       tactical: 8,
-      breacher: 8,
       terminator: 4,
       dreadnought: 2
     }
@@ -1115,28 +1029,6 @@ export class LegionRapierSupport extends LegionRapier {
     super(detachment)
 
     this.cost = 40
-  }
-}
-
-export class LegionReconnaissanceSquad extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 150, 4)
-
-    this.transportType = 'tactical'
-    this.rules = [
-      new Scout(),
-      new Infiltrator()
-    ]
-    this.stats = {
-      type: 'INF',
-      speed: 15,
-      armour: 4,
-      cc: 4,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('sniper-rifles', new RangedWeapon('30cm', new AntiPersonnel('5+'), new Sniper(), new Fleshbane()))
-    ]
   }
 }
 
@@ -1271,7 +1163,6 @@ export class LegionSpartan extends TransportUnit {
 
     this.transportTypes = {
       tactical: 4,
-      breacher: 4,
       terminator: 2
     }
     this.rules = [
@@ -1300,7 +1191,6 @@ export class LegionStormEagleAttackShip extends LegionUnit {
 
     this.transportTypes = {
       tactical: 4,
-      breacher: 4,
       assault: 4,
       terminator: 2
     }
@@ -1330,7 +1220,6 @@ export class LegionStormbird extends LegionUnit {
 
     this.transportTypes = {
       tactical: 10,
-      breacher: 10,
       assault: 10,
       terminator: 5,
       dreadnought: 5,
@@ -1363,7 +1252,6 @@ export class LegionStrikeCruiser extends SpacecraftUnit {
 
     this.transportTypes = {
       tactical: 20,
-      breacher: 20,
       assault: 20,
       terminator: 20,
       rapier: 20,
@@ -1494,7 +1382,6 @@ export class LegionThunderhawkGunship extends LegionUnit {
 
     this.transportTypes = {
       tactical: 8,
-      breacher: 8,
       assault: 8,
       terminator: 4,
       outrider: 5
@@ -1799,8 +1686,6 @@ withType(LegionAssaultSquad)
 withType(LegionAssaultSupportSquad)
 withType(LegionBasilisk)
 withType(LegionBattleBarge)
-withType(LegionBreacherSquad)
-withType(LegionBreacherSupportSquad)
 withType(LegionCaestus)
 withType(LegionCerberus)
 withType(LegionChampion)
@@ -1809,8 +1694,6 @@ withType(LegionContemptorDreadnoughtTalonUnit)
 withType(LegionContemptorDreadnought)
 withType(LegionDamoclesCommandRhino)
 withType(LegionDeredeoDreadnought)
-withType(LegionDespoilerSquad)
-withType(LegionDestroyerSquad)
 withType(LegionDropPod)
 withType(LegionFalchion)
 withType(LegionFellblade)
@@ -1839,7 +1722,6 @@ withType(LegionOutriderUnit)
 withType(LegionPredator)
 withType(LegionRapierSupport)
 withType(LegionRapier)
-withType(LegionReconnaissanceSquad)
 withType(LegionRhino)
 withType(LegionScimitarJetbike)
 withType(LegionSicaranBattleTankSquadronUnit)
@@ -1868,7 +1750,6 @@ withType(LegionWhirlwindHyperios)
 withType(LegionWhirlwindScorpius)
 withType(LegionWhirlwind)
 withType(LegionXiphonInterceptor)
-withType(LegionTacticalDetachmentUnit)
 withType(LegionArquitorBombard)
 withType(LegionSabreStrikeTank)
 withType(LgeionKratosTank)
