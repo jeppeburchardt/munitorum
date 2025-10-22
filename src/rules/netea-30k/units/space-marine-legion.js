@@ -89,9 +89,8 @@ export class LegionPrimarchUnit extends LegionCharacterUnit {
 export class LegionArtilleryUnit extends MultipleChoiceUnit {
   constructor (detachment) {
     super(detachment,
-      new LegionMedusa(detachment),
       new LegionWhirlwind(detachment),
-      new LegionBasilisk(detachment)
+      new LegionWhirlwindScorpius(detachment),
     )
   }
 }
@@ -1114,58 +1113,6 @@ export class LegionMedusa extends LegionUnit {
   }
 }
 
-export class LegionPredatorExecutioner extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 80, 1)
-
-    this.rules = []
-    this.stats = {
-      type: 'AV',
-      speed: 30,
-      armour: 4,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new MultipleChoiceWeapon(
-        new Weapon('plasma-destroyer', new RangedWeapon('45cm', new AntiPersonnel('4+'), new AntiTank('4+'), new Fleshbane())),
-        new Weapon('heavy-conversion-beamer', new RangedWeapon('75cm', new AntiTank('2+')))
-      ),
-      new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+')))
-    ]
-  }
-}
-
-export class LegionPredatorInfernus extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 80, 1)
-
-    this.rules = []
-    this.stats = {
-      type: 'AV',
-      speed: 30,
-      armour: 4,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('magma-melta', new RangedWeapon('15cm', new AntiPersonnel('3+'), new AntiTank('3+'), new MacroWeapon())),
-      new Weapon('sponson-heavy-bolters', new SmallArms('15cm', new AntiPersonnel('5+')))
-    ]
-  }
-}
-
-export class LegionPredatorStrikeSquadronUnit extends MultipleChoiceUnit {
-  constructor (detachment) {
-    super(detachment,
-      new LegionPredator(detachment),
-      new LegionPredatorInfernus(detachment),
-      new LegionPredatorExecutioner(detachment),
-      new LegionWhirlwindScorpius(detachment)
-    )
-  }
-}
-
 export class LegionPredator extends LegionUnit {
   constructor (detachment) {
     super(detachment, 60, 1)
@@ -1773,7 +1720,7 @@ export class LegionWhirlwindHyperios extends LegionUnit {
 
 export class LegionWhirlwindScorpius extends LegionUnit {
   constructor (detachment) {
-    super(detachment, 80, 1)
+    super(detachment, 340, 4)
 
     this.rules = []
     this.stats = {
@@ -1862,7 +1809,10 @@ export class LegionSabreStrikeTank extends LegionUnit {
       ff: 5
     }
     this.weapons = [
-      new Weapon('volkite-saker', new RangedWeapon('15cm', new MultipleShot('2x', new AntiPersonnel('3+'), new Fleshbane(), new FixedForwardFireArc()))),
+      new MultipleChoiceWeapon(
+        new Weapon('anvilus-auto-cannon', new RangedWeapon('15cm', new MultipleShot('2x', new AntiPersonnel('4+'), new AntiTank('5+'), new FixedForwardFireArc()))),
+        new Weapon('neutron-blaster', new RangedWeapon('15cm', new AntiPersonnel('5+'), new AntiTank('5+'), new FixedForwardFireArc(), new Disrupt()))
+      ),
       new Weapon('sabre-missiles', new RangedWeapon('30cm', new AntiTank('4+'), new FixedForwardFireArc()))
     ]
   }
@@ -1945,9 +1895,6 @@ withType(LegionLordCommander)
 withType(LegionMastodon)
 withType(LegionMedusa)
 withType(LegionOutriderUnit)
-withType(LegionPredatorExecutioner)
-withType(LegionPredatorInfernus)
-withType(LegionPredatorStrikeSquadronUnit)
 withType(LegionPredator)
 withType(LegionRapierSupport)
 withType(LegionRapier)

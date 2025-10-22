@@ -112,7 +112,7 @@ export default {
     'followers-of-chaos': 'Followers of Chaos',
     'greater-daemon-hordes': 'Greater Daemon Hordes',
 
-    'legion-artillery-battery': 'Artillery Battery',
+    'legion-artillery-battery': 'Whirlwind Battery',
     'legion-assault-detachment': 'Assault Detachment',
     'legion-assault-squad': 'Assault Squad',
     'legion-assault-support-squad': 'Assault Support Squad',

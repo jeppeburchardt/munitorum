@@ -21,7 +21,6 @@ import {
   LegionLeviathanSupportDreadnought,
   LegionOutriderUnit,
   LegionPredator,
-  LegionPredatorStrikeSquadronUnit,
   LegionRapierSupport,
   LegionReconnaissanceSquad,
   LegionSicaranBattleTankSquadronUnit,
@@ -421,8 +420,8 @@ export class LegionPredatorStrikeSquadron extends SpaceMarineLegionDetachment {
     super(list)
 
     this.setMandatoryUnits(
-      new LegionPredatorStrikeSquadronUnit(this),
-      new LegionPredatorStrikeSquadronUnit(this),
+      new LegionPredator(this),
+      new LegionPredator(this),
       new LegionPredator(this),
       new LegionPredator(this)
     )

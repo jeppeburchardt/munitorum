@@ -10,8 +10,6 @@ import {
   LegionVindicator,
   LegionVindicatorLaserDestroyer,
   LegionPredator,
-  LegionPredatorInfernus,
-  LegionPredatorExecutioner,
   LegionWhirlwindScorpius,
   LegionSicaran,
   LegionTyphon,
@@ -208,7 +206,7 @@ export class Tank extends Upgrade {
         count.vindicator++
       }
 
-      if (unit.type === LegionPredator.type || unit.type === LegionPredatorInfernus.type || unit.type === LegionPredatorExecutioner.type || unit.type === LegionWhirlwindScorpius.type) {
+      if (unit.type === LegionPredator.type || unit.type === LegionWhirlwindScorpius.type) {
         count.predator++
       }
 
@@ -281,7 +279,7 @@ export class ArmouryAssets extends Upgrade {
         count.vindicator++
       }
 
-      if (unit.type === LegionPredator.type || unit.type === LegionPredatorInfernus.type || unit.type === LegionPredatorExecutioner.type || unit.type === LegionWhirlwindScorpius.type) {
+      if (unit.type === LegionPredator.type || unit.type === LegionWhirlwindScorpius.type) {
         count.predator++
       }
     })
@@ -297,8 +295,6 @@ export class ArmouryAssets extends Upgrade {
     if (total === 0) {
       return [
         new LegionVindicatorLaserDestroyer(detachment),
-        new LegionPredatorInfernus(detachment),
-        new LegionPredatorExecutioner(detachment),
         new LegionWhirlwindScorpius(detachment)
       ]
     }
@@ -310,8 +306,6 @@ export class ArmouryAssets extends Upgrade {
     }
 
     if (count.predator) {
-      upgrades.push(new LegionPredatorInfernus(detachment))
-      upgrades.push(new LegionPredatorExecutioner(detachment))
       upgrades.push(new LegionWhirlwindScorpius(detachment))
     }
 
