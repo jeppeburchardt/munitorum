@@ -356,24 +356,9 @@ export class LegionContemptorDreadnought extends LegionUnit {
       ff: 4
     }
     this.weapons = [
+      new Weapon('close-combat-weapon', new AssaultWeapon(new MacroWeapon(), new ExtraAttacks('+1'))),
       new MultipleChoiceWeapon(
-        new Weapon('close-combat-weapon', new AssaultWeapon(new MacroWeapon(), new ExtraAttacks('+1'))),
-        new Weapon('twin-linked-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('4+'))),
-        new Weapon('plasma-cannon', new RangedWeapon('30cm', new AntiPersonnel('5+'), new AntiTank('5+'), new Fleshbane())),
-        new Weapon('heavy-conversion-beamer', new RangedWeapon('30cm', new AntiPersonnel('5+'), new AntiTank('6+'), new Disrupt())),
         new Weapon('kheres-assault-cannon', new RangedWeapon('30cm', new AntiPersonnel('4+'), new AntiTank('5+'))),
-        new Weapon('twin-linked-autocannon', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('6+'))),
-        new Weapon('multi-melta', new RangedWeapon('15cm', new AntiPersonnel('5+'), new AntiTank('5+'), new MacroWeapon())),
-        new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new AntiTank('4+')))
-      ),
-      new MultipleChoiceWeapon(
-        new Weapon('close-combat-weapon', new AssaultWeapon(new MacroWeapon(), new ExtraAttacks('+1'))),
-        new Weapon('twin-linked-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('4+'))),
-        new Weapon('plasma-cannon', new RangedWeapon('30cm', new AntiPersonnel('5+'), new AntiTank('5+'), new Fleshbane())),
-        new Weapon('heavy-conversion-beamer', new RangedWeapon('30cm', new AntiPersonnel('5+'), new AntiTank('6+'), new Disrupt())),
-        new Weapon('kheres-assault-cannon', new RangedWeapon('30cm', new AntiPersonnel('4+'), new AntiTank('5+'))),
-        new Weapon('twin-linked-autocannon', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('6+'))),
-        new Weapon('multi-melta', new RangedWeapon('15cm', new AntiPersonnel('5+'), new AntiTank('5+'), new MacroWeapon())),
         new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new AntiTank('4+')))
       ),
       new OptionalWeapons(
@@ -479,40 +464,6 @@ export class LegionDestroyerSquad extends LegionUnit {
     }
     this.weapons = [
       new Weapon('assault-launcher', new RangedWeapon('15cm', new AntiPersonnel('4+'), new Fleshbane()))
-    ]
-  }
-}
-
-export class LegionDreadnought extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 50, 1)
-
-    this.transportType = 'dreadnought'
-    this.rules = [
-      new Walker()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 15,
-      armour: 3,
-      cc: 4,
-      ff: 4
-    }
-    this.weapons = [
-      new MultipleChoiceWeapon(
-        new WeaponSet(
-          new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new AntiTank('4+'))),
-          new Weapon('twin-linked-missile-launcher', new StatsModifier({
-            cc: 1
-          }), new RangedWeapon('45cm', new AntiPersonnel('4+'), new AntiTank('5+')))
-        ),
-        new WeaponSet(
-          new Weapon('twin-linked-autocannon', new RangedWeapon('45cm', new AntiPersonnel('4+'), new AntiTank('5+'))),
-          new Weapon('power-fist', new StatsModifier({
-            ff: 1
-          }), new AssaultWeapon(new MacroWeapon(), new ExtraAttacks('+1')))
-        )
-      )
     ]
   }
 }
@@ -964,22 +915,13 @@ export class LegionLeviathanDreadnought extends LegionUnit {
       new MultipleChoiceWeapon(
         new Weapon('siege-claw', new AssaultWeapon(new Armourbane(), new Siege())),
         new Weapon('siege-drill', new AssaultWeapon(new Armourbane(), new Siege(), new ExtraAttacks('+2'))),
-        new Weapon('cyclonic-melta-lance',
-          new RangedWeapon('15cm', new AntiPersonnel('5+'), new AntiTank('3+'), new MacroWeapon('5+')),
-          new SmallArms('15cm', new MacroWeapon(), new ExtraAttacks('+1'))
-        ),
-        new Weapon('storm-cannon', new SmallArms('15cm', new AntiPersonnel('4+'), new AntiTank('5+'))),
-        new Weapon('grav-flux-bombard', new RangedWeapon('15cm', new AntiPersonnel('3+'), new AntiTank('3+'), new Disrupt()))
       ),
       new MultipleChoiceWeapon(
-        new Weapon('siege-claw', new AssaultWeapon(new Armourbane(), new Siege())),
-        new Weapon('siege-drill', new AssaultWeapon(new Armourbane(), new Siege(), new ExtraAttacks('+2'))),
         new Weapon('cyclonic-melta-lance',
           new RangedWeapon('15cm', new AntiPersonnel('5+'), new AntiTank('3+'), new MacroWeapon('5+')),
           new SmallArms('15cm', new MacroWeapon(), new ExtraAttacks('+1'))
         ),
         new Weapon('storm-cannon', new SmallArms('15cm', new AntiPersonnel('4+'), new AntiTank('5+'))),
-        new Weapon('grav-flux-bombard', new RangedWeapon('15cm', new AntiPersonnel('3+'), new AntiTank('3+'), new Disrupt()))
       )
     ]
   }
@@ -1869,7 +1811,6 @@ withType(LegionDamoclesCommandRhino)
 withType(LegionDeredeoDreadnought)
 withType(LegionDespoilerSquad)
 withType(LegionDestroyerSquad)
-withType(LegionDreadnought)
 withType(LegionDropPod)
 withType(LegionFalchion)
 withType(LegionFellblade)

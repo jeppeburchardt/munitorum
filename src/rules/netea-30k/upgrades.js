@@ -3,7 +3,6 @@
 import {
   LegionWhirlwindHyperios,
   LegionRapier,
-  LegionDreadnought,
   LegionContemptorDreadnought,
   LegionDeredeoDreadnought,
   LegionLeviathanDreadnought,
@@ -136,15 +135,11 @@ export class SacredIcon extends AdditionalUnitOption {
 export class Dreadnought extends Upgrade {
   getAvailableUpgrades (detachment) {
     const dreadCount = {
-      legion: 0,
       contemptor: 0,
       leviathan: 0
     }
 
     detachment.units.forEach(unit => {
-      if (unit.type === LegionDreadnought.type) {
-        dreadCount.legion++
-      }
 
       if (unit.type === LegionContemptorDreadnought.type || unit.type === LegionDeredeoDreadnought.type) {
         dreadCount.contemptor++
@@ -165,7 +160,6 @@ export class Dreadnought extends Upgrade {
 
     if (total === 0) {
       return [
-        new LegionDreadnought(detachment),
         new LegionContemptorDreadnought(detachment),
         new LegionDeredeoDreadnought(detachment),
         new LegionLeviathanDreadnought(detachment)
@@ -174,9 +168,6 @@ export class Dreadnought extends Upgrade {
 
     const upgrades = []
 
-    if (dreadCount.legion) {
-      upgrades.push(new LegionDreadnought(detachment))
-    }
 
     if (dreadCount.contemptor) {
       upgrades.push(new LegionContemptorDreadnought(detachment))

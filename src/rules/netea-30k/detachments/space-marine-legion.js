@@ -9,7 +9,6 @@ import {
   LegionTacticalSupportSquad,
   LegionHeavySupportSquad,
   LegionDestroyerSquad,
-  LegionDreadnought,
   LegionGunship,
   LegionXiphonInterceptor,
   LegionJavelinAttackSpeeder,
@@ -217,37 +216,6 @@ export class LegionDestroyerDetachment extends SpaceMarineLegionDetachment {
   }
 }
 
-class DreadnoughtUpgrade extends Upgrade {
-  getAvailableUpgrades (detachment) {
-    if (detachment.units.filter(item => item.type === LegionDreadnought.type).length === 6) {
-      return []
-    }
-
-    return [
-      new LegionDreadnought(detachment)
-    ]
-  }
-}
-
-export class LegionDreadnoughtTalon extends SpaceMarineLegionDetachment {
-  constructor (list) {
-    super(list)
-
-    this.setMandatoryUnits(
-      new LegionDreadnought(this),
-      new LegionDreadnought(this),
-      new LegionDreadnought(this),
-      new LegionDreadnought(this)
-    )
-    this.setUpgrades(
-      new TransportOption(
-        new DropAssault()
-      ),
-      new DreadnoughtUpgrade()
-    )
-  }
-}
-
 export class LegionGunshipWing extends SpaceMarineLegionDetachment {
   constructor (list) {
     super(list)
@@ -373,6 +341,7 @@ export class LegionLeviathanDreadnoughtTalon extends SpaceMarineLegionDetachment
     super(list)
 
     this.setMandatoryUnits(
+      new LegionLeviathanSupportDreadnought(this),
       new LegionLeviathanSupportDreadnought(this),
       new LegionLeviathanSupportDreadnought(this),
       new LegionLeviathanSupportDreadnought(this)
@@ -719,7 +688,6 @@ withType(LegionBreacherDetachment)
 withType(LegionBreacherSupportDetachment)
 withType(LegionContemptorDreadnoughtTalon)
 withType(LegionDestroyerDetachment)
-withType(LegionDreadnoughtTalon)
 withType(LegionGunshipWing)
 withType(LegionInterceptorAttackWing)
 withType(LegionJavelinAttackSpeederSquadron)
