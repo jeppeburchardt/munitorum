@@ -31,7 +31,8 @@ import {
   LegionVindicatorSquadronUnit,
   LegionVindicatorSquadronVindicator,
   LegionSabreStrikeTank,
-  LgeionKratosTank
+  LgeionKratosTank,
+  LegionTarantula
 } from '../units/space-marine-legion'
 import {
   Upgrade,
@@ -567,6 +568,20 @@ export class LegionKratosDetachment extends SpaceMarineLegionDetachment {
   }
 }
 
+export class LegionTarantulaBattery extends SpaceMarineLegionDetachment {
+  constructor (list) {
+    super(list)
+
+    this.setMandatoryUnits(
+      new LegionTarantula(this),
+      new LegionTarantula(this),
+      new LegionTarantula(this),
+      new LegionTarantula(this),
+    )
+  }
+}
+
+
 withType(LegionArtilleryBattery)
 withType(LegionAssaultDetachment)
 withType(LegionAssaultSupportDetachment)
@@ -594,3 +609,4 @@ withType(LegionThunderhawkTransporterWing)
 withType(LegionVindicatorSquadron)
 withType(LegionSabreStrikeSquadron)
 withType(LegionKratosDetachment)
+withType(LegionTarantulaBattery)

@@ -1615,6 +1615,30 @@ export class LgeionKratosTank extends LegionUnit {
   }
 }
 
+export class LegionTarantula extends Unit {
+  constructor (detachment) {
+    super(detachment, 25, 1)
+
+    this.rules = [
+      new Scout(),
+      new Teleport()
+    ]
+    this.stats = {
+      type: 'LV',
+      speed: 0,
+      armour: 6,
+      cc: 6,
+      ff: 5
+    }
+    this.weapons = [
+      new MultipleChoiceWeapon(
+        new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new AntiTank('4+'))),
+        new Weapon('hyperios-launcher', new RangedWeapon('30cm', new AntiAircraft('4+')))
+      )
+    ]
+  }
+}
+
 withType(LegionArtilleryUnit)
 withType(LegionAssaultSquad)
 withType(LegionAssaultSupportSquad)
@@ -1684,3 +1708,4 @@ withType(LegionXiphonInterceptor)
 withType(LegionArquitorBombard)
 withType(LegionSabreStrikeTank)
 withType(LgeionKratosTank)
+withType(LegionTarantula)

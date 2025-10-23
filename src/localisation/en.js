@@ -252,6 +252,8 @@ export default {
     'legion-breacher-veteran-squad': 'Veteran Breacher Squad',
     'legion-kratos-detachment':'Kratos Heavy Tank Detachmenet',
     'lgeion-kratos-tank':'Kratos Heavy Tank',
+    'legion-tarantula-battery': 'Tarantula Battery',
+    'legion-tarantula': 'Tarantula',
 
     'sons-of-horus-justaerin-terminator-detachment': 'Justaerin Terminator Detachment',
     'sons-of-horus-justaerin-terminator-squad': 'Justaerin Terminator Squad',

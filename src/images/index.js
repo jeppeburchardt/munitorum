@@ -215,6 +215,7 @@ import legionStormEagle from './legion-storm-eagle.svg'
 import legionStormbird from './legion-stormbird.svg'
 import legionStrikeCruiser from './legion-strike-cruiser.svg'
 import legionSuperHeavyTankDestroyer from './legion-super-heavy-tank-destroyer.svg'
+import legionTarantulaBattery from './legion-tarantula-battery.svg'
 import legionThunderhawkTransporter from './legion-thunderhawk-transporter.svg'
 import legionThunderhawk from './legion-thunderhawk.svg'
 import legionTyphon from './legion-typhon.svg'
@@ -572,6 +573,7 @@ const IMAGES = {
   'legion-super-heavy-tank-destroyer': legionSuperHeavyTankDestroyer,
   'legion-super-heavy-tank': ironWarriorsSuperHeavyTankSquadron,
   'legion-tactical': darkAngelsTactical,
+  'legion-tarantula-battery': legionTarantulaBattery,
   'legion-terminator': ironWarriorsTerminator,
   'legion-thunderhawk-transporter': legionThunderhawkTransporter,
   'legion-thunderhawk': legionThunderhawk,

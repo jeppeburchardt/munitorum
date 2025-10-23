@@ -28,7 +28,8 @@ import {
   LegionInterceptorAttackWing,
   LegionSuperHeavyTankBattery,
   LegionSabreStrikeSquadron,
-  LegionKratosDetachment
+  LegionKratosDetachment,
+  LegionTarantulaBattery
 } from '../detachments/space-marine-legion'
 import LegioTitanicus from './legio-titanicus'
 import MechanicumTaghmata from './mechanicum-taghmata'
@@ -72,7 +73,8 @@ export default class SpaceMarineLegion extends Army {
       LegionThunderhawkTransporterWing,
       LegionVindicatorSquadron,
       LegionSabreStrikeSquadron,
-      LegionKratosDetachment
+      LegionKratosDetachment,
+      LegionTarantulaBattery
     ]
     this.lordsOfWar = [
       LegionGunshipWing,
