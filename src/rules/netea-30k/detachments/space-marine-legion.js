@@ -9,8 +9,6 @@ import {
   LegionGunship,
   LegionXiphonInterceptor,
   LegionJavelinAttackSpeeder,
-  LegionLandRaiderPhobosSquadronUnit,
-  LegionLandRaiderPhobos,
   LegionLandRaiderProteusSquadronUnit,
   LegionLandRaiderProteus,
   LegionLandSpeeder,
@@ -26,7 +24,6 @@ import {
   LegionTacticalSquad,
   LegionTerminatorSquad,
   LegionThunderhawkGunship,
-  LegionThunderhawkTransporter,
   LegionVindicatorSquadronUnit,
   LegionVindicatorSquadronVindicator,
   LegionSabreStrikeTank,
@@ -45,7 +42,6 @@ import {
   Rhinos,
   DropAssault,
   AssaultRam,
-  AssaultClaw,
   HeavyTransport,
   Teleport,
   Dreadnought,
@@ -179,38 +175,6 @@ export class LegionJavelinAttackSpeederSquadron extends SpaceMarineLegionDetachm
       new CommanderOption(
         new Centurion()
       )
-    )
-  }
-}
-
-class LegionLandRaiderPhobosSquadronUpgrade extends Upgrade {
-  getAvailableUpgrades (detachment) {
-    if (detachment.units.filter(item => item.type === LegionLandRaiderPhobosSquadronUnit.type || item.type === LegionLandRaiderPhobos.type).length === 6) {
-      return []
-    }
-
-    return [
-      new LegionLandRaiderPhobos(detachment)
-    ]
-  }
-}
-
-export class LegionLandRaiderPhobosSquadron extends SpaceMarineLegionDetachment {
-  constructor (list) {
-    super(list)
-
-    this.setMandatoryUnits(
-      new LegionLandRaiderPhobosSquadronUnit(this),
-      new LegionLandRaiderPhobosSquadronUnit(this),
-      new LegionLandRaiderPhobos(this),
-      new LegionLandRaiderPhobos(this)
-    )
-    this.setUpgrades(
-      new CommanderOption(
-        new Centurion()
-      ),
-      new Hyperios(),
-      new LegionLandRaiderPhobosSquadronUpgrade()
     )
   }
 }
@@ -441,7 +405,6 @@ export class LegionTacticalDetachment extends SpaceMarineLegionDetachment {
       new TransportOption(
         new Rhinos(),
         new DropAssault(),
-        new AssaultClaw(),
         new HeavyTransport()
       ),
       new CommanderOption(
@@ -472,7 +435,6 @@ export class LegionTerminatorDetachment extends SpaceMarineLegionDetachment {
       new TransportOption(
         new DropAssault(),
         new AssaultRam(),
-        new AssaultClaw(),
         new HeavyTransport(),
         new Teleport()
       ),
@@ -494,16 +456,6 @@ export class LegionThunderhawkGunshipWing extends SpaceMarineLegionDetachment {
 
     this.setMandatoryUnits(
       new LegionThunderhawkGunship(this)
-    )
-  }
-}
-
-export class LegionThunderhawkTransporterWing extends SpaceMarineLegionDetachment {
-  constructor (list) {
-    super(list)
-
-    this.setMandatoryUnits(
-      new LegionThunderhawkTransporter(this)
     )
   }
 }
@@ -581,7 +533,6 @@ withType(LegionContemptorDreadnoughtTalon)
 withType(LegionGunshipWing)
 withType(LegionInterceptorAttackWing)
 withType(LegionJavelinAttackSpeederSquadron)
-withType(LegionLandRaiderPhobosSquadron)
 withType(LegionLandRaiderProteusSquadron)
 withType(LegionLandSpeederSquadron)
 withType(LegionLeviathanDreadnoughtTalon)
@@ -596,7 +547,6 @@ withType(LegionSuperHeavyTankBattery)
 withType(LegionTacticalDetachment)
 withType(LegionTerminatorDetachment)
 withType(LegionThunderhawkGunshipWing)
-withType(LegionThunderhawkTransporterWing)
 withType(LegionVindicatorSquadron)
 withType(LegionSabreStrikeSquadron)
 withType(LegionKratosDetachment)

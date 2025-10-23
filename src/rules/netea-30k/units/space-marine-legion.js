@@ -161,7 +161,6 @@ export class LegionBattleBarge extends SpacecraftUnit {
       landRaider: 60,
       thunderhawk: 9,
       assaultRam: Infinity,
-      assaultClaw: Infinity,
       dropPod: Infinity,
       stormEagle: Infinity
     }
@@ -485,36 +484,6 @@ export class LegionJavelinAttackSpeeder extends LegionUnit {
   }
 }
 
-export class LegionKharybdis extends TransportUnit {
-  constructor (detachment) {
-    super(detachment, 75)
-
-    this.transportTypes = {
-      tactical: 4,
-      assault: 4,
-      terminator: 2,
-      rapier: 4,
-      dreadnought: 1
-    }
-    this.rules = [
-      new Planetfall(),
-      new Skimmer()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 35,
-      armour: 4,
-      cc: 5,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('storm-launcher', new RangedWeapon('30cm', new MultipleShot('3x', new AntiPersonnel('5+'), new AntiTank('5+')), new SingleShot())),
-      new Weapon('melta-ram', new AssaultWeapon(new MacroWeapon())),
-      new Weapon('heat-blast', new SmallArms('15cm', new IgnoreCover()))
-    ]
-  }
-}
-
 export class LegionLandRaiderAchillesTransport extends LegionUnit {
   constructor (detachment) {
     super(detachment, 100, 1)
@@ -571,71 +540,6 @@ export class LegionLandRaiderAchilles extends LegionUnit {
         ),
         new Weapon('sponson-twin-linked-volkite-culverins', new RangedWeapon('45cm', new AntiPersonnel('4+'), new Disrupt()))
       )
-    ]
-  }
-}
-
-export class LegionLandRaiderPhobosSquadronUnit extends MultipleChoiceUnit {
-  constructor (detachment) {
-    super(detachment,
-      new LegionLandRaiderPhobos(detachment),
-      new LegionLandRaiderAchilles(detachment)
-    )
-
-    this.transportType = 'landRaider'
-  }
-}
-
-export class LegionLandRaiderPhobosTransport extends TransportUnit {
-  constructor (detachment) {
-    super(detachment, 75)
-
-    this.transportTypes = {
-      tactical: 2,
-      terminator: 1
-    }
-    this.rules = [
-      new ReinforcedArmour(),
-      new ThickRearArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 25,
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('sponson-twin-linked-lascannons', new RangedWeapon('45cm', new AntiTank('4+'))),
-      new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+')))
-    ]
-  }
-
-  getQuantity () {
-    return super.getQuantity() - this.detachment.units
-      .filter(item => item.type === LegionLandRaiderAchillesTransport.type)
-      .length
-  }
-}
-
-export class LegionLandRaiderPhobos extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 80, 1)
-
-    this.rules = [
-      new ReinforcedArmour(),
-      new ThickRearArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 25,
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('sponson-twin-linked-lascannons', new RangedWeapon('45cm', new AntiTank('4+'))),
-      new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+')))
     ]
   }
 }
@@ -1205,7 +1109,6 @@ export class LegionStrikeCruiser extends SpacecraftUnit {
       landRaider: 20,
       thunderhawk: 6,
       assaultRam: Infinity,
-      assaultClaw: Infinity,
       dropPod: Infinity,
       stormEagle: Infinity
     }
@@ -1345,36 +1248,6 @@ export class LegionThunderhawkGunship extends LegionUnit {
   }
 }
 
-export class LegionThunderhawkTransporter extends LegionUnit {
-  constructor (detachment) {
-    super(detachment, 100, 1, 3)
-
-    this.transportTypes = {
-      rhino: 2,
-      medusa: 2,
-      basilisk: 2,
-      sicaran: 2,
-      predator: 2,
-      vindicator: 2,
-      landRaider: 1
-    }
-    this.rules = [
-      new DamageCapacity(2),
-      new Planetfall(),
-      new ReinforcedArmour()
-    ]
-    this.stats = {
-      type: 'AC/WE',
-      speed: 'bomber',
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('2-twin-linked-heavy-bolters', new RangedWeapon('15cm', new AntiPersonnel('4+'), new AntiAircraft('5+')))
-    ]
-  }
-}
 
 export class LegionTyphon extends LegionUnit {
   constructor (detachment) {
@@ -1656,12 +1529,8 @@ withType(LegionDropPod)
 withType(LegionGunship)
 withType(LegionHeavySupportSquad)
 withType(LegionJavelinAttackSpeeder)
-withType(LegionKharybdis)
 withType(LegionLandRaiderAchillesTransport)
 withType(LegionLandRaiderAchilles)
-withType(LegionLandRaiderPhobosSquadronUnit)
-withType(LegionLandRaiderPhobosTransport)
-withType(LegionLandRaiderPhobos)
 withType(LegionLandRaiderProteusSquadronUnit)
 withType(LegionLandRaiderProteusTransport)
 withType(LegionLandRaiderProteus)
@@ -1694,7 +1563,6 @@ withType(LegionTacticalSupportSquad)
 withType(LegionTeleport)
 withType(LegionTerminatorSquad)
 withType(LegionThunderhawkGunship)
-withType(LegionThunderhawkTransporter)
 withType(LegionTyphon)
 withType(LegionVindicatorLaserDestroyer)
 withType(LegionVindicatorSquadronUnit)

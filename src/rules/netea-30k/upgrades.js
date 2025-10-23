@@ -16,9 +16,7 @@ import {
   LegionRhino,
   LegionDropPod,
   LegionCaestus,
-  LegionKharybdis,
   LegionLandRaiderProteusTransport,
-  LegionLandRaiderPhobosTransport,
   LegionLandRaiderAchillesTransport,
   LegionTeleport,
   LegionSpartan,
@@ -320,10 +318,6 @@ export class TransportOption extends MultipleChoiceOption {
     let achilles = 0
 
     detachment.units.forEach(unit => {
-      if (unit.type === LegionLandRaiderPhobosTransport.type) {
-        landRaiders = true
-      }
-
       if (unit.type === LegionLandRaiderProteusTransport.type) {
         landRaiders = true
       }
@@ -365,19 +359,10 @@ export class AssaultRam extends MultipleChoiceOption {
   }
 }
 
-export class AssaultClaw extends MultipleChoiceOption {
-  constructor () {
-    super(
-      LegionKharybdis
-    )
-  }
-}
-
 export class HeavyTransport extends MultipleChoiceOption {
   constructor () {
     super(
       LegionLandRaiderProteusTransport,
-      LegionLandRaiderPhobosTransport,
       LegionSpartan,
       LegionMastodon
     )
