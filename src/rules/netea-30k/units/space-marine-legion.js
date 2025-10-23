@@ -883,7 +883,7 @@ export class LegionRhino extends TransportUnit {
 
 export class LegionScimitarJetbike extends LegionUnit {
   constructor (detachment) {
-    super(detachment, 175, 5)
+    super(detachment, 210, 6)
 
     this.rules = [
       new Skimmer()
