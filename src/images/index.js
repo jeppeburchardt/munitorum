@@ -188,6 +188,7 @@ import legionGunship from './legion-gunship.svg'
 import legionInterceptor from './legion-interceptor.svg'
 import legionJavelin from './legion-javelin.svg'
 import legionKharybdis from './legion-kharybdis.svg'
+import legionKratosDetachment from './legion-kratos-detachment.svg'
 import legionLandRaiderAchilles from './legion-land-raider-achilles.svg'
 import legionLandRaiderPhobos from './legion-land-raider-phobos.svg'
 import legionLandSpeeder from './legion-land-speeder.svg'
@@ -535,6 +536,7 @@ const IMAGES = {
   'legion-interceptor': legionInterceptor,
   'legion-javelin': legionJavelin,
   'legion-kharybdis': legionKharybdis,
+  'legion-kratos-detachment': legionKratosDetachment,
   'legion-land-raider-achilles': legionLandRaiderAchilles,
   'legion-land-raider-phobos': legionLandRaiderPhobos,
   'legion-land-raider-proteus': imperialMilitiaLandRaiderProteus,
