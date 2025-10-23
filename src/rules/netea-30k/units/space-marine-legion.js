@@ -816,17 +816,13 @@ export class LegionPredator extends LegionUnit {
     this.weapons = [
       new MultipleChoiceWeapon(
         new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new AntiTank('4+'))),
-        new Weapon('predator-cannon', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('5+'))),
-        new Weapon('flamestorm-cannon', new RangedWeapon('30cm', new AntiPersonnel('3+'), new IgnoreCover()))
+        new Weapon('predator-cannon', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('5+')))
       ),
       new MultipleChoiceWeapon(
         new Weapon('sponson-heavy-bolters', new StatsModifier({
           ff: -2
         }), new SmallArms('15cm', new AntiPersonnel('5+'))),
-        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+'))),
-        new Weapon('sponson-heavy-flamers', new StatsModifier({
-          ff: -2
-        }), new SmallArms('15cm', new AntiPersonnel('4+'), new IgnoreCover('5+')))
+        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+')))
       )
     ]
   }
