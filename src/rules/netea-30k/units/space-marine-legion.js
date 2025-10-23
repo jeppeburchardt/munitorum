@@ -1014,7 +1014,7 @@ export class LegionSicaranBattleTankSquadronUnit extends MultipleChoiceUnit {
 
 export class LegionSicaranPunisherUnit extends LegionUnit {
   constructor(detachment) {
-    super(detachment, 80, 1)
+    super(detachment, 75, 1)
 
     this.rules = [
       new ReinforcedArmour()
@@ -1040,7 +1040,7 @@ export class LegionSicaranPunisherUnit extends LegionUnit {
 
 export class LegionSicaranArcusUnit extends LegionUnit {
   constructor(detachment) {
-    super(detachment, 80, 1)
+    super(detachment, 75, 1)
 
     this.rules = [
       new ReinforcedArmour()
@@ -1100,7 +1100,7 @@ export class LegionSicaranOmega extends LegionUnit {
 
 export class LegionSicaran extends LegionUnit {
   constructor (detachment) {
-    super(detachment, 80, 1)
+    super(detachment, 75, 1)
 
     this.rules = [
       new ReinforcedArmour()
@@ -1682,7 +1682,6 @@ withType(LegionScimitarJetbike)
 withType(LegionSicaranBattleTankSquadronUnit)
 withType(LegionSicaranPunisherUnit)
 withType(LegionSicaranArcusUnit)
-withType(LegionSicaranStrikeTankSquadronUnit)
 withType(LegionSicaranOmega)
 withType(LegionSicaran)
 withType(LegionSpacecraftUnit)

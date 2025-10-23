@@ -19,7 +19,6 @@ import {
   LegionPredator,
   LegionRapierSupport,
   LegionSicaranBattleTankSquadronUnit,
-  LegionSicaranStrikeTankSquadronUnit,
   LegionScimitarJetbike,
   LegionSpacecraftUnit,
   LegionStormEagleAttackShip,
@@ -354,6 +353,18 @@ export class LegionRapierWeaponsBattery extends SpaceMarineLegionDetachment {
   }
 }
 
+class LegionSicaranBattleTankSquadronUnitUpgrade extends Upgrade {
+  getAvailableUpgrades (detachment) {
+    if (detachment.units.filter(item => item.type === LegionSicaranBattleTankSquadronUnit.type).length === 6) {
+      return []
+    }
+
+    return [
+      new LegionSicaranBattleTankSquadronUnit(detachment)
+    ]
+  }
+}
+
 export class LegionSicaranBattleTankSquadron extends SpaceMarineLegionDetachment {
   constructor (list) {
     super(list)
@@ -368,27 +379,8 @@ export class LegionSicaranBattleTankSquadron extends SpaceMarineLegionDetachment
       new CommanderOption(
         new Centurion()
       ),
-      new Hyperios()
-    )
-  }
-}
-
-export class LegionSicaranStrikeTankSquadron extends SpaceMarineLegionDetachment {
-  constructor(list) {
-    super(list)
-
-    this.setMandatoryUnits(
-      new LegionSicaranStrikeTankSquadronUnit(this),
-      new LegionSicaranStrikeTankSquadronUnit(this),
-      new LegionSicaranStrikeTankSquadronUnit(this),
-      new LegionSicaranStrikeTankSquadronUnit(this)
-    )
-
-    this.setUpgrades(
-      new CommanderOption(
-        new Centurion()
-      ),
       new Hyperios(),
+      new LegionSicaranBattleTankSquadronUnitUpgrade()
     )
   }
 }
@@ -597,7 +589,6 @@ withType(LegionOutriderSquadron)
 withType(LegionPredatorStrikeSquadron)
 withType(LegionRapierWeaponsBattery)
 withType(LegionSicaranBattleTankSquadron)
-withType(LegionSicaranStrikeTankSquadron)
 withType(LegionSkyHunterAttackSquadron)
 withType(LegionSpacecraft)
 withType(LegionStormEagleAttackWing)
