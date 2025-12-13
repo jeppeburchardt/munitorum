@@ -988,7 +988,7 @@ export class LegionSicaranOmega extends LegionUnit {
       ff: 5
     }
     this.weapons = [
-      new Weapon('omega-plasma-array', new RangedWeapon('30cm', new MultipleShot('x2', new AntiTank('3+'), new Armourbane(), new Lance()))),
+      new Weapon('omega-plasma-array', new RangedWeapon('30cm', new AntiTank('3+'), new Armourbane(), new Feedback())),
       new MultipleChoiceWeapon(
          new Weapon('sponson-heavy-bolters', new StatsModifier({
           ff: -2
@@ -1013,7 +1013,7 @@ export class LegionSicaran extends LegionUnit {
       ff: 5
     }
     this.weapons = [
-      new Weapon('accelerator-cannon', new RangedWeapon('45cm', new MultipleShot('2x', new AntiPersonnel('4'), new AntiTank('5')))),
+      new Weapon('accelerator-cannon', new RangedWeapon('45cm', new MultipleShot('2x', new AntiPersonnel('4+'), new AntiTank('5+')))),
       new MultipleChoiceWeapon(
          new Weapon('sponson-heavy-bolters', new StatsModifier({
           ff: -2
