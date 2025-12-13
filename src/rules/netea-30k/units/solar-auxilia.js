@@ -942,6 +942,46 @@ export class SolarAuxiliaPrimarisStrikeFighter extends Unit {
   }
 }
 
+export class SolarAuxiliaThunderboltFighter extends Unit {
+  constructor (detachment) {
+    super(detachment, 225, 2)
+
+    this.rules = []
+    this.stats = {
+      type: 'AC',
+      speed: 'fighter',
+      armour: 6,
+      cc: 7,
+      ff: 7,
+    }
+    this.weapons = [
+      new Weapon('multilaser', new RangedWeapon('30cm', new AntiTank('6+'), new AntiPersonnel('5+'), new AntiAircraft('5+'), new FixedForwardFireArc())),
+      new Weapon('rockers', new RangedWeapon('30cm', new AntiTank('4+'), new FixedForwardFireArc())),
+      new Weapon('storm-bolters', new RangedWeapon('15cm', new AntiPersonnel('4+'), new AntiAircraft('5+'), new FixedForwardFireArc()))
+    ]
+  }
+}
+
+export class SolarAuxiliaMarauderBomber extends Unit {
+  constructor (detachment) {
+    super(detachment, 250, 2)
+
+    this.rules = []
+    this.stats = {
+      type: 'AC',
+      speed: 'bomber',
+      armour: 4,
+      cc: 7,
+      ff: 7,
+    }
+    this.weapons = [
+      new Weapon('twin-lascannon', new RangedWeapon('45cm', new AntiTank('4+'), new AntiAircraft('4+'), new FixedForwardFireArc())),
+      new Weapon('bomb-rack', new RangedWeapon('15cm', new BarragePoints(3), new FixedForwardFireArc())),
+      new Weapon('twin-heavy-bolter', new RangedWeapon('15cm', new AntiAircraft('5+')))
+    ]
+  }
+}
+
 withType(SolarAuxiliaLordMarshall)
 withType(SolarAuxiliaTacticalCommandSection)
 withType(SolarAuxiliaVeletarisStormSection)
@@ -991,3 +1031,5 @@ withType(SolarAuxiliaTarantula)
 withType(SolarAuxiliaTarantulaHyperios)
 withType(SolarAuxiliaAvengerStrikeFighter)
 withType(SolarAuxiliaPrimarisStrikeFighter)
+withType(SolarAuxiliaThunderboltFighter)
+withType(SolarAuxiliaMarauderBomber)

@@ -15,7 +15,9 @@ import {
   SolarAuxiliaTankHunterSquadron,
   SolarAuxiliaTarantulaBattery,
   SolarAuxiliaAvengerWing,
-  SolarAuxiliaPrimarisWing
+  SolarAuxiliaPrimarisWing,
+  SolarAuxiliaThunderboltSquadron,
+  SolarAuxiliaMarauderSquadron
 } from '../detachments/solar-auxilia'
 import LegioTitanicus from './legio-titanicus'
 import MechanicumTaghmata from './mechanicum-taghmata'
@@ -48,7 +50,9 @@ export default class SolarAuxilia extends Army {
     ]
     this.lordsOfWar = [
       SolarAuxiliaAvengerWing,
-      SolarAuxiliaPrimarisWing
+      SolarAuxiliaPrimarisWing,
+      SolarAuxiliaThunderboltSquadron,
+      SolarAuxiliaMarauderSquadron
     ]
     this.allies.push(
       LegioTitanicus,

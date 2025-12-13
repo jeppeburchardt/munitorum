@@ -27,7 +27,9 @@ import {
   SolarAuxiliaTarantula,
   SolarAuxiliaTarantulaHyperios,
   SolarAuxiliaAvengerStrikeFighter,
-  SolarAuxiliaPrimarisStrikeFighter
+  SolarAuxiliaPrimarisStrikeFighter,
+  SolarAuxiliaThunderboltFighter,
+  SolarAuxiliaMarauderBomber,
 } from '../units/solar-auxilia'
 import SolarAuxiliaDetachment from './solar-auxilia-detachment'
 import {
@@ -232,6 +234,26 @@ export class SolarAuxiliaPrimarisWing extends SolarAuxiliaDetachment {
   }
 }
 
+export class SolarAuxiliaThunderboltSquadron extends SolarAuxiliaDetachment {
+  constructor (list) {
+    super(list)
+
+    this.setMandatoryUnits(
+      new SolarAuxiliaThunderboltFighter(this)
+    )
+  }
+}
+
+export class SolarAuxiliaMarauderSquadron extends SolarAuxiliaDetachment {
+  constructor (list) {
+    super(list)
+
+    this.setMandatoryUnits(
+      new SolarAuxiliaMarauderBomber(this)
+    )
+  }
+}
+
 withType(SolarAuxiliaCommandDetachment)
 withType(SolarAuxiliaVeletarisStormCohort)
 withType(SolarAuxiliaInfantryTercio)
@@ -246,3 +268,5 @@ withType(SolarAuxiliaTankHunterSquadron)
 withType(SolarAuxiliaTarantulaBattery)
 withType(SolarAuxiliaAvengerWing)
 withType(SolarAuxiliaPrimarisWing)
+withType(SolarAuxiliaThunderboltSquadron)
+withType(SolarAuxiliaMarauderSquadron)
