@@ -666,6 +666,7 @@ export default {
     'solar-auxilia-leman-russ-exterminator': 'Leman Russ Exterminator',
     'solar-auxilia-leman-russ-demolisher': 'Leman Russ Demolisher',
     'solar-auxilia-leman-russ-vanquisher': 'Leman Russ Vanquisher',
+    'solar-auxilia-leman-russ-annihilator': 'Leman Russ Annihilator',
     'solar-auxilia-stormlord': 'Stormlord',
     'solar-auxilia-close-support-section': 'Close Support Section',
     'solar-auxilia-veletaris-support-squad': 'Veletaris Support Squad',

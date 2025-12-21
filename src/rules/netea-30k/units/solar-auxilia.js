@@ -1,6 +1,7 @@
 import {
   Weapon,
   AssaultWeapon,
+  Fleshbane,
   MacroWeapon,
   ExtraAttacks,
   SmallArms,
@@ -20,7 +21,8 @@ import {
   FixedForwardFireArc,
   RearFireArc,
   Disrupt,
-  SlowFiring
+  SlowFiring,
+  PointsModifier
 } from '../weapons'
 import {
   ReinforcedArmour,
@@ -161,9 +163,9 @@ export class SolarAuxiliaInfantrySection extends Unit {
   }
 }
 
-class SolarAuxiliaLemanRuss extends Unit {
+export class SolarAuxiliaLemanRuss extends Unit {
   constructor (detachment) {
-    super(detachment, 350 / 6, 1)
+    super(detachment, 350, 6)
 
     this.rules = [
       new ReinforcedArmour()
@@ -173,19 +175,26 @@ class SolarAuxiliaLemanRuss extends Unit {
       speed: 25,
       armour: 4,
       cc: 6,
-      ff: 4
+      ff: 5
     }
     this.weapons = [
-      new Weapon('battle-cannon', new RangedWeapon('75cm', new AntiPersonnel('4+'), new AntiTank('4+'))),
-      new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'))),
-      new Weapon('sponson-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('5+')))
+      new MultipleChoiceWeapon(
+        new Weapon('vanquisher-cannon', new RangedWeapon('75cm', new AntiPersonnel('6+'), new AntiTank('3+'))),
+        new Weapon('battle-cannon', new RangedWeapon('75cm', new AntiPersonnel('4+'), new AntiTank('4+')))
+      ),
+      new MultipleChoiceWeapon(
+        new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
+        new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
+          ff: -1
+        })))
+      )
     ]
   }
 }
 
 class SolarAuxiliaLemanRussDemolisher extends Unit {
   constructor (detachment) {
-    super(detachment, 50, 1)
+    super(detachment, 250 / 4, 1)
 
     this.rules = [
       new ReinforcedArmour(),
@@ -196,15 +205,19 @@ class SolarAuxiliaLemanRussDemolisher extends Unit {
       speed: 25,
       armour: 4,
       cc: 6,
-      ff: 3
+      ff: 4
     }
     this.weapons = [
       new Weapon('demolisher-cannon',
-        new RangedWeapon('30cm', new AntiPersonnel('3+'), new AntiTank('4+'), new IgnoreCover(), new Disrupt(), new FixedForwardFireArc()),
+        new RangedWeapon('30cm', new AntiPersonnel('3+'), new AntiTank('4+'), new IgnoreCover(), new Disrupt()),
         new SmallArms('15cm', new IgnoreCover())
       ),
-      new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'))),
-      new Weapon('sponson-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('5+')))
+      new MultipleChoiceWeapon(
+        new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
+        new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
+          ff: -1
+        })))
+      )
     ]
   }
 }
@@ -213,13 +226,15 @@ class SolarAuxiliaCloseSupportLemanRussDemolisher extends SolarAuxiliaLemanRussD
   constructor (detachment) {
     super(detachment)
 
-    this.cost = 200 / 3
+    this.cost = 250
+    this.min = 4
+    this.quantity = 4
   }
 }
 
 class SolarAuxiliaLemanRussExterminator extends Unit {
   constructor (detachment) {
-    super(detachment, 350 / 6, 1)
+    super(detachment, 250 / 4, 1)
 
     this.rules = [
       new ReinforcedArmour()
@@ -229,19 +244,33 @@ class SolarAuxiliaLemanRussExterminator extends Unit {
       speed: 25,
       armour: 4,
       cc: 6,
-      ff: 3
+      ff: 4
     }
     this.weapons = [
       new Weapon('twin-linked-autocannon', new RangedWeapon('45cm', new AntiPersonnel('4+'), new AntiTank('5+'))),
-      new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'))),
-      new Weapon('sponson-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('5+')))
+      new MultipleChoiceWeapon(
+        new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
+        new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
+          ff: -1
+        })))
+      )
     ]
   }
 }
 
-class SolarAuxiliaLemanRussVanquisher extends Unit {
+class SolarAuxiliaCloseSupportLemanRussExterminator extends SolarAuxiliaLemanRussExterminator {
   constructor (detachment) {
-    super(detachment, (350 / 6) + 25, 1)
+    super(detachment)
+
+    this.cost = 250
+    this.min = 4
+    this.quantity = 4
+  }
+}
+
+class SolarAuxiliaLemanRussAnnihilator extends Unit {
+  constructor (detachment) {
+    super(detachment, 250 / 4, 1)
 
     this.rules = [
       new ReinforcedArmour()
@@ -251,41 +280,33 @@ class SolarAuxiliaLemanRussVanquisher extends Unit {
       speed: 25,
       armour: 4,
       cc: 6,
-      ff: 4
+      ff: 5
     }
     this.weapons = [
-      new Weapon('vanquisher-cannon', new RangedWeapon('75cm', new AntiPersonnel('4+'), new AntiTank('2+'))),
-      new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'))),
-      new Weapon('sponson-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('5+')))
+      new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new MultipleShot(2, new AntiTank('5+')))),
+      new MultipleChoiceWeapon(
+        new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
+        new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
+          ff: -1
+        })))
+      )
     ]
   }
 }
 
-class SolarAuxiliaLemanRussIncinerator extends Unit {
+class SolarAuxiliaCloseSupportLemanRussAnnihilator extends SolarAuxiliaLemanRussAnnihilator {
   constructor (detachment) {
-    super(detachment, 200 / 3, 1)
+    super(detachment)
 
-    this.rules = [
-      new ReinforcedArmour(),
-      new ThickRearArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 20,
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('twin-linked-volkite-demi-culverin', new RangedWeapon('45cm', new MultipleShot('2x', new AntiPersonnel('3+'), new AntiTank('5+')))),
-      new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+')))
-    ]
+    this.cost = 250
+    this.min = 4
+    this.quantity = 4
   }
 }
 
 class SolarAuxiliaLemanRussExecutioner extends Unit {
   constructor (detachment) {
-    super(detachment, (200 / 3) + 25, 1)
+    super(detachment, 250 / 4, 1)
 
     this.rules = [
       new ReinforcedArmour(),
@@ -299,9 +320,24 @@ class SolarAuxiliaLemanRussExecutioner extends Unit {
       ff: 4
     }
     this.weapons = [
-      new Weapon('twin-linked-autocannon', new RangedWeapon('45cm', new AntiPersonnel('4+'), new AntiTank('5+'))),
-      new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+')))
+      new Weapon('plasma-cannon', new RangedWeapon('30cm', new AntiPersonnel('4+'), new AntiTank('4+'), new Fleshbane())),
+      new MultipleChoiceWeapon(
+        new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
+        new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
+          ff: -1
+        })))
+      )
     ]
+  }
+}
+
+class SolarAuxiliaCloseSupportLemanRussExecutioner extends SolarAuxiliaLemanRussExecutioner {
+  constructor (detachment) {
+    super(detachment)
+
+    this.cost = 250
+    this.min = 4
+    this.quantity = 4
   }
 }
 
@@ -309,39 +345,13 @@ export class SolarAuxiliaCloseSupportTankUnit extends MultipleChoiceUnit {
   constructor (detachment) {
     super(detachment,
       new SolarAuxiliaCloseSupportLemanRussDemolisher(detachment),
-      new SolarAuxiliaLemanRussIncinerator(detachment)
+      new SolarAuxiliaCloseSupportLemanRussExterminator(detachment),
+      new SolarAuxiliaCloseSupportLemanRussAnnihilator(detachment),
+      new SolarAuxiliaCloseSupportLemanRussExecutioner(detachment),
     )
   }
 }
 
-export class SolarAuxiliaCloseSupportTankUnitWithExecutioner extends MultipleChoiceUnit {
-  constructor (detachment) {
-    super(detachment,
-      new SolarAuxiliaCloseSupportLemanRussDemolisher(detachment),
-      new SolarAuxiliaLemanRussIncinerator(detachment),
-      new SolarAuxiliaLemanRussExecutioner(detachment)
-    )
-  }
-}
-
-export class SolarAuxiliaBattleTankUnit extends MultipleChoiceUnit {
-  constructor (detachment) {
-    super(detachment,
-      new SolarAuxiliaLemanRuss(detachment),
-      new SolarAuxiliaLemanRussExterminator(detachment)
-    )
-  }
-}
-
-export class SolarAuxiliaBattleTankUnitWithVanquisher extends MultipleChoiceUnit {
-  constructor (detachment) {
-    super(detachment,
-      new SolarAuxiliaLemanRuss(detachment),
-      new SolarAuxiliaLemanRussExterminator(detachment),
-      new SolarAuxiliaLemanRussVanquisher(detachment)
-    )
-  }
-}
 
 export class SolarAuxiliaInfantrySupportTankUnit extends MultipleChoiceUnit {
   constructor (detachment) {
@@ -606,9 +616,9 @@ export class SolarAuxiliaArtilleryTankBatteryUnit extends MultipleChoiceUnit {
   }
 }
 
-class SolarAuxiliaMalcador extends Unit {
+export class SolarAuxiliaMalcador extends Unit {
   constructor (detachment) {
-    super(detachment, 70, 1)
+    super(detachment, 280, 4)
 
     this.rules = [
       new ReinforcedArmour(),
@@ -619,12 +629,34 @@ class SolarAuxiliaMalcador extends Unit {
       speed: 15,
       armour: 4,
       cc: 6,
-      ff: 5
+      ff: 6
     }
+    //TODO: PointsModifier don't seem to work
     this.weapons = [
-      new Weapon('battle-cannon', new RangedWeapon('75cm', new AntiPersonnel('4+'), new AntiTank('4+'))),
-      new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'))),
-      new Weapon('sponson-autocannons', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('6+')))
+      new MultipleChoiceWeapon(
+        new Weapon('battle-cannon', new RangedWeapon('75cm', new AntiPersonnel('4+'), new AntiTank('4+'), new FixedForwardFireArc())),
+        new Weapon('vanquisher-cannon', new RangedWeapon('75cm', new AntiPersonnel('6+'), new AntiTank('3+'), new FixedForwardFireArc())),
+        new Weapon('twin-linked-lascannon', new RangedWeapon('45cm'), new MultipleShot(2, new AntiTank('5+'), new FixedForwardFireArc()))
+      ),
+      new MultipleChoiceWeapon(
+        new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
+          ff: -1
+        }))),
+        new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
+        new Weapon('demolisher-cannon',
+          new PointsModifier(30 * 4),
+          new RangedWeapon('30cm', new AntiPersonnel('3+'), new AntiTank('4+'), new IgnoreCover(), new Disrupt(), new FixedForwardFireArc()),
+          new SmallArms('15cm', new IgnoreCover()),
+          new StatsModifier({
+            ff: -1
+          })
+        ),
+      ),
+      new MultipleChoiceWeapon(
+        new Weapon('sponson-autocannons', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('6+'))),
+        new Weapon('sponson-heavy-bolters', new RangedWeapon('30m', new AntiPersonnel('5+')), new StatsModifier({ ff: -1 })),
+        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+')))
+      )
     ]
   }
 }
@@ -648,15 +680,6 @@ class SolarAuxiliaMalcadorInfernus extends Unit {
       new Weapon('infernus-cannon', new RangedWeapon('30cm', new AntiPersonnel('3+'))),
       new Weapon('sponson-autocannons', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('6+')))
     ]
-  }
-}
-
-export class SolarAuxiliaMalcadorUnit extends MultipleChoiceUnit {
-  constructor (detachment) {
-    super(detachment,
-      new SolarAuxiliaMalcador(detachment),
-      new SolarAuxiliaMalcadorInfernus(detachment)
-    )
   }
 }
 
@@ -990,16 +1013,11 @@ withType(SolarAuxiliaInfantrySupportTankUnit)
 withType(SolarAuxiliaLemanRuss)
 withType(SolarAuxiliaLemanRussDemolisher)
 withType(SolarAuxiliaLemanRussExterminator)
-withType(SolarAuxiliaLemanRussVanquisher)
-withType(SolarAuxiliaLemanRussIncinerator)
 withType(SolarAuxiliaLemanRussExecutioner)
-withType(SolarAuxiliaBattleTankUnit)
-withType(SolarAuxiliaBattleTankUnitWithVanquisher)
+withType(SolarAuxiliaLemanRussAnnihilator)
 withType(SolarAuxiliaCloseSupportTankUnit)
-withType(SolarAuxiliaCloseSupportTankUnitWithExecutioner)
 withType(SolarAuxiliaMalcador)
 withType(SolarAuxiliaMalcadorInfernus)
-withType(SolarAuxiliaMalcadorUnit)
 withType(SolarAuxiliaOgrynCharoniteSquad)
 withType(SolarAuxiliaVeletarisSupportSquad)
 withType(SolarAuxiliaCloseSupportSection)

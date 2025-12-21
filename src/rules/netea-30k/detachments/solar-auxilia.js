@@ -9,8 +9,7 @@ import {
   SolarAuxiliaTacticalCommandSection,
   SolarAuxiliaVeletarisStormSection,
   SolarAuxiliaInfantrySection,
-  SolarAuxiliaBattleTankUnit,
-  SolarAuxiliaBattleTankUnitWithVanquisher,
+  SolarAuxiliaLemanRuss,
   SolarAuxiliaVeletarisSupportSquad,
   SolarAuxiliaCloseSupportSection,
   SolarAuxiliaDracosan,
@@ -18,11 +17,10 @@ import {
   SolarAuxiliaArvusLighter,
   SolarAuxiliaOrbitalSupportUnit,
   SolarAuxiliaArtilleryTankBatteryUnit,
-  SolarAuxiliaMalcadorUnit,
+  SolarAuxiliaMalcador,
   SolarAuxiliaSuperHeavyTankUnit,
   SolarAuxiliaSuperHeavyTankSquadronUnit,
   SolarAuxiliaCloseSupportTankUnit,
-  SolarAuxiliaCloseSupportTankUnitWithExecutioner,
   SolarAuxiliaValdor,
   SolarAuxiliaTarantula,
   SolarAuxiliaTarantulaHyperios,
@@ -114,12 +112,7 @@ export class SolarAuxiliaStrikeCompany extends SolarAuxiliaDetachment {
     super(list)
 
     this.setMandatoryUnits(
-      new SolarAuxiliaBattleTankUnitWithVanquisher(this),
-      new SolarAuxiliaBattleTankUnit(this),
-      new SolarAuxiliaBattleTankUnit(this),
-      new SolarAuxiliaBattleTankUnit(this),
-      new SolarAuxiliaBattleTankUnit(this),
-      new SolarAuxiliaBattleTankUnit(this)
+      new SolarAuxiliaLemanRuss(this)
     )
   }
 }
@@ -152,11 +145,7 @@ export class SolarAuxiliaMalcadorSquadron extends SolarAuxiliaDetachment {
     super(list)
 
     this.setMandatoryUnits(
-      new SolarAuxiliaMalcadorUnit(this),
-      new SolarAuxiliaMalcadorUnit(this),
-      new SolarAuxiliaMalcadorUnit(this),
-      new SolarAuxiliaMalcadorUnit(this),
-      new SolarAuxiliaMalcadorUnit(this)
+      new SolarAuxiliaMalcador(this)
     )
   }
 }
@@ -186,8 +175,6 @@ export class SolarAuxiliaCloseSupportSquadron extends SolarAuxiliaDetachment {
     super(list)
 
     this.setMandatoryUnits(
-      new SolarAuxiliaCloseSupportTankUnitWithExecutioner(this),
-      new SolarAuxiliaCloseSupportTankUnit(this),
       new SolarAuxiliaCloseSupportTankUnit(this)
     )
   }

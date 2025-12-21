@@ -281,7 +281,6 @@ import solarAuxiliaStormlord from './solar-auxilia-stormlord.svg'
 import solarAuxiliaStormsword from './solar-auxilia-stormsword.svg'
 import solarAuxiliaTacticalCommand from './solar-auxilia-tactical-command.svg'
 import solarAuxiliaTankHunter from './solar-auxilia-tank-hunter.svg'
-import solarAuxiliaTarantula from './solar-auxilia-tarantula.svg'
 import solarAuxiliaVeletaris from './solar-auxilia-veletaris.svg'
 import solarAuxilia from './solar-auxilia.svg'
 import sonsOfHorusJustaerinTerminator from './sons-of-horus-justaerin-terminator.svg'
@@ -665,7 +664,7 @@ const IMAGES = {
   'solar-auxilia-tactical-command': solarAuxiliaTacticalCommand,
   'solar-auxilia-tank-hunter': solarAuxiliaTankHunter,
   'solar-auxilia-tarantula-hyperios': mechanicumTaghmataHyperios,
-  'solar-auxilia-tarantula': solarAuxiliaTarantula,
+  'solar-auxilia-tarantula': legionTarantulaBattery,
   'solar-auxilia-valdor': solarAuxiliaTankHunter,
   'solar-auxilia-veletaris': solarAuxiliaVeletaris,
   'solar-auxilia': solarAuxilia,
