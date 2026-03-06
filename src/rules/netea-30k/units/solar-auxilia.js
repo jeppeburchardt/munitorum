@@ -283,7 +283,7 @@ class SolarAuxiliaLemanRussAnnihilator extends Unit {
       ff: 5
     }
     this.weapons = [
-      new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new MultipleShot(2, new AntiTank('5+')))),
+      new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('5+')))),
       new MultipleChoiceWeapon(
         new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
         new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
@@ -636,7 +636,7 @@ export class SolarAuxiliaMalcador extends Unit {
       new MultipleChoiceWeapon(
         new Weapon('battle-cannon', new RangedWeapon('75cm', new AntiPersonnel('4+'), new AntiTank('4+'), new FixedForwardFireArc())),
         new Weapon('vanquisher-cannon', new RangedWeapon('75cm', new AntiPersonnel('6+'), new AntiTank('3+'), new FixedForwardFireArc())),
-        new Weapon('twin-linked-lascannon', new RangedWeapon('45cm'), new MultipleShot(2, new AntiTank('5+'), new FixedForwardFireArc()))
+        new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('5+'), new FixedForwardFireArc())))
       ),
       new MultipleChoiceWeapon(
         new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
@@ -650,7 +650,7 @@ export class SolarAuxiliaMalcador extends Unit {
           new StatsModifier({
             ff: -1
           })
-        ),
+        )
       ),
       new MultipleChoiceWeapon(
         new Weapon('sponson-autocannons', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('6+'))),
