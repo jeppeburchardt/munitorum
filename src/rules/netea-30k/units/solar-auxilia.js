@@ -36,7 +36,8 @@ import {
   SupremeCommander,
   Planetfall,
   SlowAndSteady,
-  Teleport
+  Teleport,
+  PricingQuality
 } from '../special-rules'
 import MultipleChoiceUnit from './multiple-choice-unit'
 import Unit, { InfantryTransportUnit } from './unit'
@@ -75,6 +76,7 @@ export class SolarAuxiliaTacticalCommandSection extends Unit {
 
     this.transportCost = 1
     this.rules = [
+      new PricingQuality(sa['Tactical Command Unit'].quality),
       new Commander()
     ]
     this.stats = {
@@ -95,7 +97,9 @@ export class SolarAuxiliaVeletarisStormSection extends Unit {
     super(detachment, sa['Veletaris Storm Section'].cost * 7, 7)
 
     this.transportCost = 1
-    this.rules = []
+    this.rules = [
+      new PricingQuality(sa['Veletaris Storm Section'].quality)
+    ]
     this.stats = {
       type: 'INF',
       speed: 15,
@@ -130,7 +134,9 @@ export class SolarAuxiliaCloseSupportSection extends Unit {
     super(detachment, sa['Infantry with flamers'].cost * 4, 4)
 
     this.transportCost = 1
-    this.rules = []
+    this.rules = [
+      new PricingQuality(sa['Infantry with flamers'].quality)
+    ]
     this.stats = {
       type: 'INF',
       speed: 15,
@@ -152,7 +158,9 @@ export class SolarAuxiliaInfantrySection extends Unit {
     super(detachment, sa['Infantry Section'].cost * 7, 7)
 
     this.transportCost = 1
-    this.rules = []
+    this.rules = [
+      new PricingQuality(sa['Infantry Section'].quality)
+    ]
     this.stats = {
       type: 'INF',
       speed: 15,
@@ -171,6 +179,7 @@ export class SolarAuxiliaLemanRuss extends Unit {
     super(detachment, sa['Leman Russ (Battle cannon)'].cost * 6, 6)
 
     this.rules = [
+      new PricingQuality(sa['Leman Russ (Battle cannon)'].quality),
       new ReinforcedArmour()
     ]
     this.stats = {
@@ -200,6 +209,7 @@ class SolarAuxiliaLemanRussDemolisher extends Unit {
     super(detachment, sa['Leman Russ (Demolisher)'].cost, 1)
 
     this.rules = [
+      new PricingQuality(sa['Leman Russ (Demolisher)'].quality),
       new ReinforcedArmour(),
       new ThickRearArmour()
     ]
@@ -240,6 +250,7 @@ class SolarAuxiliaLemanRussExterminator extends Unit {
     super(detachment, sa['Leman Russ (Exterminator)'].cost, 1)
 
     this.rules = [
+      new PricingQuality(sa['Leman Russ (Exterminator)'].quality),
       new ReinforcedArmour()
     ]
     this.stats = {
@@ -276,6 +287,7 @@ class SolarAuxiliaLemanRussAnnihilator extends Unit {
     super(detachment, sa['Leman Russ (Annihilator)'].cost, 1)
 
     this.rules = [
+      new PricingQuality(sa['Leman Russ (Annihilator)'].quality),
       new ReinforcedArmour()
     ]
     this.stats = {
@@ -312,6 +324,7 @@ class SolarAuxiliaLemanRussExecutioner extends Unit {
     super(detachment, sa['Leman Russ (Executioner)'].cost, 1)
 
     this.rules = [
+      new PricingQuality(sa['Leman Russ (Executioner)'].quality),
       new ReinforcedArmour(),
       new ThickRearArmour()
     ]
@@ -370,6 +383,7 @@ export class SolarAuxiliaValdor extends Unit {
     super(detachment, sa['Malcador Valdor'].cost * 3, 3)
 
     this.rules = [
+      new PricingQuality(sa['Malcador Valdor'].quality),
       new ReinforcedArmour()
     ]
     this.stats = {
@@ -391,7 +405,9 @@ export class SolarAuxiliaOgrynCharoniteSquad extends Unit {
     super(detachment, sa['Ogryn Charonite Squad'].cost * 2, 2)
 
     this.transportCost = 2
-    this.rules = []
+    this.rules = [
+      new PricingQuality(sa['Ogryn Charonite Squad'].quality)
+    ]
     this.stats = {
       type: 'INF',
       speed: 15,
@@ -411,6 +427,7 @@ export class SolarAuxiliaArvusLighter extends InfantryTransportUnit {
 
     this.transportCapacity = 2
     this.rules = [
+      new PricingQuality(sa['Arvus Lighter'].quality),
       new Skimmer(),
       new Planetfall()
     ]
@@ -433,6 +450,7 @@ export class SolarAuxiliaDracosan extends InfantryTransportUnit {
 
     this.transportCapacity = 4
     this.rules = [
+      new PricingQuality(sa['Dracosan with las cannon'].quality),
       new DamageCapacity(2),
       new ReinforcedArmour(),
       new CriticalHit('solar-auxilia-dracosan-critical-hit')
@@ -483,7 +501,9 @@ export class SolarAuxiliaRapier extends Unit {
     super(detachment, sa['Rapier Laser Destroyer'].cost * 4, 4)
 
     this.transportCost = 2
-    this.rules = []
+    this.rules = [
+      new PricingQuality(sa['Rapier Laser Destroyer'].quality)
+    ]
     this.stats = {
       type: 'INF',
       speed: 10,
@@ -553,7 +573,9 @@ export class SolarAuxiliaMedusa extends Unit {
   constructor(detachment) {
     super(detachment, sa['Medusa'].cost * 3, 3)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality(sa['Medusa'].quality)
+    ]
     this.stats = {
       type: 'AV',
       speed: 20,
@@ -575,7 +597,9 @@ class SolarAuxiliaBasilisk extends Unit {
   constructor(detachment) {
     super(detachment, sa['Basilisk'].cost * 3, 3)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality(sa['Basilisk'].quality)
+    ]
     this.stats = {
       type: 'AV',
       speed: 20,
@@ -624,6 +648,7 @@ export class SolarAuxiliaMalcador extends Unit {
     super(detachment, sa['Malcador (battle cannon, demolisher, las.spon.)'].cost * 4, 4)
 
     this.rules = [
+      new PricingQuality(sa['Malcador (battle cannon, demolisher, las.spon.)'].quality),
       new ReinforcedArmour(),
       new ThickRearArmour()
     ]
@@ -669,6 +694,7 @@ class SolarAuxiliaMalcadorInfernus extends Unit {
     super(detachment, sa['Malcador Infernus'].cost, 1)
 
     this.rules = [
+      new PricingQuality(sa['Malcador Infernus'].quality),
       new ReinforcedArmour(),
       new ThickRearArmour()
     ]
@@ -691,6 +717,7 @@ class SolarAuxiliaBaneblade extends Unit {
     super(detachment, sa['Baneblade'].cost, 1)
 
     this.rules = [
+      new PricingQuality(sa['Baneblade'].quality),
       new ReinforcedArmour(),
       new DamageCapacity(3),
       new CriticalHit('solar-auxilia-baneblade-critical-hit')
@@ -720,6 +747,7 @@ class SolarAuxiliaShadowsword extends Unit {
     super(detachment, sa['Shadowsword'].cost, 1)
 
     this.rules = [
+      new PricingQuality(sa['Shadowsword'].quality),
       new ReinforcedArmour(),
       new DamageCapacity(3),
       new CriticalHit('solar-auxilia-shadowsword-critical-hit')
@@ -743,6 +771,7 @@ class SolarAuxiliaStormblade extends Unit {
     super(detachment, sa['Stromblade'].cost, 1)
 
     this.rules = [
+      new PricingQuality(sa['Stromblade'].quality),
       new ReinforcedArmour(),
       new DamageCapacity(3),
       new CriticalHit('solar-auxilia-stormblade-critical-hit')
@@ -768,6 +797,7 @@ class SolarAuxiliaStormhammer extends Unit {
     super(detachment, sa['Stormhammer'].cost, 1)
 
     this.rules = [
+      new PricingQuality(sa['Stormhammer'].quality),
       new ReinforcedArmour(),
       new DamageCapacity(3),
       new CriticalHit('solar-auxilia-stormhammer-critical-hit')
@@ -793,6 +823,7 @@ class SolarAuxiliaStormsword extends Unit {
     super(detachment, sa['Stormsword'].cost, 1)
 
     this.rules = [
+      new PricingQuality(sa['Stormsword'].quality),
       new DamageCapacity(2),
       new ReinforcedArmour(),
       new CriticalHit('solar-auxilia-stormsword-critical-hit')
@@ -891,6 +922,7 @@ export class SolarAuxiliaTarantula extends Unit {
     super(detachment, sa['Tarantula, Twin Lascannon'].cost * 4, 4)
 
     this.rules = [
+      new PricingQuality(sa['Tarantula, Twin Lascannon'].quality),
       new Scout(),
       new Teleport()
     ]
@@ -912,6 +944,7 @@ export class SolarAuxiliaTarantulaHyperios extends Unit {
     super(detachment, sa['Tarantula, Hyperios air-defence missile launcher'].cost * 4, 4)
 
     this.rules = [
+      new PricingQuality(sa['Tarantula, Hyperios air-defence missile launcher'].quality),
       new Scout(),
       new Teleport()
     ]
@@ -932,7 +965,9 @@ export class SolarAuxiliaAvengerStrikeFighter extends Unit {
   constructor(detachment) {
     super(detachment, sa['Avenger Strike Fighter'].cost * 2, 2)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality(sa['Avenger Strike Fighter'].quality)
+    ]
     this.stats = {
       type: 'AC',
       speed: 'fighter-bomber',
@@ -972,7 +1007,9 @@ export class SolarAuxiliaThunderboltFighter extends Unit {
   constructor(detachment) {
     super(detachment, sa['Thunderbolt'].cost * 2, 2)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality(sa['Thunderbolt'].quality)
+    ]
     this.stats = {
       type: 'AC',
       speed: 'fighter',
@@ -992,7 +1029,9 @@ export class SolarAuxiliaMarauderBomber extends Unit {
   constructor(detachment) {
     super(detachment, sa['Marauder Bomber'].cost * 2, 2)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality(sa['Marauder Bomber'].quality)
+    ]
     this.stats = {
       type: 'AC',
       speed: 'bomber',

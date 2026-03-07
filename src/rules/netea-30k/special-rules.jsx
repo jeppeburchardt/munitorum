@@ -376,3 +376,9 @@ export class Brutal {
     )
   }
 }
+
+export class PricingQuality {
+  constructor (quality) {
+    this.type = quality
+  }
+}

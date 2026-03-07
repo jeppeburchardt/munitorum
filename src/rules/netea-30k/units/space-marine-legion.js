@@ -20,7 +20,8 @@ import {
   CriticalHit,
   SlowAndSteady,
   Teleport,
-  VoidShields
+  VoidShields,
+  PricingQuality
 } from '../special-rules'
 import {
   MultipleChoiceWeapon,
@@ -104,6 +105,7 @@ export class LegionAssaultSquad extends LegionUnit {
 
     this.transportType = 'assault'
     this.rules = [
+      new PricingQuality(la['Assault Squad'].quality),
       new JumpPacks()
     ]
     this.stats = {
@@ -188,6 +190,7 @@ export class LegionOutriderUnit extends LegionUnit {
     super(detachment, la['Outrider squad'].cost * 4, 4)
 
     this.rules = [
+      new PricingQuality(la['Outrider squad'].quality),
       new Scout(),
       new Mounted()
     ]
@@ -238,6 +241,7 @@ export class LegionCerberus extends LegionUnit {
     super(detachment, la['Cerberus Heavy Tank Destroyer'].cost, 1)
 
     this.rules = [
+      new PricingQuality(la['Cerberus Heavy Tank Destroyer'].quality),
       new ReinforcedArmour(),
       new DamageCapacity(2)
     ]
@@ -315,6 +319,7 @@ export class LegionContemptorDreadnought extends LegionUnit {
 
     this.transportType = 'dreadnought'
     this.rules = [
+      new PricingQuality(la['Contemptor Dreadnought with Assault Cannon'].quality),
       new Walker(),
       new InvulnerableSave()
     ]
@@ -367,6 +372,7 @@ export class LegionDeredeoDreadnought extends LegionUnit {
 
     this.transportType = 'dreadnought'
     this.rules = [
+      new PricingQuality(la['Deredeo Dreadnoughts with Anvilus Autocannon Battery'].quality),
       new Walker(),
       new InvulnerableSave()
     ]
@@ -420,6 +426,7 @@ export class LegionGunship extends LegionUnit {
     super(detachment, la['Fire Raptor Gunship'].cost * 2, 2)
 
     this.rules = [
+      new PricingQuality(la['Fire Raptor Gunship'].quality),
       new ReinforcedArmour()
     ]
     this.stats = {
@@ -447,7 +454,9 @@ export class LegionHeavySupportSquad extends LegionUnit {
     super(detachment, la['Heavy Support Squad'].cost, 1, 4)
 
     this.transportType = 'tactical'
-    this.rules = []
+    this.rules = [
+      new PricingQuality(la['Heavy Support Squad'].quality)
+    ]
     this.stats = {
       type: 'INF',
       speed: 15,
@@ -467,6 +476,7 @@ export class LegionJavelinAttackSpeeder extends LegionUnit {
     super(detachment, la['Javelin Attack Speeder with Cyclone Missile Launcher'].cost, 1)
 
     this.rules = [
+      new PricingQuality(la['Javelin Attack Speeder with Cyclone Missile Launcher'].quality),
       new Scout(),
       new Skimmer()
     ]
@@ -597,6 +607,7 @@ export class LegionLandRaiderProteus extends LegionUnit {
     super(detachment, la['Land Raider'].cost, 1)
 
     this.rules = [
+      new PricingQuality(la['Land Raider'].quality),
       new ReinforcedArmour(),
       new ThickRearArmour(),
       new ExploratoryAuguryWeb()
@@ -619,6 +630,7 @@ export class LegionLandSpeeder extends LegionUnit {
     super(detachment, la['Land Speeder with Plasma Cannon and Heavy Bolter'].cost, 1)
 
     this.rules = [
+      new PricingQuality(la['Land Speeder with Plasma Cannon and Heavy Bolter'].quality),
       new Scout(),
       new Skimmer()
     ]
@@ -650,6 +662,7 @@ export class LegionLeviathanDreadnought extends LegionUnit {
 
     this.transportType = 'dreadnought'
     this.rules = [
+      new PricingQuality(la['Leviathan Siege Dreadnoughts with Cyclonic Melta Lance'].quality),
       new Walker(),
       new ReinforcedArmour(),
       new InvulnerableSave('6+')
@@ -759,6 +772,7 @@ export class LegionMastodon extends TransportUnit {
       dreadnought: 2
     }
     this.rules = [
+      new PricingQuality(la['Mastodon Armored Transport'].quality),
       new ReinforcedArmour(),
       new ThickRearArmour(),
       new DamageCapacity(4),
@@ -808,7 +822,9 @@ export class LegionPredator extends LegionUnit {
   constructor(detachment) {
     super(detachment, la['Predator Annihilator'].cost, 1)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality(la['Predator Annihilator'].quality)
+    ]
     this.stats = {
       type: 'AV',
       speed: 30,
@@ -836,7 +852,9 @@ export class LegionRapier extends LegionUnit {
     super(detachment, la['Rapier, Laser Destroyer Array'].cost, 1)
 
     this.transportType = 'rapier'
-    this.rules = []
+    this.rules = [
+      new PricingQuality(la['Rapier, Laser Destroyer Array'].quality)
+    ]
     this.stats = {
       type: 'INF',
       speed: 10,
@@ -889,6 +907,7 @@ export class LegionScimitarJetbike extends LegionUnit {
     super(detachment, la['Scimitar Jetbike'].cost * 6, 6)
 
     this.rules = [
+      new PricingQuality(la['Scimitar Jetbike'].quality),
       new Skimmer()
     ]
     this.stats = {
@@ -920,6 +939,7 @@ export class LegionSicaranPunisherUnit extends LegionUnit {
     super(detachment, la['Sicaran Punisher'].cost, 1)
 
     this.rules = [
+      new PricingQuality(la['Sicaran Punisher'].quality),
       new ReinforcedArmour()
     ]
     this.stats = {
@@ -946,6 +966,7 @@ export class LegionSicaranArcusUnit extends LegionUnit {
     super(detachment, la['Sicaran Arcus'].cost, 1)
 
     this.rules = [
+      new PricingQuality(la['Sicaran Arcus'].quality),
       new ReinforcedArmour()
     ]
     this.stats = {
@@ -981,6 +1002,7 @@ export class LegionSicaranOmega extends LegionUnit {
     super(detachment, la['Sicaran Battle Tank, with Omega plasma array'].cost, 1)
 
     this.rules = [
+      new PricingQuality(la['Sicaran Battle Tank, with Omega plasma array'].quality),
       new ReinforcedArmour()
     ]
     this.stats = {
@@ -1006,6 +1028,7 @@ export class LegionSicaran extends LegionUnit {
     super(detachment, la['Sicaran Battle Tank (Accelerator Cannon + Lascannons)'].cost, 1)
 
     this.rules = [
+      new PricingQuality(la['Sicaran Battle Tank (Accelerator Cannon + Lascannons)'].quality),
       new ReinforcedArmour()
     ]
     this.stats = {
@@ -1045,6 +1068,7 @@ export class LegionSpartan extends TransportUnit {
       terminator: 2
     }
     this.rules = [
+      new PricingQuality(la['Spartan Assault Tank'].quality),
       new ReinforcedArmour(),
       new DamageCapacity(2),
       new ThickRearArmour(),
@@ -1074,6 +1098,7 @@ export class LegionStormEagleAttackShip extends LegionUnit {
       terminator: 2
     }
     this.rules = [
+      new PricingQuality(la['Storm Eagle Attack Ship'].quality),
       new DamageCapacity(1),
       new Planetfall(),
       new ReinforcedArmour()
@@ -1147,7 +1172,9 @@ export class LegionTacticalSquad extends LegionUnit {
     super(detachment, la['Tactical Squad'].cost * 8, 8)
 
     this.transportType = 'tactical'
-    this.rules = []
+    this.rules = [
+      new PricingQuality(la['Tactical Squad'].quality)
+    ]
     this.stats = {
       type: 'INF',
       speed: 15,
@@ -1166,7 +1193,9 @@ export class LegionTacticalSupportSquad extends LegionUnit {
     super(detachment, la['Tactical Support Squad'].cost, 1, 4)
 
     this.transportType = 'tactical'
-    this.rules = []
+    this.rules = [
+      new PricingQuality(la['Tactical Support Squad'].quality)
+    ]
     this.stats = {
       type: 'INF',
       speed: 15,
@@ -1195,6 +1224,7 @@ export class LegionTerminatorSquad extends LegionUnit {
 
     this.transportType = 'terminator'
     this.rules = [
+      new PricingQuality(la['Terminator Squad'].quality),
       new ReinforcedArmour(),
       new ThickRearArmour()
     ]
@@ -1223,6 +1253,7 @@ export class LegionThunderhawkGunship extends LegionUnit {
       outrider: 5
     }
     this.rules = [
+      new PricingQuality(la['Thunderhawk Gunship'].quality),
       new DamageCapacity(2),
       new Planetfall(),
       new ReinforcedArmour()
@@ -1253,6 +1284,7 @@ export class LegionTyphon extends LegionUnit {
     super(detachment, la['Typhon Siege Tank'].cost, 1)
 
     this.rules = [
+      new PricingQuality(la['Typhon Siege Tank'].quality),
       new ReinforcedArmour(),
       new DamageCapacity(2)
     ]
@@ -1307,6 +1339,7 @@ export class LegionVindicator extends LegionUnit {
     super(detachment, la['Vindicator'].cost, 1)
 
     this.rules = [
+      new PricingQuality(la['Vindicator'].quality),
       new Walker()
     ]
     this.stats = {
@@ -1357,7 +1390,9 @@ export class LegionWhirlwindScorpius extends LegionUnit {
   constructor(detachment) {
     super(detachment, la['Legion Whirlwind Scorpius'].cost * 4, 4)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality(la['Legion Whirlwind Scorpius'].quality)
+    ]
     this.stats = {
       type: 'AV',
       speed: 30,
@@ -1375,7 +1410,9 @@ export class LegionWhirlwind extends LegionUnit {
   constructor(detachment) {
     super(detachment, la['Legion Whirlwind'].cost * 4, 4)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality(la['Legion Whirlwind'].quality)
+    ]
     this.stats = {
       type: 'AV',
       speed: 30,
@@ -1393,7 +1430,9 @@ export class LegionXiphonInterceptor extends LegionUnit {
   constructor(detachment) {
     super(detachment, la['Xiphon Interceptor'].cost * 2, 2)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality(la['Xiphon Interceptor'].quality)
+    ]
     this.stats = {
       type: 'AC',
       speed: 'fighter',
@@ -1434,6 +1473,7 @@ export class LegionSabreStrikeTank extends LegionUnit {
     super(detachment, la['Sabre Strike Tank with Anvilus Autocannon'].cost * 4, 4)
 
     this.rules = [
+      new PricingQuality(la['Sabre Strike Tank with Anvilus Autocannon'].quality),
       new ReinforcedArmour()
     ]
     this.stats = {
@@ -1457,6 +1497,7 @@ export class LgeionKratosTank extends LegionUnit {
   constructor(detachment) {
     super(detachment, la['Kratos Battle Tank with H.B.'].cost, 2, 4)
     this.rules = [
+      new PricingQuality(la['Kratos Battle Tank with H.B.'].quality),
       new ReinforcedArmour(),
       new DamageCapacity(2),
       new ThickRearArmour()
@@ -1492,6 +1533,7 @@ export class LegionTarantula extends Unit {
     super(detachment, la['Tarantula, Twin Lascannon'].cost, 1)
 
     this.rules = [
+      new PricingQuality(la['Tarantula, Twin Lascannon'].quality),
       new Scout(),
       new Teleport()
     ]
