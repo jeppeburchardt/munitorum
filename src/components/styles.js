@@ -230,6 +230,19 @@ const styles = theme => ({
       textDecoration: 'underline'
     }
   },
+  qualityIndicator: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    cursor: 'help'
+  },
+  qualityOrb: {
+    display: 'inline-block',
+    width: 10,
+    height: 10,
+    borderRadius: '50%',
+    marginRight: 4,
+    flexShrink: 0
+  },
   fpLink: {
     color: theme.palette.text.secondary,
     textDecoration: 'none',

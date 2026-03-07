@@ -20,6 +20,7 @@ import {
   Singularity
 } from '../weapons'
 import {
+  PricingQuality,
   ReinforcedArmour,
   CortexController,
   DamageCapacity,
@@ -46,6 +47,7 @@ class KnightHouseholdQuestorisKnightPaladin extends Unit {
     super(detachment, 325 / 3, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new IonShield('4+'),
       new ReinforcedArmour(),
@@ -83,6 +85,7 @@ class KnightHouseholdQuestorisKnightErrant extends Unit {
     super(detachment, 325 / 3, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new IonShield('4+'),
       new ReinforcedArmour(),
@@ -123,6 +126,7 @@ class KnightHouseholdQuestorisKnightCrusader extends Unit {
     super(detachment, (325 / 3) + 25, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new IonShield('4+'),
       new ReinforcedArmour(),
@@ -161,6 +165,7 @@ class KnightHouseholdQuestorisKnightGallant extends Unit {
     super(detachment, (325 / 3) + 25, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new IonShield('4+'),
       new ReinforcedArmour(),
@@ -199,6 +204,7 @@ class KnightHouseholdQuestorisKnightMagera extends Unit {
     super(detachment, (325 / 3) + 25, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new IonShield('4+'),
       new ReinforcedArmour(),
@@ -241,6 +247,7 @@ class KnightHouseholdQuestorisKnightStyrix extends Unit {
     super(detachment, (325 / 3) + 25, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new IonShield('4+'),
       new ReinforcedArmour(),
@@ -283,6 +290,7 @@ class KnightHouseholdQuestorisKnightWarden extends Unit {
     super(detachment, (325 / 3) + 25, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new IonShield('4+'),
       new ReinforcedArmour(),
@@ -374,6 +382,7 @@ class KnightHouseholdCerastusKnightLancer extends Unit {
     super(detachment, 125, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new IonGauntlet(),
       new ReinforcedArmour(),
@@ -399,6 +408,7 @@ class KnightHouseholdCerastusKnightCastigator extends Unit {
     super(detachment, 125, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new IonShield('4+'),
       new ReinforcedArmour(),
@@ -424,6 +434,7 @@ class KnightHouseholdCerastusKnightAtropos extends Unit {
     super(detachment, 150, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new IonShield('4+'),
       new ReinforcedArmour(),
@@ -452,6 +463,7 @@ class KnightHouseholdCerastusKnightAcheron extends Unit {
     super(detachment, 150, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new IonShield('4+'),
       new ReinforcedArmour(),
@@ -501,6 +513,7 @@ export class KnightHouseholdLordScion extends Unit {
     super(detachment, 25, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new Leader()
     ]
     this.stats = {
@@ -521,6 +534,7 @@ export class KnightHouseholdPreceptor extends Unit {
     super(detachment, 25, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new Commander(),
       new Leader()
     ]
@@ -540,6 +554,7 @@ export class KnightHouseholdSeneschal extends Unit {
     super(detachment, 75, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new InvulnerableSave(),
       new SupremeCommander(),
       new Unique()
@@ -562,6 +577,7 @@ export class KnightHouseholdAcastusKnightPorphyrion extends Unit {
     super(detachment, 250, 1, 2)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(3),
       new IonShield('4+'),
       new ReinforcedArmour(),
@@ -589,6 +605,7 @@ export class KnightHouseholdAspirants extends Unit {
     super(detachment, -50)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new Notes(null, 'knight-household-aspirants-notes')
     ]
     this.stats = {
@@ -607,6 +624,7 @@ export class KnightHouseholdDominusKnightCastellan extends Unit {
     super(detachment, 250, 1, 2)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new IonShield('4+'),
       new ReinforcedArmour(),
@@ -631,6 +649,7 @@ export class KnightHouseholdDominusKnightVallant extends Unit {
     super(detachment, 250, 1, 2)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new IonShield('4+'),
       new ReinforcedArmour(),
@@ -655,6 +674,7 @@ export class KnightHouseholdArmigerKnightHelverin extends Unit {
     super(detachment, 200, 5)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new IonShield('5+'),
       new Scout(),
       new Walker()
@@ -677,6 +697,7 @@ export class KnightHouseholdArmigerKnightWarglaive extends Unit {
     super(detachment, 200, 5)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new IonShield('5+'),
       new Scout(),
       new Walker()

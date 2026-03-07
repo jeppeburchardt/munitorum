@@ -21,6 +21,7 @@ import {
   ExtraAttacks
 } from '../weapons'
 import {
+  PricingQuality,
   ReinforcedArmour,
   Fearless,
   SupremeCommander,
@@ -47,6 +48,7 @@ export class LegioTitanicusWarhoundScountTitan extends Unit {
     super(detachment, 275, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(3),
       new VoidShields(2),
       new Fearless(),
@@ -89,6 +91,7 @@ export class LegioTitanicusReaverBattleTitan extends Unit {
     super(detachment, 575, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(6),
       new VoidShields(4),
       new Fearless(),
@@ -133,6 +136,7 @@ export class LegioTitanicusWarlordBattleTitan extends Unit {
     super(detachment, 725, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(8),
       new VoidShields(6),
       new Fearless(),
@@ -183,6 +187,7 @@ class LegioTitanicusImperatorSupportTitan extends Unit {
     super(detachment, 1350, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(12),
       new VoidShields(8),
       new Fearless(),
@@ -216,6 +221,7 @@ class LegioTitanicusWarmongerSupportTitan extends Unit {
     super(detachment, 1350, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(12),
       new VoidShields(8),
       new Fearless(),
@@ -259,6 +265,7 @@ export class LegioTitanicusVeteranPrinceps extends Unit {
     super(detachment, 25, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new Commander(),
       new Leader()
     ]
@@ -278,6 +285,7 @@ export class LegioTitanicusLegate extends Unit {
     super(detachment, 50, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new SupremeCommander(),
       new Unique()
     ]
@@ -296,7 +304,9 @@ export class LegioTitanicusAirDefence extends Unit {
   constructor (detachment) {
     super(detachment, 50, 1)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality('Legacy')
+    ]
     this.stats = {
       type: 'CH',
       speed: 0,
@@ -315,6 +325,7 @@ export class LegioTitanicusSacredIcon extends Unit {
     super(detachment, 50, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new Inspiring()
     ]
     this.stats = {

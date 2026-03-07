@@ -3,7 +3,7 @@
 import React from 'react'
 
 export class Notes {
-  constructor (name, notes, link) {
+  constructor(name, notes, link) {
     this.name = name
     this.notes = notes
     this.link = link
@@ -11,68 +11,68 @@ export class Notes {
 }
 
 export class ReinforcedArmour {
-  constructor () {
+  constructor() {
     this.name = 'reinforced-armour'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#reinforced-armour'
   }
 }
 
 export class ThickRearArmour {
-  constructor () {
+  constructor() {
     this.name = 'thick-rear-armour'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#thick-rear-armour'
   }
 }
 
 export class JumpPacks {
-  constructor () {
+  constructor() {
     this.name = 'jump-packs'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#jump-packs'
   }
 }
 
 export class Scout {
-  constructor () {
+  constructor() {
     this.name = 'scout'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#scouts'
   }
 }
 
 export class Skimmer {
-  constructor () {
+  constructor() {
     this.name = 'skimmer'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#skimmers'
   }
 }
 
 export class ExploratoryAuguryWeb {
-  constructor () {
+  constructor() {
     this.name = 'exploratory-augury-web'
     this.title = 'Exploratory Augury Web'
     this.text = (
       <>
-         Friendly units entering play via the Teleport special rule within 15cm of a friendly unit with the Exploratory Augury Web do not roll for blast markers.
+        Friendly units entering play via the Teleport special rule within 15cm of a friendly unit with the Exploratory Augury Web do not roll for blast markers.
       </>
     )
   }
 }
 
 export class Mounted {
-  constructor () {
+  constructor() {
     this.name = 'mounted'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#mounted'
   }
 }
 
 export class Infiltrator {
-  constructor () {
+  constructor() {
     this.name = 'infiltrator'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#infiltrators'
   }
 }
 
 export class DemiGod {
-  constructor () {
+  constructor() {
     this.name = 'demi-god'
     this.title = 'Demi God'
     this.text = (
@@ -92,14 +92,14 @@ export class DemiGod {
 }
 
 export class Fearless {
-  constructor () {
+  constructor() {
     this.name = 'fearless'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#fearless'
   }
 }
 
 export class Berserk {
-  constructor () {
+  constructor() {
     this.name = 'berserk'
     this.title = 'Berserk'
     this.text = (
@@ -112,21 +112,21 @@ export class Berserk {
 }
 
 export class SupremeCommander {
-  constructor () {
+  constructor() {
     this.name = 'supreme-commander'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#supreme-commanders'
   }
 }
 
 export class Inspiring {
-  constructor () {
+  constructor() {
     this.name = 'inspiring'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#inspiring'
   }
 }
 
 export class InvulnerableSave {
-  constructor (amount) {
+  constructor(amount) {
     this.name = 'invulnerable-save'
     this.type = `Invulnerable Save${amount ? `(${amount})` : ''}`
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#invulnerable-saves'
@@ -134,7 +134,7 @@ export class InvulnerableSave {
 }
 
 export class InvulnerableSaveCCOnly {
-  constructor (amount) {
+  constructor(amount) {
     this.name = 'invulnerable-save-cc-only'
     this.type = `Invulnerable Save Against CC Generated Hits${amount ? ` (${amount})` : ''}`
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#invulnerable-saves'
@@ -142,55 +142,55 @@ export class InvulnerableSaveCCOnly {
 }
 
 export class Walker {
-  constructor () {
+  constructor() {
     this.name = 'walker'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#walkers'
   }
 }
 
 export class Planetfall {
-  constructor () {
+  constructor() {
     this.name = 'planetfall'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#planetfall'
   }
 }
 
 export class Commander {
-  constructor () {
+  constructor() {
     this.name = 'commander'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#commanders'
   }
 }
 
 export class Leader {
-  constructor () {
+  constructor() {
     this.name = 'leader'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#leaders'
   }
 }
 
 export class DamageCapacity {
-  constructor (capacity) {
+  constructor(capacity) {
     this.type = `Damage Capacity(${capacity})`
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#war-engine-damage-capacity'
   }
 }
 
 export class CriticalHit extends Notes {
-  constructor (effect) {
+  constructor(effect) {
     super('critical-hit', effect, 'https://tp.net-armageddon.org/tournament-pack/#critical-hits')
   }
 }
 
 export class SlowAndSteady {
-  constructor () {
+  constructor() {
     this.name = 'slow-and-steady'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#slow-and-steady'
   }
 }
 
 export class CortexController {
-  constructor () {
+  constructor() {
     this.name = 'cortex-controller'
     this.title = 'Cortex Controller'
     this.text = (
@@ -202,20 +202,20 @@ export class CortexController {
 }
 
 export class Automaton {
-  constructor () {
+  constructor() {
     this.name = 'automaton'
     this.title = 'Automaton'
     this.text = (
       <>
-         A formation does not receive a Blast marker when a unit with automaton is destroyed, this includes the extra Blast marker from the first casualty of a crossfire and for units destroyed for being out of formation after a move.<br /><br />
-         Automaton units hit by a weapon with disrupt do take a Blast marker however. If a hit is inflicted on an automaton unit because it is in a broken formation which is receiving a Blast marker (see Blast Markers and Broken Formations) then it may attempt to save normally.
+        A formation does not receive a Blast marker when a unit with automaton is destroyed, this includes the extra Blast marker from the first casualty of a crossfire and for units destroyed for being out of formation after a move.<br /><br />
+        Automaton units hit by a weapon with disrupt do take a Blast marker however. If a hit is inflicted on an automaton unit because it is in a broken formation which is receiving a Blast marker (see Blast Markers and Broken Formations) then it may attempt to save normally.
       </>
     )
   }
 }
 
 export class CyberneticaCortex {
-  constructor () {
+  constructor() {
     this.name = 'cybernetica-cortex'
     this.title = 'Cybernetica Cortex'
     this.text = (
@@ -227,14 +227,14 @@ export class CyberneticaCortex {
 }
 
 export class Fortifications {
-  constructor () {
+  constructor() {
     this.name = 'fortifications'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#terrain-effects'
   }
 }
 
 export class VoidShields {
-  constructor (num) {
+  constructor(num) {
     this.name = 'void-shields'
     this.type = `Void Shields(${num})`
     this.title = 'Void Shields'
@@ -252,7 +252,7 @@ export class VoidShields {
 }
 
 export class Ferocity {
-  constructor () {
+  constructor() {
     this.name = 'ferocity'
     this.title = 'Ferocity'
     this.text = (
@@ -265,7 +265,7 @@ export class Ferocity {
 }
 
 export class SecondaryTargetingProtocols {
-  constructor () {
+  constructor() {
     this.name = 'secondary-targeting-protocols'
     this.title = 'Secondary Targeting Protocols'
     this.text = (
@@ -277,27 +277,27 @@ export class SecondaryTargetingProtocols {
 }
 
 export class Titanic extends Notes {
-  constructor () {
+  constructor() {
     super(null, 'titanic')
   }
 }
 
 export class PinPointAttack {
-  constructor () {
+  constructor() {
     this.name = 'pin-point-attack'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#pin-point-attacks'
   }
 }
 
 export class ImplacableAdvance {
-  constructor () {
+  constructor() {
     this.name = 'implacable-advance'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#implacable-advance'
   }
 }
 
 export class IonShield {
-  constructor (num) {
+  constructor(num) {
     this.name = 'ion-shield'
     this.type = `Ion Shield(${num})`
     this.title = 'Ion Shield'
@@ -313,7 +313,7 @@ export class IonShield {
 }
 
 export class IonGauntlet {
-  constructor () {
+  constructor() {
     this.name = 'ion-gauntlet'
     this.title = 'Ion Gauntlet'
     this.text = (
@@ -328,14 +328,14 @@ export class IonGauntlet {
 }
 
 export class Teleport {
-  constructor () {
+  constructor() {
     this.name = 'teleport'
     this.link = 'https://tp.net-armageddon.org/tournament-pack/#teleport'
   }
 }
 
 export class Instability {
-  constructor () {
+  constructor() {
     this.name = 'instability'
     this.title = 'Instability'
     this.text = (
@@ -350,7 +350,7 @@ export class Instability {
 }
 
 export class ChaosGate {
-  constructor () {
+  constructor() {
     this.name = 'chaos-gate'
     this.title = 'Chaos Gate'
     this.text = (
@@ -365,7 +365,7 @@ export class ChaosGate {
 }
 
 export class Brutal {
-  constructor () {
+  constructor() {
     this.name = 'brutal'
     this.title = 'Brutal'
     this.text = (
@@ -378,7 +378,7 @@ export class Brutal {
 }
 
 export class PricingQuality {
-  constructor (quality) {
+  constructor(quality) {
     this.type = quality
   }
 }

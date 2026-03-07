@@ -24,6 +24,7 @@ import {
   Singularity
 } from '../weapons'
 import {
+  PricingQuality,
   ReinforcedArmour,
   ThickRearArmour,
   InvulnerableSave,
@@ -53,6 +54,7 @@ export class MechanicumTaghmataTechThrall extends Unit {
 
     this.transportType = 'infantry'
     this.rules = [
+      new PricingQuality('Legacy'),
       new Automaton()
     ]
     this.stats = {
@@ -74,6 +76,7 @@ export class MechanicumTaghmataTechPriest extends Unit {
 
     this.transportType = 'infantry'
     this.rules = [
+      new PricingQuality('Legacy'),
       new Leader(),
       new CortexController()
     ]
@@ -106,6 +109,7 @@ export class MechanicumTaghmataArchmagosPrime extends Unit {
     super(detachment, 100, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new SupremeCommander(),
       new ReinforcedArmour(),
       new InvulnerableSave(),
@@ -129,6 +133,7 @@ export class MechanicumTaghmataMagosPrime extends Unit {
     super(detachment, 50, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new Commander(),
       new InvulnerableSave(),
       new CortexController()
@@ -152,6 +157,7 @@ export class MechanicumTaghmataThallax extends Unit {
 
     this.transportType = 'robot'
     this.rules = [
+      new PricingQuality('Legacy'),
       new JumpPacks()
     ]
     this.stats = {
@@ -176,6 +182,7 @@ export class MechanicumTaghmataUrsarax extends Unit {
 
     this.transportType = 'robot'
     this.rules = [
+      new PricingQuality('Legacy'),
       new JumpPacks()
     ]
     this.stats = {
@@ -196,6 +203,7 @@ export class MechanicumTaghmataVorax extends Unit {
     super(detachment, 250, 6)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new CyberneticaCortex(),
       new Fearless(),
       new Scout(),
@@ -219,6 +227,7 @@ export class MechanicumTaghmataCastellax extends Unit {
     super(detachment, 275, 5)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new CyberneticaCortex(),
       new Fearless(),
       new InvulnerableSave(),
@@ -243,6 +252,7 @@ export class MechanicumTaghmataThanatar extends Unit {
     super(detachment, 200, 3)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new CyberneticaCortex(),
       new Fearless(),
       new InvulnerableSave(),
@@ -282,6 +292,7 @@ export class MechanicumTaghmataKrios extends Unit {
     super(detachment, 60, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new InvulnerableSave(),
       new ReinforcedArmour(),
       new Walker()
@@ -317,6 +328,7 @@ export class MechanicumTaghmataKaracnos extends Unit {
     super(detachment, 300, 4)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new InvulnerableSave(),
       new ReinforcedArmour(),
       new Walker()
@@ -342,6 +354,7 @@ class MechanicumTaghmataMyrmidonSecutors extends Unit {
 
     this.transportType = 'robot'
     this.rules = [
+      new PricingQuality('Legacy'),
       new ImplacableAdvance()
     ]
     this.stats = {
@@ -364,6 +377,7 @@ class MechanicumTaghmataMyrmidonDestructors extends Unit {
 
     this.transportType = 'robot'
     this.rules = [
+      new PricingQuality('Legacy'),
       new ImplacableAdvance()
     ]
     this.stats = {
@@ -394,6 +408,7 @@ class MechanicumTaghmataTarantula extends Unit {
     super(detachment, 125, 5)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new Automaton()
     ]
     this.stats = {
@@ -419,6 +434,7 @@ class MechanicumTaghmataHyperios extends Unit {
     super(detachment, 125, 5)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new Automaton()
     ]
     this.stats = {
@@ -448,6 +464,7 @@ export class MechanicumTaghmataMinotaur extends Unit {
     super(detachment, 350, 3)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new ReinforcedArmour(),
       new ThickRearArmour()
     ]
@@ -469,6 +486,7 @@ export class MechanicumTaghmataOrdinatusMinoris extends Unit {
     super(detachment, 500, 3)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new VoidShields(1),
       new ReinforcedArmour(),
@@ -495,7 +513,9 @@ export class MechanicumTaghmataAvengerStrikeFighter extends Unit {
   constructor (detachment) {
     super(detachment, 250, 2)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality('Legacy')
+    ]
     this.stats = {
       type: 'AC',
       speed: 0,
@@ -515,7 +535,9 @@ export class MechanicumTaghmataPrimarisStrikeFighter extends Unit {
   constructor (detachment) {
     super(detachment, 225, 2)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality('Legacy')
+    ]
     this.stats = {
       type: 'AC',
       speed: 0,
@@ -536,6 +558,7 @@ export class MechanicumTaghmataFalchion extends Unit {
     super(detachment, 300, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new ReinforcedArmour(),
       new DamageCapacity(3),
       new CriticalHit('mechanicum-taghmata-falchion-critical-hit')
@@ -559,6 +582,7 @@ export class MechanicumTaghmataOrdinatusMajoris extends Unit {
     super(detachment, 450, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new VoidShields(1),
       new ReinforcedArmour(),
@@ -589,6 +613,7 @@ export class MechanicumTaghmataScyllax extends Unit {
 
     this.transportType = 'infantry'
     this.rules = [
+      new PricingQuality('Legacy'),
       new CyberneticaCortex(),
       new Fearless()
     ]
@@ -614,6 +639,7 @@ export class MechanicumTaghmataTriaros extends TransportUnit {
       infantry: 4
     }
     this.rules = [
+      new PricingQuality('Legacy'),
       new InvulnerableSave(),
       new ReinforcedArmour(),
       new Walker()
@@ -641,6 +667,7 @@ export class MechanicumTaghmataLandRaider extends TransportUnit {
       infantry: 2
     }
     this.rules = [
+      new PricingQuality('Legacy'),
       new InvulnerableSave(),
       new ReinforcedArmour(),
       new ThickRearArmour()
@@ -670,6 +697,7 @@ export class MechanicumTaghmataVultaraxStratosAutomata extends Unit {
     super(detachment, 250, 6)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new Skimmer()
     ]
     this.stats = {

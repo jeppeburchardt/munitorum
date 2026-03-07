@@ -13,13 +13,31 @@ import {
   SpecialWeapon,
   WeaponBlank
 } from '../../../rules/netea-30k/weapons'
+import Tooltip from '@material-ui/core/Tooltip'
 import {
-  Notes
+  Notes,
+  PricingQuality
 } from '../../../rules/netea-30k/special-rules'
 import {
   Unique
 } from '../../../rules/netea-30k/constraints'
 import Details from '../../details'
+
+const qualityColors = {
+  Safe: '#4caf50',
+  Review: '#ff9800',
+  Experimental: '#f44336',
+  Legacy: '#9e9e9e'
+}
+
+const qualityTooltip = (
+  <span>
+    <strong style={{ color: '#4caf50' }}>&#9679; Safe</strong> — Pricing verified with sufficient match data; considered accurate.<br />
+    <strong style={{ color: '#ff9800' }}>&#9679; Review</strong> — Needs more data; may not reflect true competitive value.<br />
+    <strong style={{ color: '#f44336' }}>&#9679; Experimental</strong> — Very limited data; highly uncertain, subject to significant change.<br />
+    <strong style={{ color: '#9e9e9e' }}>&#9679; Legacy</strong> — No pricing data available; cost is based on legacy values not in the dataset.
+  </span>
+)
 
 const RulesDisplay = component(({ rules, classes, t }) => {
   return (
@@ -31,6 +49,18 @@ const RulesDisplay = component(({ rules, classes, t }) => {
           })
           .map((rule, ruleIndex) => {
             const output = rule.type || t(rule.name)
+
+            if (rule instanceof PricingQuality) {
+              const color = qualityColors[rule.type] || '#9e9e9e'
+              return (
+                <Tooltip key={`rule-${ruleIndex}`} title={qualityTooltip} placement='top'>
+                  <span className={classes.qualityIndicator}>
+                    <span className={classes.qualityOrb} style={{ backgroundColor: color }} />
+                    {rule.type}
+                  </span>
+                </Tooltip>
+              )
+            }
 
             if (rule.link) {
               return (
@@ -91,7 +121,7 @@ const NotesDisplay = component(({ rules, t, classes }) => {
 })
 
 class UnitViewer extends Component {
-  render () {
+  render() {
     let {
       name,
       stats,
@@ -146,7 +176,7 @@ class UnitViewer extends Component {
                       .map((fp, fpIndex) => {
                         const output = fp.type || t(fp.name)
 
-                        function displayFirepower (type, fp, index) {
+                        function displayFirepower(type, fp, index) {
                           if (!type) {
                             return null
                           }

@@ -136,7 +136,9 @@ export class LegionBasilisk extends LegionUnit {
   constructor(detachment) {
     super(detachment, 325, 4)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality('Legacy')
+    ]
     this.stats = {
       type: 'AV',
       speed: 35,
@@ -170,6 +172,7 @@ export class LegionBattleBarge extends SpacecraftUnit {
       stormEagle: Infinity
     }
     this.rules = [
+      new PricingQuality('Legacy'),
       new SlowAndSteady()
     ]
     this.stats = {
@@ -215,6 +218,7 @@ export class LegionCaestus extends TransportUnit {
       terminator: 2
     }
     this.rules = [
+      new PricingQuality('Legacy'),
       new Planetfall(),
       new ReinforcedArmour(),
       new Skimmer()
@@ -264,6 +268,7 @@ export class LegionChampion extends LegionCharacterUnit {
     super(detachment, 50, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new InvulnerableSave(),
       new Leader()
     ]
@@ -285,6 +290,7 @@ export class LegionChaplain extends LegionCharacterUnit {
     super(detachment, 50, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new InvulnerableSave(),
       new Leader(),
       new Inspiring()
@@ -351,6 +357,7 @@ export class LegionDamoclesCommandRhino extends LegionUnit {
       tactical: 2
     }
     this.rules = [
+      new PricingQuality('Legacy'),
       new Commander()
     ]
     this.stats = {
@@ -406,6 +413,7 @@ export class LegionDropPod extends TransportUnit {
       dreadnought: 1
     }
     this.rules = [
+      new PricingQuality('Legacy'),
       new Planetfall()
     ]
     this.stats = {
@@ -502,6 +510,8 @@ export class LegionLandRaiderAchillesTransport extends LegionUnit {
     super(detachment, 100, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
+      new PricingQuality('Legacy'),
       new ReinforcedArmour(),
       new ThickRearArmour()
     ]
@@ -579,6 +589,7 @@ export class LegionLandRaiderProteusTransport extends TransportUnit {
       terminator: 1
     }
     this.rules = [
+      new PricingQuality('Legacy'),
       new ReinforcedArmour(),
       new ThickRearArmour(),
       new ExploratoryAuguryWeb()
@@ -703,6 +714,7 @@ export class LegionLibrarian extends LegionCharacterUnit {
     super(detachment, 50, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new InvulnerableSave(),
       new Leader()
     ]
@@ -725,6 +737,7 @@ export class LegionLieutenantCommander extends LegionCharacterUnit {
     super(detachment, 50, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new InvulnerableSave(),
       new Commander()
     ]
@@ -746,6 +759,7 @@ export class LegionLordCommander extends LegionCharacterUnit {
     super(detachment, 100, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new InvulnerableSave(),
       new SupremeCommander()
     ]
@@ -798,7 +812,9 @@ export class LegionMedusa extends LegionUnit {
   constructor(detachment) {
     super(detachment, 250, 4)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality('Legacy')
+    ]
     this.stats = {
       type: 'AV',
       speed: 20,
@@ -888,7 +904,9 @@ export class LegionRhino extends TransportUnit {
     this.transportTypes = {
       tactical: 2
     }
-    this.rules = []
+    this.rules = [
+      new PricingQuality('Legacy')
+    ]
     this.stats = {
       type: 'AV',
       speed: 30,
@@ -1136,7 +1154,9 @@ export class LegionStrikeCruiser extends SpacecraftUnit {
       dropPod: Infinity,
       stormEagle: Infinity
     }
-    this.rules = []
+    this.rules = [
+      new PricingQuality('Legacy')
+    ]
     this.stats = {
       type: 'SC',
       speed: 0,
@@ -1310,6 +1330,7 @@ export class LegionVindicatorLaserDestroyer extends LegionUnit {
     super(detachment, 70, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new Walker()
     ]
     this.stats = {
@@ -1372,7 +1393,9 @@ export class LegionWhirlwindHyperios extends LegionUnit {
   constructor(detachment) {
     super(detachment, 75, 1)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality('Legacy')
+    ]
     this.stats = {
       type: 'AV',
       speed: 30,
@@ -1452,6 +1475,7 @@ export class LegionArquitorBombard extends LegionUnit {
     super(detachment, 250, 2)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new ReinforcedArmour()
     ]
     this.stats = {

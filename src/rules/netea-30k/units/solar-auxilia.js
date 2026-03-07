@@ -53,6 +53,7 @@ export class SolarAuxiliaLordMarshall extends Unit {
 
     this.transportCost = 1
     this.rules = [
+      new PricingQuality('Legacy'),
       new SupremeCommander(),
       new InvulnerableSave()
     ]
@@ -474,6 +475,7 @@ export class SolarAuxiliaStormlordTransport extends InfantryTransportUnit {
 
     this.transportCapacity = 8
     this.rules = [
+      new PricingQuality('Legacy'),
       new DamageCapacity(2),
       new ReinforcedArmour(),
       new CriticalHit('solar-auxilia-stormlord-critical-hit')
@@ -526,6 +528,7 @@ class SolarAuxiliaEmperorClassBattleship extends SpacecraftUnit {
     super(detachment, 300, 1)
 
     this.rules = [
+      new PricingQuality('Legacy'),
       new SlowAndSteady()
     ]
     this.stats = {
@@ -545,7 +548,9 @@ class SolarAuxiliaDauntlessClassLightCruiser extends SpacecraftUnit {
   constructor(detachment) {
     super(detachment, 150, 1)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality('Legacy')
+    ]
     this.stats = {
       type: 'SC',
       speed: 0,
@@ -987,7 +992,9 @@ export class SolarAuxiliaPrimarisStrikeFighter extends Unit {
   constructor(detachment) {
     super(detachment, 225, 2)
 
-    this.rules = []
+    this.rules = [
+      new PricingQuality('Legacy')
+    ]
     this.stats = {
       type: 'AC',
       speed: 'fighter',
