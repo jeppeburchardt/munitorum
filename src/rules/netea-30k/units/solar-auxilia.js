@@ -42,9 +42,12 @@ import MultipleChoiceUnit from './multiple-choice-unit'
 import Unit, { InfantryTransportUnit } from './unit'
 import SpacecraftUnit from './spacecraft-unit'
 import withType from '../with-type'
+import prices from '../prices.json'
+
+const sa = prices['solar-auxilia']
 
 export class SolarAuxiliaLordMarshall extends Unit {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment, 150, 1)
 
     this.transportCost = 1
@@ -67,8 +70,8 @@ export class SolarAuxiliaLordMarshall extends Unit {
 }
 
 export class SolarAuxiliaTacticalCommandSection extends Unit {
-  constructor (detachment) {
-    super(detachment, 50, 1)
+  constructor(detachment) {
+    super(detachment, sa['Tactical Command Unit'].cost, 1)
 
     this.transportCost = 1
     this.rules = [
@@ -88,8 +91,8 @@ export class SolarAuxiliaTacticalCommandSection extends Unit {
 }
 
 export class SolarAuxiliaVeletarisStormSection extends Unit {
-  constructor (detachment) {
-    super(detachment, 150, 7)
+  constructor(detachment) {
+    super(detachment, sa['Veletaris Storm Section'].cost * 7, 7)
 
     this.transportCost = 1
     this.rules = []
@@ -113,18 +116,18 @@ export class SolarAuxiliaVeletarisStormSection extends Unit {
 }
 
 export class SolarAuxiliaVeletarisSupportSquad extends SolarAuxiliaVeletarisStormSection {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment)
 
-    this.cost = 75
+    this.cost = sa['Veletaris Storm Section'].cost * 4
     this.min = 4
     this.quantity = 4
   }
 }
 
 export class SolarAuxiliaCloseSupportSection extends Unit {
-  constructor (detachment) {
-    super(detachment, 75, 4)
+  constructor(detachment) {
+    super(detachment, sa['Infantry with flamers'].cost * 4, 4)
 
     this.transportCost = 1
     this.rules = []
@@ -145,8 +148,8 @@ export class SolarAuxiliaCloseSupportSection extends Unit {
 }
 
 export class SolarAuxiliaInfantrySection extends Unit {
-  constructor (detachment) {
-    super(detachment, 100, 7)
+  constructor(detachment) {
+    super(detachment, sa['Infantry Section'].cost * 7, 7)
 
     this.transportCost = 1
     this.rules = []
@@ -164,8 +167,8 @@ export class SolarAuxiliaInfantrySection extends Unit {
 }
 
 export class SolarAuxiliaLemanRuss extends Unit {
-  constructor (detachment) {
-    super(detachment, 350, 6)
+  constructor(detachment) {
+    super(detachment, sa['Leman Russ (Battle cannon)'].cost * 6, 6)
 
     this.rules = [
       new ReinforcedArmour()
@@ -193,8 +196,8 @@ export class SolarAuxiliaLemanRuss extends Unit {
 }
 
 class SolarAuxiliaLemanRussDemolisher extends Unit {
-  constructor (detachment) {
-    super(detachment, 250 / 4, 1)
+  constructor(detachment) {
+    super(detachment, sa['Leman Russ (Demolisher)'].cost, 1)
 
     this.rules = [
       new ReinforcedArmour(),
@@ -223,18 +226,18 @@ class SolarAuxiliaLemanRussDemolisher extends Unit {
 }
 
 class SolarAuxiliaCloseSupportLemanRussDemolisher extends SolarAuxiliaLemanRussDemolisher {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment)
 
-    this.cost = 250
+    this.cost = sa['Leman Russ (Demolisher)'].cost * 4
     this.min = 4
     this.quantity = 4
   }
 }
 
 class SolarAuxiliaLemanRussExterminator extends Unit {
-  constructor (detachment) {
-    super(detachment, 250 / 4, 1)
+  constructor(detachment) {
+    super(detachment, sa['Leman Russ (Exterminator)'].cost, 1)
 
     this.rules = [
       new ReinforcedArmour()
@@ -259,18 +262,18 @@ class SolarAuxiliaLemanRussExterminator extends Unit {
 }
 
 class SolarAuxiliaCloseSupportLemanRussExterminator extends SolarAuxiliaLemanRussExterminator {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment)
 
-    this.cost = 250
+    this.cost = sa['Leman Russ (Exterminator)'].cost * 4
     this.min = 4
     this.quantity = 4
   }
 }
 
 class SolarAuxiliaLemanRussAnnihilator extends Unit {
-  constructor (detachment) {
-    super(detachment, 250 / 4, 1)
+  constructor(detachment) {
+    super(detachment, sa['Leman Russ (Annihilator)'].cost, 1)
 
     this.rules = [
       new ReinforcedArmour()
@@ -295,18 +298,18 @@ class SolarAuxiliaLemanRussAnnihilator extends Unit {
 }
 
 class SolarAuxiliaCloseSupportLemanRussAnnihilator extends SolarAuxiliaLemanRussAnnihilator {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment)
 
-    this.cost = 250
+    this.cost = sa['Leman Russ (Annihilator)'].cost * 4
     this.min = 4
     this.quantity = 4
   }
 }
 
 class SolarAuxiliaLemanRussExecutioner extends Unit {
-  constructor (detachment) {
-    super(detachment, 250 / 4, 1)
+  constructor(detachment) {
+    super(detachment, sa['Leman Russ (Executioner)'].cost, 1)
 
     this.rules = [
       new ReinforcedArmour(),
@@ -332,17 +335,17 @@ class SolarAuxiliaLemanRussExecutioner extends Unit {
 }
 
 class SolarAuxiliaCloseSupportLemanRussExecutioner extends SolarAuxiliaLemanRussExecutioner {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment)
 
-    this.cost = 250
+    this.cost = sa['Leman Russ (Executioner)'].cost * 4
     this.min = 4
     this.quantity = 4
   }
 }
 
 export class SolarAuxiliaCloseSupportTankUnit extends MultipleChoiceUnit {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment,
       new SolarAuxiliaCloseSupportLemanRussDemolisher(detachment),
       new SolarAuxiliaCloseSupportLemanRussExterminator(detachment),
@@ -354,7 +357,7 @@ export class SolarAuxiliaCloseSupportTankUnit extends MultipleChoiceUnit {
 
 
 export class SolarAuxiliaInfantrySupportTankUnit extends MultipleChoiceUnit {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment,
       new SolarAuxiliaLemanRussDemolisher(detachment),
       new SolarAuxiliaMalcadorInfernus(detachment)
@@ -363,8 +366,8 @@ export class SolarAuxiliaInfantrySupportTankUnit extends MultipleChoiceUnit {
 }
 
 export class SolarAuxiliaValdor extends Unit {
-  constructor (detachment) {
-    super(detachment, 250, 3)
+  constructor(detachment) {
+    super(detachment, sa['Malcador Valdor'].cost * 3, 3)
 
     this.rules = [
       new ReinforcedArmour()
@@ -384,8 +387,8 @@ export class SolarAuxiliaValdor extends Unit {
 }
 
 export class SolarAuxiliaOgrynCharoniteSquad extends Unit {
-  constructor (detachment) {
-    super(detachment, 75, 2)
+  constructor(detachment) {
+    super(detachment, sa['Ogryn Charonite Squad'].cost * 2, 2)
 
     this.transportCost = 2
     this.rules = []
@@ -403,8 +406,8 @@ export class SolarAuxiliaOgrynCharoniteSquad extends Unit {
 }
 
 export class SolarAuxiliaArvusLighter extends InfantryTransportUnit {
-  constructor (detachment) {
-    super(detachment, 25)
+  constructor(detachment) {
+    super(detachment, sa['Arvus Lighter'].cost)
 
     this.transportCapacity = 2
     this.rules = [
@@ -425,8 +428,8 @@ export class SolarAuxiliaArvusLighter extends InfantryTransportUnit {
 }
 
 export class SolarAuxiliaDracosan extends InfantryTransportUnit {
-  constructor (detachment) {
-    super(detachment, 75)
+  constructor(detachment) {
+    super(detachment, sa['Dracosan with las cannon'].cost)
 
     this.transportCapacity = 4
     this.rules = [
@@ -448,7 +451,7 @@ export class SolarAuxiliaDracosan extends InfantryTransportUnit {
 }
 
 export class SolarAuxiliaStormlordTransport extends InfantryTransportUnit {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment, 200)
 
     this.transportCapacity = 8
@@ -476,8 +479,8 @@ export class SolarAuxiliaStormlordTransport extends InfantryTransportUnit {
 }
 
 export class SolarAuxiliaRapier extends Unit {
-  constructor (detachment) {
-    super(detachment, 100, 4)
+  constructor(detachment) {
+    super(detachment, sa['Rapier Laser Destroyer'].cost * 4, 4)
 
     this.transportCost = 2
     this.rules = []
@@ -499,7 +502,7 @@ export class SolarAuxiliaRapier extends Unit {
 }
 
 class SolarAuxiliaEmperorClassBattleship extends SpacecraftUnit {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment, 300, 1)
 
     this.rules = [
@@ -519,7 +522,7 @@ class SolarAuxiliaEmperorClassBattleship extends SpacecraftUnit {
 }
 
 class SolarAuxiliaDauntlessClassLightCruiser extends SpacecraftUnit {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment, 150, 1)
 
     this.rules = []
@@ -538,7 +541,7 @@ class SolarAuxiliaDauntlessClassLightCruiser extends SpacecraftUnit {
 }
 
 export class SolarAuxiliaOrbitalSupportUnit extends MultipleChoiceUnit {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment,
       new SolarAuxiliaEmperorClassBattleship(detachment),
       new SolarAuxiliaDauntlessClassLightCruiser(detachment)
@@ -547,8 +550,8 @@ export class SolarAuxiliaOrbitalSupportUnit extends MultipleChoiceUnit {
 }
 
 export class SolarAuxiliaMedusa extends Unit {
-  constructor (detachment) {
-    super(detachment, 250, 3)
+  constructor(detachment) {
+    super(detachment, sa['Medusa'].cost * 3, 3)
 
     this.rules = []
     this.stats = {
@@ -569,8 +572,8 @@ export class SolarAuxiliaMedusa extends Unit {
 }
 
 class SolarAuxiliaBasilisk extends Unit {
-  constructor (detachment) {
-    super(detachment, 250, 3)
+  constructor(detachment) {
+    super(detachment, sa['Basilisk'].cost * 3, 3)
 
     this.rules = []
     this.stats = {
@@ -588,7 +591,7 @@ class SolarAuxiliaBasilisk extends Unit {
 }
 
 class SolarAuxiliaBombard extends Unit {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment, 250, 3)
 
     this.rules = []
@@ -607,7 +610,7 @@ class SolarAuxiliaBombard extends Unit {
 }
 
 export class SolarAuxiliaArtilleryTankBatteryUnit extends MultipleChoiceUnit {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment,
       new SolarAuxiliaBasilisk(detachment),
       new SolarAuxiliaBombard(detachment),
@@ -617,8 +620,8 @@ export class SolarAuxiliaArtilleryTankBatteryUnit extends MultipleChoiceUnit {
 }
 
 export class SolarAuxiliaMalcador extends Unit {
-  constructor (detachment) {
-    super(detachment, 280, 4)
+  constructor(detachment) {
+    super(detachment, sa['Malcador (battle cannon, demolisher, las.spon.)'].cost * 4, 4)
 
     this.rules = [
       new ReinforcedArmour(),
@@ -662,8 +665,8 @@ export class SolarAuxiliaMalcador extends Unit {
 }
 
 class SolarAuxiliaMalcadorInfernus extends Unit {
-  constructor (detachment) {
-    super(detachment, 70, 1)
+  constructor(detachment) {
+    super(detachment, sa['Malcador Infernus'].cost, 1)
 
     this.rules = [
       new ReinforcedArmour(),
@@ -684,8 +687,8 @@ class SolarAuxiliaMalcadorInfernus extends Unit {
 }
 
 class SolarAuxiliaBaneblade extends Unit {
-  constructor (detachment) {
-    super(detachment, 200, 1)
+  constructor(detachment) {
+    super(detachment, sa['Baneblade'].cost, 1)
 
     this.rules = [
       new ReinforcedArmour(),
@@ -713,8 +716,8 @@ class SolarAuxiliaBaneblade extends Unit {
 }
 
 class SolarAuxiliaShadowsword extends Unit {
-  constructor (detachment) {
-    super(detachment, 200, 1)
+  constructor(detachment) {
+    super(detachment, sa['Shadowsword'].cost, 1)
 
     this.rules = [
       new ReinforcedArmour(),
@@ -736,8 +739,8 @@ class SolarAuxiliaShadowsword extends Unit {
 }
 
 class SolarAuxiliaStormblade extends Unit {
-  constructor (detachment) {
-    super(detachment, 200, 1)
+  constructor(detachment) {
+    super(detachment, sa['Stromblade'].cost, 1)
 
     this.rules = [
       new ReinforcedArmour(),
@@ -761,8 +764,8 @@ class SolarAuxiliaStormblade extends Unit {
 }
 
 class SolarAuxiliaStormhammer extends Unit {
-  constructor (detachment) {
-    super(detachment, 200, 1)
+  constructor(detachment) {
+    super(detachment, sa['Stormhammer'].cost, 1)
 
     this.rules = [
       new ReinforcedArmour(),
@@ -786,8 +789,8 @@ class SolarAuxiliaStormhammer extends Unit {
 }
 
 class SolarAuxiliaStormsword extends Unit {
-  constructor (detachment) {
-    super(detachment, 200, 1)
+  constructor(detachment) {
+    super(detachment, sa['Stormsword'].cost, 1)
 
     this.rules = [
       new DamageCapacity(2),
@@ -810,7 +813,7 @@ class SolarAuxiliaStormsword extends Unit {
 }
 
 export class SolarAuxiliaSuperHeavyTankUnit extends MultipleChoiceUnit {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment,
       new SolarAuxiliaBaneblade(detachment),
       new SolarAuxiliaShadowsword(detachment),
@@ -822,57 +825,57 @@ export class SolarAuxiliaSuperHeavyTankUnit extends MultipleChoiceUnit {
 }
 
 class SolarAuxiliaBanebladeSquadronUnit extends SolarAuxiliaBaneblade {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment)
 
-    this.cost = 500
+    this.cost = sa['Baneblade'].cost * 3
     this.min = 3
     this.quantity = 3
   }
 }
 
 class SolarAuxiliaShadowswordSquadronUnit extends SolarAuxiliaShadowsword {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment)
 
-    this.cost = 500
+    this.cost = sa['Shadowsword'].cost * 3
     this.min = 3
     this.quantity = 3
   }
 }
 
 class SolarAuxiliaStormbladeSquadronUnit extends SolarAuxiliaStormblade {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment)
 
-    this.cost = 500
+    this.cost = sa['Stromblade'].cost * 3
     this.min = 3
     this.quantity = 3
   }
 }
 
 class SolarAuxiliaStormhammerSquadronUnit extends SolarAuxiliaStormhammer {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment)
 
-    this.cost = 500
+    this.cost = sa['Stormhammer'].cost * 3
     this.min = 3
     this.quantity = 3
   }
 }
 
 class SolarAuxiliaStormswordSquadronUnit extends SolarAuxiliaStormsword {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment)
 
-    this.cost = 500
+    this.cost = sa['Stormsword'].cost * 3
     this.min = 3
     this.quantity = 3
   }
 }
 
 export class SolarAuxiliaSuperHeavyTankSquadronUnit extends MultipleChoiceUnit {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment,
       new SolarAuxiliaBanebladeSquadronUnit(detachment),
       new SolarAuxiliaShadowswordSquadronUnit(detachment),
@@ -884,8 +887,8 @@ export class SolarAuxiliaSuperHeavyTankSquadronUnit extends MultipleChoiceUnit {
 }
 
 export class SolarAuxiliaTarantula extends Unit {
-  constructor (detachment) {
-    super(detachment, 100, 4)
+  constructor(detachment) {
+    super(detachment, sa['Tarantula, Twin Lascannon'].cost * 4, 4)
 
     this.rules = [
       new Scout(),
@@ -905,8 +908,8 @@ export class SolarAuxiliaTarantula extends Unit {
 }
 
 export class SolarAuxiliaTarantulaHyperios extends Unit {
-  constructor (detachment) {
-    super(detachment, 100, 4)
+  constructor(detachment) {
+    super(detachment, sa['Tarantula, Hyperios air-defence missile launcher'].cost * 4, 4)
 
     this.rules = [
       new Scout(),
@@ -926,8 +929,8 @@ export class SolarAuxiliaTarantulaHyperios extends Unit {
 }
 
 export class SolarAuxiliaAvengerStrikeFighter extends Unit {
-  constructor (detachment) {
-    super(detachment, 250, 2)
+  constructor(detachment) {
+    super(detachment, sa['Avenger Strike Fighter'].cost * 2, 2)
 
     this.rules = []
     this.stats = {
@@ -946,7 +949,7 @@ export class SolarAuxiliaAvengerStrikeFighter extends Unit {
 }
 
 export class SolarAuxiliaPrimarisStrikeFighter extends Unit {
-  constructor (detachment) {
+  constructor(detachment) {
     super(detachment, 225, 2)
 
     this.rules = []
@@ -966,8 +969,8 @@ export class SolarAuxiliaPrimarisStrikeFighter extends Unit {
 }
 
 export class SolarAuxiliaThunderboltFighter extends Unit {
-  constructor (detachment) {
-    super(detachment, 225, 2)
+  constructor(detachment) {
+    super(detachment, sa['Thunderbolt'].cost * 2, 2)
 
     this.rules = []
     this.stats = {
@@ -986,8 +989,8 @@ export class SolarAuxiliaThunderboltFighter extends Unit {
 }
 
 export class SolarAuxiliaMarauderBomber extends Unit {
-  constructor (detachment) {
-    super(detachment, 250, 2)
+  constructor(detachment) {
+    super(detachment, sa['Marauder Bomber'].cost * 2, 2)
 
     this.rules = []
     this.stats = {
