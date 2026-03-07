@@ -20,9 +20,13 @@ import Hidden from '@material-ui/core/Hidden'
 import InlineButton from '../../inline-button'
 import Confirm from '../../confirm'
 import PopOverMenu from '../../pop-over-menu'
+import Tooltip from '@material-ui/core/Tooltip'
 import {
   MultipleChoiceWeapon
 } from '../../../rules/netea-30k/weapons'
+import {
+  PricingQuality
+} from '../../../rules/netea-30k/special-rules'
 import {
   removeUnit,
   updateUnit,
@@ -30,6 +34,22 @@ import {
   moveUnitDown
 } from '../../../store/actions'
 import EditableMultiChoiceWeapon from './edit-multiple-choice-weapon'
+
+const qualityColors = {
+  Safe: '#4caf50',
+  Review: '#ff9800',
+  Experimental: '#f44336',
+  Legacy: '#9e9e9e'
+}
+
+const qualityTooltip = (
+  <span>
+    <strong style={{ color: '#4caf50' }}>&#9679; Safe</strong> — Pricing verified with sufficient match data; considered accurate.<br />
+    <strong style={{ color: '#ff9800' }}>&#9679; Review</strong> — Needs more data; may not reflect true competitive value.<br />
+    <strong style={{ color: '#f44336' }}>&#9679; Experimental</strong> — Very limited data; highly uncertain, subject to significant change.<br />
+    <strong style={{ color: '#9e9e9e' }}>&#9679; Legacy</strong> — No pricing data available; cost is based on legacy values not in the dataset.
+  </span>
+)
 
 const EditableWeaponDisplay = component(({ name, t }) => {
   return (
@@ -113,7 +133,9 @@ const NameDisplay = component(({ name, quantity, min, max, unitOptions, onIncrea
   )
 })
 
-const CostDisplay = component(({ cost, t }) => {
+const CostDisplay = component(({ cost, rules, classes, t }) => {
+  const qualityRule = rules && rules.find(rule => rule instanceof PricingQuality)
+
   if (!cost) {
     return t('free')
   } else {
@@ -124,7 +146,16 @@ const CostDisplay = component(({ cost, t }) => {
     }
 
     return (
-      <Trans i18nKey='cost'>{{ cost }} pts</Trans>
+      <>
+        {qualityRule && (
+          <Tooltip title={qualityTooltip} placement='top'>
+            <span className={classes.qualityIndicator}>
+              <span className={classes.qualityOrb} style={{ backgroundColor: qualityColors[qualityRule.type] || '#9e9e9e' }} />
+              <Trans i18nKey='cost'>{{ cost }} pts</Trans>
+            </span>
+          </Tooltip>
+        )}
+      </>
     )
   }
 })
@@ -217,13 +248,14 @@ class UnitEditor extends Component {
     moveUnitDown(unit)
   }
 
-  render () {
+  render() {
     const {
       name,
       quantity,
       min,
       max,
       cost,
+      rules,
       weapons,
       mandatory,
       unitOptions,
@@ -271,7 +303,7 @@ class UnitEditor extends Component {
     )
 
     const costDisplay = (
-      <CostDisplay cost={cost} className={classes.flexGrow} />
+      <CostDisplay cost={cost} rules={rules} className={classes.flexGrow} />
     )
 
     const moveUp = (
@@ -349,6 +381,7 @@ const mapStateToProps = (state, { unit }) => {
     min: unit.getMin(),
     max: unit.getMax(),
     cost: unit.getCost(),
+    rules: unit.getRules(),
     weapons: unit.getWeapons(),
     mandatory: unit.getMandatory(),
     unitOptions: unit.getUnitOptions()

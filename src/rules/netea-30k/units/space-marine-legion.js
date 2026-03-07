@@ -473,8 +473,7 @@ export class LegionHeavySupportSquad extends LegionUnit {
       ff: 3
     }
     this.weapons = [
-      new Weapon('heavy-weapons', new RangedWeapon('45cm', new MultipleShot('2x', new AntiPersonnel('5+'), new AntiTank('6+')))),
-      new Weapon('flak-missiles', new RangedWeapon('30cm', new AntiAircraft('6+')))
+      new Weapon('heavy-weapons', new RangedWeapon('45cm', new MultipleShot('2x', new AntiPersonnel('5+'), new AntiTank('6+'), new AntiAircraft('6+')))),
     ]
   }
 }
@@ -510,7 +509,6 @@ export class LegionLandRaiderAchillesTransport extends LegionUnit {
     super(detachment, 100, 1)
 
     this.rules = [
-      new PricingQuality('Legacy'),
       new PricingQuality('Legacy'),
       new ReinforcedArmour(),
       new ThickRearArmour()
@@ -580,7 +578,8 @@ export class LegionLandRaiderProteusSquadronUnit extends MultipleChoiceUnit {
 
 export class LegionLandRaiderProteusTransport extends TransportUnit {
   constructor(detachment) {
-    super(detachment, 75)
+    super(detachment, la['Land Raider'].cost, 1)
+
 
     this.achilles = []
     this.maxAchilles = 2
@@ -589,7 +588,7 @@ export class LegionLandRaiderProteusTransport extends TransportUnit {
       terminator: 1
     }
     this.rules = [
-      new PricingQuality('Legacy'),
+      new PricingQuality(la['Land Raider'].quality),
       new ReinforcedArmour(),
       new ThickRearArmour(),
       new ExploratoryAuguryWeb()
@@ -881,9 +880,7 @@ export class LegionRapier extends LegionUnit {
     this.weapons = [
       new MultipleChoiceWeapon(
         new Weapon('laser-destroyer', new RangedWeapon('45cm', new AntiPersonnel('6+'), new AntiTank('4+'))),
-        new Weapon('quad-mortar', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('6+'), new IndirectFire(), new Disrupt())),
-        new Weapon('quad-heavy-bolters', new RangedWeapon('30cm', new MultipleShot('2x', new AntiPersonnel('4+')))),
-        new Weapon('graviton-cannon', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('5+'), new Disrupt()))
+        new Weapon('quad-mortar', new RangedWeapon('45cm', new AntiPersonnel('4+'), new AntiTank('6+'), new IndirectFire())),
       )
     ]
   }
@@ -1225,7 +1222,7 @@ export class LegionTacticalSupportSquad extends LegionUnit {
     }
     this.weapons = [
       new Weapon('special-weapons',
-        new RangedWeapon('15cm', new MultipleShot('2x', new AntiPersonnel('4+')), new IgnoreCover()),
+        new RangedWeapon('20cm', new MultipleShot('2x', new AntiPersonnel('5+'), new AntiTank('5+')), new IgnoreCover()),
         new SmallArms('15cm', new IgnoreCover(), new ExtraAttacks('+1'))
       )
     ]
@@ -1257,7 +1254,7 @@ export class LegionTerminatorSquad extends LegionUnit {
     }
     this.weapons = [
       new Weapon('power-fists', new AssaultWeapon(new MacroWeapon(), new ExtraAttacks('+1'))),
-      new Weapon('reaper-autocannon', new RangedWeapon('30cm', new MultipleShot('2x', new AntiPersonnel('4+'), new AntiTank('6+'))))
+      new Weapon('storm-bolters', new SmallArms('15cm'))
     ]
   }
 }
@@ -1494,10 +1491,10 @@ export class LegionArquitorBombard extends LegionUnit {
 
 export class LegionSabreStrikeTank extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Sabre Strike Tank with Anvilus Autocannon'].cost * 4, 4)
+    super(detachment, la['Sabre Strike Tank with Neutron Blaster'].cost * 4, 4)
 
     this.rules = [
-      new PricingQuality(la['Sabre Strike Tank with Anvilus Autocannon'].quality),
+      new PricingQuality(la['Sabre Strike Tank with Neutron Blaster'].quality),
       new ReinforcedArmour()
     ]
     this.stats = {
@@ -1509,8 +1506,8 @@ export class LegionSabreStrikeTank extends LegionUnit {
     }
     this.weapons = [
       new MultipleChoiceWeapon(
-        new Weapon('anvilus-auto-cannon', new RangedWeapon('15cm', new MultipleShot('2x', new AntiPersonnel('4+'), new AntiTank('5+'), new FixedForwardFireArc()))),
-        new Weapon('neutron-blaster', new RangedWeapon('20cm', new AntiPersonnel('5+'), new AntiTank('5+'), new FixedForwardFireArc(), new Disrupt(), new Feedback()))
+        new Weapon('anvilus-auto-cannon', new RangedWeapon('20cm', new AntiPersonnel('4+'), new AntiTank('5+'), new FixedForwardFireArc())),
+        new Weapon('neutron-blaster', new RangedWeapon('20cm', new AntiPersonnel('5+'), new AntiTank('5+'), new FixedForwardFireArc(), new Disrupt()))
       ),
       new Weapon('sabre-missiles', new RangedWeapon('30cm', new AntiTank('4+'), new FixedForwardFireArc()))
     ]
@@ -1519,9 +1516,9 @@ export class LegionSabreStrikeTank extends LegionUnit {
 
 export class LgeionKratosTank extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Kratos Battle Tank with H.B.'].cost, 2, 4)
+    super(detachment, la['Kratos Battle Tank'].cost, 2, 4)
     this.rules = [
-      new PricingQuality(la['Kratos Battle Tank with H.B.'].quality),
+      new PricingQuality(la['Kratos Battle Tank'].quality),
       new ReinforcedArmour(),
       new DamageCapacity(2),
       new ThickRearArmour()
@@ -1566,7 +1563,7 @@ export class LegionTarantula extends Unit {
       speed: 0,
       armour: 6,
       cc: 6,
-      ff: 5
+      ff: 6
     }
     this.weapons = [
       new MultipleChoiceWeapon(
