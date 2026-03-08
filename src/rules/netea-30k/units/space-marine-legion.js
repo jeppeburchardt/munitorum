@@ -62,6 +62,7 @@ import ModifierUnit from './modifier-unit'
 import SpacecraftUnit from './spacecraft-unit'
 import withType from '../with-type'
 import prices from '../prices.json'
+import { statsFromEntry, rulesFromEntry, weaponsFromEntry } from '../unit-builder'
 
 const la = prices['legiones-astartes']
 
@@ -101,23 +102,13 @@ export class LegionArtilleryUnit extends MultipleChoiceUnit {
 
 export class LegionAssaultSquad extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Assault Squad'].cost * 8, 8)
+    const entry = la['Assault Squad']
+    super(detachment, entry.cost * 8, 8)
 
     this.transportType = 'assault'
-    this.rules = [
-      new PricingQuality(la['Assault Squad'].quality),
-      new JumpPacks()
-    ]
-    this.stats = {
-      type: 'INF',
-      speed: 30,
-      armour: 4,
-      cc: 3,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('chainswords', new AssaultWeapon())
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -190,23 +181,12 @@ export class LegionBattleBarge extends SpacecraftUnit {
 
 export class LegionOutriderUnit extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Outrider squad'].cost * 4, 4)
+    const entry = la['Outrider squad']
+    super(detachment, entry.cost * 4, 4)
 
-    this.rules = [
-      new PricingQuality(la['Outrider squad'].quality),
-      new Scout(),
-      new Mounted()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 35,
-      armour: 4,
-      cc: 3,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('chainswords', new AssaultWeapon())
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -242,24 +222,12 @@ export class LegionCaestus extends TransportUnit {
 
 export class LegionCerberus extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Cerberus Heavy Tank Destroyer'].cost, 1)
+    const entry = la['Cerberus Heavy Tank Destroyer']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(la['Cerberus Heavy Tank Destroyer'].quality),
-      new ReinforcedArmour(),
-      new DamageCapacity(2)
-    ]
-    this.stats = {
-      type: 'WE',
-      speed: 25,
-      armour: 4,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('neutron-laser-battery', new RangedWeapon('60cm', new MultipleShot('2x', new AntiTank('3+')), new Armourbane(), new Disrupt(), new Feedback(), new FixedForwardFireArc())),
-      new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+')))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -321,31 +289,13 @@ export class LegionContemptorDreadnoughtTalonUnit extends MultipleChoiceUnit {
 
 export class LegionContemptorDreadnought extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Contemptor Dreadnought with Assault Cannon'].cost, 1)
+    const entry = la['Contemptor Dreadnought']
+    super(detachment, entry.cost, 1)
 
     this.transportType = 'dreadnought'
-    this.rules = [
-      new PricingQuality(la['Contemptor Dreadnought with Assault Cannon'].quality),
-      new Walker(),
-      new InvulnerableSave()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 15,
-      armour: 3,
-      cc: 4,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('close-combat-weapon', new AssaultWeapon(new MacroWeapon(), new ExtraAttacks('+1'))),
-      new MultipleChoiceWeapon(
-        new Weapon('kheres-assault-cannon', new RangedWeapon('30cm', new AntiPersonnel('4+'), new AntiTank('5+'))),
-        new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new AntiTank('4+')))
-      ),
-      new OptionalWeapons(
-        new Weapon('havoc-launcher', new PointsModifier(5), new RangedWeapon('45cm', new AntiPersonnel('5+')))
-      )
-    ]
+    this.rules = rulesFromEntry(entry).concat([new InvulnerableSave()])
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -375,30 +325,13 @@ export class LegionDamoclesCommandRhino extends LegionUnit {
 
 export class LegionDeredeoDreadnought extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Deredeo Dreadnoughts with Anvilus Autocannon Battery'].cost, 1)
+    const entry = la['Deredeo Dreadnought']
+    super(detachment, entry.cost, 1)
 
     this.transportType = 'dreadnought'
-    this.rules = [
-      new PricingQuality(la['Deredeo Dreadnoughts with Anvilus Autocannon Battery'].quality),
-      new Walker(),
-      new InvulnerableSave()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 15,
-      armour: 3,
-      cc: 5,
-      ff: 3
-    }
-    this.weapons = [
-      new Weapon('twin-linked-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('4+'))),
-      new Weapon('aiolos-missile-launcher', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('6+'), new Disrupt())),
-      new Weapon('helitical-targeting-array', new RangedWeapon('30cm', new MultipleShot('2x', new AntiAircraft('5+')))),
-      new MultipleChoiceWeapon(
-        new Weapon('anvilus-autocannon-battery', new RangedWeapon('45cm', new MultipleShot('2x', new AntiPersonnel('5+'), new AntiTank('2+')))),
-        new Weapon('hellfire-plasma-cannon', new RangedWeapon('30cm', new AntiPersonnel('4+'), new AntiTank('4+'), new Fleshbane()))
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -431,76 +364,36 @@ export class LegionDropPod extends TransportUnit {
 
 export class LegionGunship extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Fire Raptor Gunship'].cost * 2, 2)
+    const entry = la['Fire Raptor Gunship']
+    super(detachment, entry.cost * 2, 2)
 
-    this.rules = [
-      new PricingQuality(la['Fire Raptor Gunship'].quality),
-      new ReinforcedArmour()
-    ]
-    this.stats = {
-      type: 'AC',
-      speed: 'fighter-bomber',
-      armour: 5,
-      cc: 7,
-      ff: 7
-    }
-    this.weapons = [
-      new Weapon('twin-linked-avenger-bolt-cannon', new RangedWeapon('30cm', new MultipleShot('2x', new AntiPersonnel('2+'), new AntiTank('5+')), new FixedForwardFireArc())),
-      new Weapon('hellstrike-missile-pod', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('4+')), new ForwardFireArc())),
-      new MultipleChoiceWeapon(
-        new Weapon('sponson-quad-heavy-bolters', new RangedWeapon('15cm', new AntiPersonnel('4+'), new AntiAircraft('6+'), new LeftFireArc(), new RightFireArc())),
-        new Weapon('sponson-reaper-autocannons', new RangedWeapon('30cm', new AntiPersonnel('5+'), new AntiTank('6+'), new LeftFireArc(), new RightFireArc())),
-        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+'), new LeftFireArc(), new RightFireArc()))
-
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.stats.speed = 'fighter-bomber'
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class LegionHeavySupportSquad extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Heavy Support Squad'].cost, 1, 4)
+    const entry = la['Heavy Support Squad']
+    super(detachment, entry.cost, 1, 4)
 
     this.transportType = 'tactical'
-    this.rules = [
-      new PricingQuality(la['Heavy Support Squad'].quality)
-    ]
-    this.stats = {
-      type: 'INF',
-      speed: 15,
-      armour: 4,
-      cc: 5,
-      ff: 3
-    }
-    this.weapons = [
-      new Weapon('heavy-weapons', new RangedWeapon('45cm', new MultipleShot('2x', new AntiPersonnel('5+'), new AntiTank('6+'), new AntiAircraft('6+')))),
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class LegionJavelinAttackSpeeder extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Javelin Attack Speeder with Cyclone Missile Launcher'].cost, 1)
+    const entry = la['Javelin Attack Speeder']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(la['Javelin Attack Speeder with Cyclone Missile Launcher'].quality),
-      new Scout(),
-      new Skimmer()
-    ]
-    this.stats = {
-      type: 'LV',
-      speed: 35,
-      armour: 4,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new MultipleChoiceWeapon(
-        new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new AntiTank('4+'))),
-        new Weapon('twin-linked-cyclone-missile-launcher', new RangedWeapon('45cm', new AntiPersonnel('3+'), new AntiTank('5+')))
-      ),
-      new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+')))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -578,8 +471,8 @@ export class LegionLandRaiderProteusSquadronUnit extends MultipleChoiceUnit {
 
 export class LegionLandRaiderProteusTransport extends TransportUnit {
   constructor(detachment) {
-    super(detachment, la['Land Raider'].cost, 1)
-
+    const entry = la['Land Raider']
+    super(detachment, entry.cost, 1)
 
     this.achilles = []
     this.maxAchilles = 2
@@ -587,22 +480,9 @@ export class LegionLandRaiderProteusTransport extends TransportUnit {
       tactical: 2,
       terminator: 1
     }
-    this.rules = [
-      new PricingQuality(la['Land Raider'].quality),
-      new ReinforcedArmour(),
-      new ThickRearArmour(),
-      new ExploratoryAuguryWeb()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 25,
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('sponson-twin-linked-lascannons', new RangedWeapon('45cm', new AntiTank('4+')))
-    ]
+    this.rules = rulesFromEntry(entry).concat([new ExploratoryAuguryWeb()])
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 
   getQuantity() {
@@ -614,92 +494,37 @@ export class LegionLandRaiderProteusTransport extends TransportUnit {
 
 export class LegionLandRaiderProteus extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Land Raider'].cost, 1)
+    const entry = la['Land Raider']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(la['Land Raider'].quality),
-      new ReinforcedArmour(),
-      new ThickRearArmour(),
-      new ExploratoryAuguryWeb()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 25,
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('sponson-twin-linked-lascannons', new RangedWeapon('45cm', new AntiTank('4+')))
-    ]
+    this.rules = rulesFromEntry(entry).concat([new ExploratoryAuguryWeb()])
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class LegionLandSpeeder extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Land Speeder with Plasma Cannon and Heavy Bolter'].cost, 1)
+    const entry = la['Land Speeder with Plasma Cannon and Heavy Bolter']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(la['Land Speeder with Plasma Cannon and Heavy Bolter'].quality),
-      new Scout(),
-      new Skimmer()
-    ]
-    this.stats = {
-      type: 'LV',
-      speed: 35,
-      armour: 5,
-      cc: 5,
-      ff: 5
-    }
-    this.weapons = [
-      new MultipleChoiceWeapon(
-        new Weapon('multi-melta',
-          new RangedWeapon('15cm', new AntiPersonnel('5+'), new AntiTank('5+'), new MacroWeapon()),
-          new SmallArms('15cm', new MacroWeapon())
-        ),
-        new WeaponSet(
-          new Weapon('plasma-cannon', new RangedWeapon('30cm', new AntiPersonnel('5+'), new AntiTank('5+'), new Fleshbane())),
-          new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+')))
-        )
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class LegionLeviathanDreadnought extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Leviathan Siege Dreadnoughts with Cyclonic Melta Lance'].cost, 1)
+    const entry = la['Leviathan Siege Dreadnought']
+    super(detachment, entry.cost, 1)
 
     this.transportType = 'dreadnought'
-    this.rules = [
-      new PricingQuality(la['Leviathan Siege Dreadnoughts with Cyclonic Melta Lance'].quality),
-      new Walker(),
-      new ReinforcedArmour(),
-      new InvulnerableSave('6+')
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 15,
-      armour: 4,
-      cc: 4,
-      ff: 4
-    }
-    this.weapons = [
-      new MultipleChoiceWeapon(
-        new Weapon('siege-claw', new AssaultWeapon(new Armourbane(), new Siege())),
-        new Weapon('siege-drill', new AssaultWeapon(new Armourbane(), new Siege(), new ExtraAttacks('+2'))),
-      ),
-      new MultipleChoiceWeapon(
-        new Weapon('cyclonic-melta-lance',
-          new RangedWeapon('15cm', new AntiPersonnel('5+'), new AntiTank('3+'), new MacroWeapon('5+')),
-          new SmallArms('15cm', new MacroWeapon(), new ExtraAttacks('+1'))
-        ),
-        new Weapon('storm-cannon', new SmallArms('15cm', new AntiPersonnel('4+'), new AntiTank('5+'))),
-      )
-    ]
+    this.rules = rulesFromEntry(entry).concat([new InvulnerableSave('6+')])
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
-
 export class LegionLeviathanSupportDreadnought extends LegionLeviathanDreadnought {
   constructor(detachment) {
     super(detachment)
@@ -777,33 +602,17 @@ export class LegionLordCommander extends LegionCharacterUnit {
 
 export class LegionMastodon extends TransportUnit {
   constructor(detachment) {
-    super(detachment, la['Mastodon Armored Transport'].cost)
+    const entry = la['Mastodon Armored Transport']
+    super(detachment, entry.cost)
 
     this.transportTypes = {
       tactical: 8,
       terminator: 4,
       dreadnought: 2
     }
-    this.rules = [
-      new PricingQuality(la['Mastodon Armored Transport'].quality),
-      new ReinforcedArmour(),
-      new ThickRearArmour(),
-      new DamageCapacity(4),
-      new VoidShields(2)
-    ]
-    this.stats = {
-      type: 'WE',
-      speed: 20,
-      armour: 4,
-      cc: 5,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('siege-melta-array', new SmallArms('15cm', new ExtraAttacks('+1'), new MacroWeapon())),
-      new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+'), new LeftFireArc(), new RightFireArc())),
-      new Weapon('sponson-heavy-flamers', new RangedWeapon('15cm', new AntiPersonnel('4+'), new LeftFireArc(), new RightFireArc(), new IgnoreCover())),
-      new Weapon('skyreaper-battery', new RangedWeapon('30cm', new MultipleShot('2x', new AntiPersonnel('4+'), new AntiTank('4+'), new AntiAircraft('5+'))))
-    ]
+    this.rules = rulesFromEntry(entry).concat([new ThickRearArmour()])
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -835,54 +644,24 @@ export class LegionMedusa extends LegionUnit {
 
 export class LegionPredator extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Predator Annihilator'].cost, 1)
+    const entry = la['Predator Annihilator']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(la['Predator Annihilator'].quality)
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 30,
-      armour: 4,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new MultipleChoiceWeapon(
-        new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new AntiTank('4+'))),
-        new Weapon('predator-cannon', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('5+')))
-      ),
-      new MultipleChoiceWeapon(
-        new Weapon('sponson-heavy-bolters', new StatsModifier({
-          ff: -2
-        }), new SmallArms('15cm', new AntiPersonnel('5+'))),
-        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+')))
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class LegionRapier extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Rapier, Laser Destroyer Array'].cost, 1)
+    const entry = la['Rapier']
+    super(detachment, entry.cost, 1)
 
     this.transportType = 'rapier'
-    this.rules = [
-      new PricingQuality(la['Rapier, Laser Destroyer Array'].quality)
-    ]
-    this.stats = {
-      type: 'INF',
-      speed: 10,
-      armour: 4,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new MultipleChoiceWeapon(
-        new Weapon('laser-destroyer', new RangedWeapon('45cm', new AntiPersonnel('6+'), new AntiTank('4+'))),
-        new Weapon('quad-mortar', new RangedWeapon('45cm', new AntiPersonnel('4+'), new AntiTank('6+'), new IndirectFire())),
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -919,22 +698,12 @@ export class LegionRhino extends TransportUnit {
 
 export class LegionScimitarJetbike extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Scimitar Jetbike'].cost * 6, 6)
+    const entry = la['Scimitar Jetbike']
+    super(detachment, entry.cost * 6, 6)
 
-    this.rules = [
-      new PricingQuality(la['Scimitar Jetbike'].quality),
-      new Skimmer()
-    ]
-    this.stats = {
-      type: 'LV',
-      speed: 35,
-      armour: 5,
-      cc: 5,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('plasma-cannon', new RangedWeapon('30cm', new AntiPersonnel('5+'), new AntiTank('5+'), new Fleshbane()))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -951,55 +720,23 @@ export class LegionSicaranBattleTankSquadronUnit extends MultipleChoiceUnit {
 
 export class LegionSicaranPunisherUnit extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Sicaran Punisher'].cost, 1)
+    const entry = la['Sicaran Punisher']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(la['Sicaran Punisher'].quality),
-      new ReinforcedArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 35,
-      armour: 5,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('punisher-cannon', new RangedWeapon('30cm', new MultipleShot('3x', new AntiPersonnel('4+')))),
-      new MultipleChoiceWeapon(
-        new Weapon('sponson-heavy-bolters', new StatsModifier({
-          ff: -2
-        }), new SmallArms('15cm', new AntiPersonnel('5+'))),
-        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+'))),
-      ),
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class LegionSicaranArcusUnit extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Sicaran Arcus'].cost, 1)
+    const entry = la['Sicaran Arcus']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(la['Sicaran Arcus'].quality),
-      new ReinforcedArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 35,
-      armour: 5,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('arcus-launcher', new RangedWeapon('45cm', new MultipleShot('2x', new AntiPersonnel('5+'), new AntiTank('4+'), new IndirectFire()))),
-      new MultipleChoiceWeapon(
-        new Weapon('sponson-heavy-bolters', new StatsModifier({
-          ff: -2
-        }), new SmallArms('15cm', new AntiPersonnel('5+'))),
-        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+'))),
-      ),
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -1014,54 +751,23 @@ export class LegionSicaranStrikeTankSquadronUnit extends MultipleChoiceUnit {
 
 export class LegionSicaranOmega extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Sicaran Battle Tank, with Omega plasma array'].cost, 1)
+    const entry = la['Sicaran Omega']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(la['Sicaran Battle Tank, with Omega plasma array'].quality),
-      new ReinforcedArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 35,
-      armour: 5,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('omega-plasma-array', new RangedWeapon('30cm', new AntiTank('3+'), new Armourbane(), new Feedback())),
-      new MultipleChoiceWeapon(
-        new Weapon('sponson-heavy-bolters', new StatsModifier({
-          ff: -2
-        }), new SmallArms('15cm', new AntiPersonnel('5+'))),
-        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+'))),
-      ),]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class LegionSicaran extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Sicaran Battle Tank (Accelerator Cannon + Lascannons)'].cost, 1)
+    const entry = la['Sicaran Battle Tank']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(la['Sicaran Battle Tank (Accelerator Cannon + Lascannons)'].quality),
-      new ReinforcedArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 35,
-      armour: 5,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('accelerator-cannon', new RangedWeapon('45cm', new MultipleShot('2x', new AntiPersonnel('4+'), new AntiTank('5+')))),
-      new MultipleChoiceWeapon(
-        new Weapon('sponson-heavy-bolters', new StatsModifier({
-          ff: -2
-        }), new SmallArms('15cm', new AntiPersonnel('5+'))),
-        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+'))),
-      ),
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -1076,55 +782,32 @@ export class LegionSpacecraftUnit extends MultipleChoiceUnit {
 
 export class LegionSpartan extends TransportUnit {
   constructor(detachment) {
-    super(detachment, la['Spartan Assault Tank'].cost)
+    const entry = la['Spartan Assault Tank']
+    super(detachment, entry.cost)
 
     this.transportTypes = {
       tactical: 4,
       terminator: 2
     }
-    this.rules = [
-      new PricingQuality(la['Spartan Assault Tank'].quality),
-      new ReinforcedArmour(),
-      new DamageCapacity(2),
-      new ThickRearArmour(),
-      new CriticalHit('legion-spartan-critical-hit')
-    ]
-    this.stats = {
-      type: 'WE',
-      speed: 25,
-      armour: 4,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('sponson-quad-lascannons', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('4+')))),
-      new Weapon('twin-linked-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('4+')))
-    ]
+    this.rules = rulesFromEntry(entry).concat([new CriticalHit('legion-spartan-critical-hit')])
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class LegionStormEagleAttackShip extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Storm Eagle Attack Ship'].cost, 1, 3)
+    const entry = la['Storm Eagle Attack Ship']
+    super(detachment, entry.cost, 1, 3)
 
     this.transportTypes = {
       tactical: 4,
       assault: 4,
       terminator: 2
     }
-    this.rules = [
-      new PricingQuality(la['Storm Eagle Attack Ship'].quality),
-      new DamageCapacity(1),
-      new Planetfall(),
-      new ReinforcedArmour()
-    ]
-    this.stats = {
-      type: 'AC/WE',
-      speed: 'fighter-bomber',
-      armour: 5,
-      cc: 6,
-      ff: 5
-    }
+    this.rules = rulesFromEntry(entry).concat([new DamageCapacity(1)])
+    this.stats = statsFromEntry(entry)
+    this.stats.speed = 'fighter-bomber'
     this.weapons = [
       new Weapon('hellstrike-missile-pod', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('4+')))),
       new Weapon('vengeance-launcher', new RangedWeapon('45cm', new BarragePoints(1), new FixedForwardFireArc())),
@@ -1174,58 +857,37 @@ export class LegionSuperHeavyTankBatteryUnit extends MultipleChoiceUnit {
       new LegionCerberus(detachment)
     )
 
-    this.types[0].cost = 400
-    this.types[0].min = 3
-    this.types[0].quantity = 3
+    this.types[0].min = 2
+    this.types[0].max = 4
+    this.types[0].quantity = 2
 
-    this.types[1].cost = 400
-    this.types[1].min = 3
-    this.types[1].quantity = 3
+    this.types[1].min = 2
+    this.types[1].max = 4
+    this.types[1].quantity = 2
   }
 }
 
 export class LegionTacticalSquad extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Tactical Squad'].cost * 8, 8)
+    const entry = la['Tactical Squad']
+    super(detachment, entry.cost * 8, 8)
 
     this.transportType = 'tactical'
-    this.rules = [
-      new PricingQuality(la['Tactical Squad'].quality)
-    ]
-    this.stats = {
-      type: 'INF',
-      speed: 15,
-      armour: 4,
-      cc: 4,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('bolters', new SmallArms('15cm'))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class LegionTacticalSupportSquad extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Tactical Support Squad'].cost, 1, 4)
+    const entry = la['Tactical Support Squad']
+    super(detachment, entry.cost, 1, 4)
 
     this.transportType = 'tactical'
-    this.rules = [
-      new PricingQuality(la['Tactical Support Squad'].quality)
-    ]
-    this.stats = {
-      type: 'INF',
-      speed: 15,
-      armour: 4,
-      cc: 4,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('special-weapons',
-        new RangedWeapon('20cm', new MultipleShot('2x', new AntiPersonnel('5+'), new AntiTank('5+')), new IgnoreCover()),
-        new SmallArms('15cm', new IgnoreCover(), new ExtraAttacks('+1'))
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -1237,31 +899,20 @@ export class LegionTeleport extends ModifierUnit {
 
 export class LegionTerminatorSquad extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Terminator Squad'].cost, 4, 6)
+    const entry = la['Terminator Squad']
+    super(detachment, entry.cost, 4, 6)
 
     this.transportType = 'terminator'
-    this.rules = [
-      new PricingQuality(la['Terminator Squad'].quality),
-      new ReinforcedArmour(),
-      new ThickRearArmour()
-    ]
-    this.stats = {
-      type: 'INF',
-      speed: 15,
-      armour: 4,
-      cc: 3,
-      ff: 3
-    }
-    this.weapons = [
-      new Weapon('power-fists', new AssaultWeapon(new MacroWeapon(), new ExtraAttacks('+1'))),
-      new Weapon('storm-bolters', new SmallArms('15cm'))
-    ]
+    this.rules = rulesFromEntry(entry).concat([new ThickRearArmour()])
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class LegionThunderhawkGunship extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Thunderhawk Gunship'].cost, 1)
+    const entry = la['Thunderhawk Gunship']
+    super(detachment, entry.cost, 1)
 
     this.transportTypes = {
       tactical: 8,
@@ -1269,56 +920,22 @@ export class LegionThunderhawkGunship extends LegionUnit {
       terminator: 4,
       outrider: 5
     }
-    this.rules = [
-      new PricingQuality(la['Thunderhawk Gunship'].quality),
-      new DamageCapacity(2),
-      new Planetfall(),
-      new ReinforcedArmour()
-    ]
-    this.stats = {
-      type: 'AC/WE',
-      speed: 'bomber',
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new MultipleChoiceWeapon(
-        new Weapon('thunderhawk-cannon', new RangedWeapon('60cm', new AntiPersonnel('3+'), new AntiTank('3+'))),
-        new Weapon('thunderhawk-laser-destroyer', new RangedWeapon('45cm', new MultipleShot('2x', new AntiPersonnel('6+'), new AntiTank('3+')), new Armourbane(), new FixedForwardFireArc()))
-      ),
-      new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new AntiTank('4+'), new AntiAircraft('5+'), new FixedForwardFireArc())),
-      new Weapon('2-twin-linked-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('4+'), new FixedForwardFireArc())),
-      new Weapon('twin-linked-heavy-bolters', new RangedWeapon('15cm', new AntiPersonnel('4+'), new LeftFireArc())),
-      new Weapon('twin-linked-heavy-bolters', new RangedWeapon('15cm', new AntiPersonnel('4+'), new RightFireArc()))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.stats.speed = 'bomber'
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 
 export class LegionTyphon extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Typhon Siege Tank'].cost, 1)
+    const entry = la['Typhon Siege Tank']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(la['Typhon Siege Tank'].quality),
-      new ReinforcedArmour(),
-      new DamageCapacity(2)
-    ]
-    this.stats = {
-      type: 'WE',
-      speed: 25,
-      armour: 4,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('dreadhammer-siege-cannon',
-        new RangedWeapon('45cm', new BarragePoints('3'), new IndirectFire(), new IgnoreCover(), new FixedForwardFireArc()),
-        new SmallArms('15cm', new IgnoreCover())
-      ),
-      new Weapon('sponson-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('5+')))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -1354,25 +971,12 @@ export class LegionVindicatorSquadronUnit extends MultipleChoiceUnit {
 
 export class LegionVindicator extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Vindicator'].cost, 1)
+    const entry = la['Vindicator']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(la['Vindicator'].quality),
-      new Walker()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 25,
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('demolisher-cannon',
-        new RangedWeapon('30cm', new AntiPersonnel('3+'), new AntiTank('4+'), new IgnoreCover()),
-        new SmallArms('15cm', new IgnoreCover())
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -1408,62 +1012,35 @@ export class LegionWhirlwindHyperios extends LegionUnit {
 
 export class LegionWhirlwindScorpius extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Legion Whirlwind Scorpius'].cost * 4, 4)
+    const entry = la['Legion Whirlwind Scorpius']
+    super(detachment, entry.cost * 4, 4)
 
-    this.rules = [
-      new PricingQuality(la['Legion Whirlwind Scorpius'].quality)
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 30,
-      armour: 5,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('scorpius-multi-launcher', new RangedWeapon('45cm', new MultipleShot('2x', new AntiPersonnel('5+'), new AntiTank('5+')), new IndirectFire()))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class LegionWhirlwind extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Legion Whirlwind'].cost * 4, 4)
+    const entry = la['Legion Whirlwind']
+    super(detachment, entry.cost * 4, 4)
 
-    this.rules = [
-      new PricingQuality(la['Legion Whirlwind'].quality)
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 30,
-      armour: 5,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('vengeance-castellan-missiles', new RangedWeapon('45cm', new BarragePoints(1), new IgnoreCover(), new IndirectFire()))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class LegionXiphonInterceptor extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Xiphon Interceptor'].cost * 2, 2)
+    const entry = la['Xiphon Interceptor']
+    super(detachment, entry.cost * 2, 2)
 
-    this.rules = [
-      new PricingQuality(la['Xiphon Interceptor'].quality)
-    ]
-    this.stats = {
-      type: 'AC',
-      speed: 'fighter',
-      armour: 5,
-      cc: 7,
-      ff: 7
-    }
-    this.weapons = [
-      new Weapon('2-twin-linked-lascannons', new RangedWeapon('30cm', new AntiTank('4+'), new AntiAircraft('5+'), new FixedForwardFireArc())),
-      new Weapon('rotary-missile-launcher', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc()))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.stats.speed = 'fighter'
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -1491,86 +1068,34 @@ export class LegionArquitorBombard extends LegionUnit {
 
 export class LegionSabreStrikeTank extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Sabre Strike Tank with Neutron Blaster'].cost * 4, 4)
+    const entry = la['Sabre Strike Tank']
+    super(detachment, entry.cost * 4, 4)
 
-    this.rules = [
-      new PricingQuality(la['Sabre Strike Tank with Neutron Blaster'].quality),
-      new ReinforcedArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 35,
-      armour: 5,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new MultipleChoiceWeapon(
-        new Weapon('anvilus-auto-cannon', new RangedWeapon('20cm', new AntiPersonnel('4+'), new AntiTank('5+'), new FixedForwardFireArc())),
-        new Weapon('neutron-blaster', new RangedWeapon('20cm', new AntiPersonnel('5+'), new AntiTank('5+'), new FixedForwardFireArc(), new Disrupt()))
-      ),
-      new Weapon('sabre-missiles', new RangedWeapon('30cm', new AntiTank('4+'), new FixedForwardFireArc()))
-    ]
+    this.rules = rulesFromEntry(entry).concat([new ReinforcedArmour()])
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class LgeionKratosTank extends LegionUnit {
   constructor(detachment) {
-    super(detachment, la['Kratos Battle Tank'].cost, 2, 4)
-    this.rules = [
-      new PricingQuality(la['Kratos Battle Tank'].quality),
-      new ReinforcedArmour(),
-      new DamageCapacity(2),
-      new ThickRearArmour()
-    ]
+    const entry = la['Kratos Battle Tank']
+    super(detachment, entry.cost, 2, 4)
 
-    this.stats = {
-      type: 'WE',
-      speed: 25,
-      armour: 4,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new MultipleChoiceWeapon(
-        new Weapon('Kratos Battlecannon', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('3+'), new AntiPersonnel('3+'), new Armourbane()))),
-        new Weapon('Melta Cannon', new RangedWeapon('30cm', new MultipleShot('4x', new MacroWeapon('4+'), new Armourbane())))
-      ),
-      new Weapon('Co-ax Autocannon', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('6+'))),
-      new MultipleChoiceWeapon(
-        new Weapon('Hull Heavy Bolter', new RangedWeapon('30cm', new MultipleShot('2x', new AntiPersonnel('5+'), new FixedForwardFireArc()))),
-        new Weapon('Hull Lascannon', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('5+'), new FixedForwardFireArc())))
-      ),
-      new MultipleChoiceWeapon(
-        new Weapon('Sponson Heavy Bolter', new RangedWeapon('30cm', new MultipleShot('2x', new AntiPersonnel('5+'), new FixedForwardFireArc()))),
-        new Weapon('Sponson Lascannon', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('5+'), new FixedForwardFireArc())))
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class LegionTarantula extends Unit {
   constructor(detachment) {
-    super(detachment, la['Tarantula, Twin Lascannon'].cost, 1)
+    const entry = la['Tarantula']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(la['Tarantula, Twin Lascannon'].quality),
-      new Scout(),
-      new Teleport()
-    ]
-    this.stats = {
-      type: 'LV',
-      speed: 0,
-      armour: 6,
-      cc: 6,
-      ff: 6
-    }
-    this.weapons = [
-      new MultipleChoiceWeapon(
-        new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new AntiTank('4+'))),
-        new Weapon('hyperios-launcher', new RangedWeapon('30cm', new AntiAircraft('4+')))
-      )
-    ]
+    this.rules = rulesFromEntry(entry).concat([new Teleport()])
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
