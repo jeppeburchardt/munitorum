@@ -39,7 +39,8 @@ import {
     RearFireArc,
     LeftFireArc,
     RightFireArc,
-    PointsModifier
+    PointsModifier,
+    StatsModifier
 } from './weapons'
 
 const UNIT_TRAIT_MAP = {
@@ -170,6 +171,7 @@ function mapWeaponTraits(traits = []) {
 
 function buildWeapon(w) {
     const pointsModifier = w.cost_delta ? new PointsModifier(w.cost_delta) : null
+    const statsModifier = w.unit_stat_modifiers ? new StatsModifier(w.unit_stat_modifiers) : null
     let profile
 
     if (w.type === 'Small Arms') {
@@ -184,8 +186,5 @@ function buildWeapon(w) {
         )
     }
 
-    if (pointsModifier) {
-        return new Weapon(w.name, pointsModifier, profile)
-    }
-    return new Weapon(w.name, profile)
+    return new Weapon(w.name, ...[pointsModifier, statsModifier, profile].filter(Boolean))
 }

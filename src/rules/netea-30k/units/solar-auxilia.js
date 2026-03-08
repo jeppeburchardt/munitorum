@@ -44,6 +44,8 @@ import Unit, { InfantryTransportUnit } from './unit'
 import SpacecraftUnit from './spacecraft-unit'
 import withType from '../with-type'
 import prices from '../prices.json'
+import { statsFromEntry, rulesFromEntry, weaponsFromEntry } from '../unit-builder'
+
 
 const sa = prices['solar-auxilia']
 
@@ -177,40 +179,45 @@ export class SolarAuxiliaInfantrySection extends Unit {
 
 export class SolarAuxiliaLemanRuss extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Leman Russ (Battle cannon)'].cost * 6, 6)
+    const entry = sa['Leman Russ Battle Tank']
+    super(detachment, entry.cost, 6, 8)
 
-    this.rules = [
-      new PricingQuality(sa['Leman Russ (Battle cannon)'].quality),
-      new ReinforcedArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 25,
-      armour: 4,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new MultipleChoiceWeapon(
-        new Weapon('vanquisher-cannon', new RangedWeapon('75cm', new AntiPersonnel('6+'), new AntiTank('3+'))),
-        new Weapon('battle-cannon', new RangedWeapon('75cm', new AntiPersonnel('4+'), new AntiTank('4+')))
-      ),
-      new MultipleChoiceWeapon(
-        new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
-        new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
-          ff: -1
-        })))
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
+
+    // this.rules = [
+    //   new PricingQuality(sa['Leman Russ (Battle cannon)'].quality),
+    //   new ReinforcedArmour()
+    // ]
+    // this.stats = {
+    //   type: 'AV',
+    //   speed: 25,
+    //   armour: 4,
+    //   cc: 6,
+    //   ff: 5
+    // }
+    // this.weapons = [
+    //   new MultipleChoiceWeapon(
+    //     new Weapon('vanquisher-cannon', new RangedWeapon('75cm', new AntiPersonnel('6+'), new AntiTank('3+'))),
+    //     new Weapon('battle-cannon', new RangedWeapon('75cm', new AntiPersonnel('4+'), new AntiTank('4+')))
+    //   ),
+    //   new MultipleChoiceWeapon(
+    //     new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
+    //     new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
+    //       ff: -1
+    //     })))
+    //   )
+    // ]
   }
 }
 
 class SolarAuxiliaLemanRussDemolisher extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Leman Russ (Demolisher)'].cost, 1)
+    super(detachment, sa['Leman Russ Demolisher'].cost, 1)
 
     this.rules = [
-      new PricingQuality(sa['Leman Russ (Demolisher)'].quality),
+      new PricingQuality(sa['Leman Russ Demolisher'].quality),
       new ReinforcedArmour(),
       new ThickRearArmour()
     ]
@@ -240,7 +247,7 @@ class SolarAuxiliaCloseSupportLemanRussDemolisher extends SolarAuxiliaLemanRussD
   constructor(detachment) {
     super(detachment)
 
-    this.cost = sa['Leman Russ (Demolisher)'].cost * 4
+    this.cost = sa['Leman Russ Demolisher'].cost * 4
     this.min = 4
     this.quantity = 4
   }
@@ -248,10 +255,10 @@ class SolarAuxiliaCloseSupportLemanRussDemolisher extends SolarAuxiliaLemanRussD
 
 class SolarAuxiliaLemanRussExterminator extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Leman Russ (Exterminator)'].cost, 1)
+    super(detachment, sa['Leman Russ Exterminator'].cost, 1)
 
     this.rules = [
-      new PricingQuality(sa['Leman Russ (Exterminator)'].quality),
+      new PricingQuality(sa['Leman Russ Exterminator'].quality),
       new ReinforcedArmour()
     ]
     this.stats = {
@@ -277,7 +284,7 @@ class SolarAuxiliaCloseSupportLemanRussExterminator extends SolarAuxiliaLemanRus
   constructor(detachment) {
     super(detachment)
 
-    this.cost = sa['Leman Russ (Exterminator)'].cost * 4
+    this.cost = sa['Leman Russ Exterminator'].cost * 4
     this.min = 4
     this.quantity = 4
   }
@@ -285,10 +292,10 @@ class SolarAuxiliaCloseSupportLemanRussExterminator extends SolarAuxiliaLemanRus
 
 class SolarAuxiliaLemanRussAnnihilator extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Leman Russ (Annihilator)'].cost, 1)
+    super(detachment, sa['Leman Russ Annihilator'].cost, 1)
 
     this.rules = [
-      new PricingQuality(sa['Leman Russ (Annihilator)'].quality),
+      new PricingQuality(sa['Leman Russ Annihilator'].quality),
       new ReinforcedArmour()
     ]
     this.stats = {
@@ -314,7 +321,7 @@ class SolarAuxiliaCloseSupportLemanRussAnnihilator extends SolarAuxiliaLemanRuss
   constructor(detachment) {
     super(detachment)
 
-    this.cost = sa['Leman Russ (Annihilator)'].cost * 4
+    this.cost = sa['Leman Russ Annihilator'].cost * 4
     this.min = 4
     this.quantity = 4
   }
@@ -322,10 +329,10 @@ class SolarAuxiliaCloseSupportLemanRussAnnihilator extends SolarAuxiliaLemanRuss
 
 class SolarAuxiliaLemanRussExecutioner extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Leman Russ (Executioner)'].cost, 1)
+    super(detachment, sa['Leman Russ Executioner'].cost, 1)
 
     this.rules = [
-      new PricingQuality(sa['Leman Russ (Executioner)'].quality),
+      new PricingQuality(sa['Leman Russ Executioner'].quality),
       new ReinforcedArmour(),
       new ThickRearArmour()
     ]
@@ -352,7 +359,7 @@ class SolarAuxiliaCloseSupportLemanRussExecutioner extends SolarAuxiliaLemanRuss
   constructor(detachment) {
     super(detachment)
 
-    this.cost = sa['Leman Russ (Executioner)'].cost * 4
+    this.cost = sa['Leman Russ Executioner'].cost * 4
     this.min = 4
     this.quantity = 4
   }
@@ -650,10 +657,10 @@ export class SolarAuxiliaArtilleryTankBatteryUnit extends MultipleChoiceUnit {
 
 export class SolarAuxiliaMalcador extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Malcador (battle cannon, demolisher, las.spon.)'].cost * 4, 4)
+    super(detachment, sa['Malcador Battle Tank'].cost * 4, 4)
 
     this.rules = [
-      new PricingQuality(sa['Malcador (battle cannon, demolisher, las.spon.)'].quality),
+      new PricingQuality(sa['Malcador Battle Tank'].quality),
       new ReinforcedArmour(),
       new ThickRearArmour()
     ]
@@ -924,10 +931,10 @@ export class SolarAuxiliaSuperHeavyTankSquadronUnit extends MultipleChoiceUnit {
 
 export class SolarAuxiliaTarantula extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Tarantula, Twin Lascannon'].cost * 4, 4)
+    super(detachment, sa['Tarantula'].cost * 4, 4)
 
     this.rules = [
-      new PricingQuality(sa['Tarantula, Twin Lascannon'].quality),
+      new PricingQuality(sa['Tarantula'].quality),
       new Scout(),
       new Teleport()
     ]
@@ -946,10 +953,10 @@ export class SolarAuxiliaTarantula extends Unit {
 
 export class SolarAuxiliaTarantulaHyperios extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Tarantula, Hyperios air-defence missile launcher'].cost * 4, 4)
+    super(detachment, sa['Tarantula'].cost * 4, 4)
 
     this.rules = [
-      new PricingQuality(sa['Tarantula, Hyperios air-defence missile launcher'].quality),
+      new PricingQuality(sa['Tarantula'].quality),
       new Scout(),
       new Teleport()
     ]

@@ -644,7 +644,7 @@ export class LegionMedusa extends LegionUnit {
 
 export class LegionPredator extends LegionUnit {
   constructor(detachment) {
-    const entry = la['Predator Annihilator']
+    const entry = la['Predator']
     super(detachment, entry.cost, 1)
 
     this.rules = rulesFromEntry(entry)
