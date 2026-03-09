@@ -145,6 +145,7 @@ function buildFirepower(w) {
     const parts = []
 
     if (fp.bp) parts.push(new BarragePoints(fp.bp))
+    if (fp.mw) parts.push(new MacroWeapon(fp.mw))
     if (fp.ap) parts.push(new AntiPersonnel(fp.ap))
     if (fp.at) parts.push(new AntiTank(fp.at))
     if (fp.aa) parts.push(new AntiAircraft(fp.aa))

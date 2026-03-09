@@ -1,7 +1,6 @@
 import {
   Weapon,
   AssaultWeapon,
-  Fleshbane,
   MacroWeapon,
   ExtraAttacks,
   SmallArms,
@@ -19,22 +18,16 @@ import {
   SingleShot,
   Or,
   FixedForwardFireArc,
-  RearFireArc,
-  Disrupt,
-  SlowFiring,
-  PointsModifier
+  Disrupt
 } from '../weapons'
 import {
   ReinforcedArmour,
   ThickRearArmour,
   InvulnerableSave,
   Scout,
-  Skimmer,
-  Commander,
   DamageCapacity,
   CriticalHit,
   SupremeCommander,
-  Planetfall,
   SlowAndSteady,
   Teleport,
   PricingQuality
@@ -75,23 +68,13 @@ export class SolarAuxiliaLordMarshall extends Unit {
 
 export class SolarAuxiliaTacticalCommandSection extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Tactical Command Unit'].cost, 1)
+    const entry = sa['Tactical Command Unit']
+    super(detachment, entry.cost, 1)
 
     this.transportCost = 1
-    this.rules = [
-      new PricingQuality(sa['Tactical Command Unit'].quality),
-      new Commander()
-    ]
-    this.stats = {
-      type: 'INF',
-      speed: 15,
-      armour: 5,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('plasma-guns', new SmallArms('15cm', new AntiPersonnel('5+'), new AntiTank('5+')))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -134,46 +117,25 @@ export class SolarAuxiliaVeletarisSupportSquad extends SolarAuxiliaVeletarisStor
 
 export class SolarAuxiliaCloseSupportSection extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Infantry with flamers'].cost * 4, 4)
+    const entry = sa['Infantry with flamers']
+    super(detachment, entry.cost * 4, 4)
 
     this.transportCost = 1
-    this.rules = [
-      new PricingQuality(sa['Infantry with flamers'].quality)
-    ]
-    this.stats = {
-      type: 'INF',
-      speed: 15,
-      armour: 5,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('flamers',
-        new RangedWeapon('15cm', new AntiPersonnel('5+'), new IgnoreCover()),
-        new SmallArms('15cm', new IgnoreCover())
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class SolarAuxiliaInfantrySection extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Infantry Section'].cost * 7, 7)
+    const entry = sa['Infantry Section']
+    super(detachment, entry.cost * 7, 7)
 
     this.transportCost = 1
-    this.rules = [
-      new PricingQuality(sa['Infantry Section'].quality)
-    ]
-    this.stats = {
-      type: 'INF',
-      speed: 15,
-      armour: 5,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('las-rifles', new SmallArms('15cm'))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -185,61 +147,17 @@ export class SolarAuxiliaLemanRuss extends Unit {
     this.rules = rulesFromEntry(entry)
     this.stats = statsFromEntry(entry)
     this.weapons = weaponsFromEntry(entry)
-
-    // this.rules = [
-    //   new PricingQuality(sa['Leman Russ (Battle cannon)'].quality),
-    //   new ReinforcedArmour()
-    // ]
-    // this.stats = {
-    //   type: 'AV',
-    //   speed: 25,
-    //   armour: 4,
-    //   cc: 6,
-    //   ff: 5
-    // }
-    // this.weapons = [
-    //   new MultipleChoiceWeapon(
-    //     new Weapon('vanquisher-cannon', new RangedWeapon('75cm', new AntiPersonnel('6+'), new AntiTank('3+'))),
-    //     new Weapon('battle-cannon', new RangedWeapon('75cm', new AntiPersonnel('4+'), new AntiTank('4+')))
-    //   ),
-    //   new MultipleChoiceWeapon(
-    //     new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
-    //     new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
-    //       ff: -1
-    //     })))
-    //   )
-    // ]
   }
 }
 
 class SolarAuxiliaLemanRussDemolisher extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Leman Russ Demolisher'].cost, 1)
+    const entry = sa['Leman Russ Demolisher']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(sa['Leman Russ Demolisher'].quality),
-      new ReinforcedArmour(),
-      new ThickRearArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 25,
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('demolisher-cannon',
-        new RangedWeapon('30cm', new AntiPersonnel('3+'), new AntiTank('4+'), new IgnoreCover(), new Disrupt()),
-        new SmallArms('15cm', new IgnoreCover())
-      ),
-      new MultipleChoiceWeapon(
-        new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
-        new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
-          ff: -1
-        })))
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -255,28 +173,12 @@ class SolarAuxiliaCloseSupportLemanRussDemolisher extends SolarAuxiliaLemanRussD
 
 class SolarAuxiliaLemanRussExterminator extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Leman Russ Exterminator'].cost, 1)
+    const entry = sa['Leman Russ Exterminator']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(sa['Leman Russ Exterminator'].quality),
-      new ReinforcedArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 25,
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('twin-linked-autocannon', new RangedWeapon('45cm', new AntiPersonnel('4+'), new AntiTank('5+'))),
-      new MultipleChoiceWeapon(
-        new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
-        new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
-          ff: -1
-        })))
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -292,28 +194,12 @@ class SolarAuxiliaCloseSupportLemanRussExterminator extends SolarAuxiliaLemanRus
 
 class SolarAuxiliaLemanRussAnnihilator extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Leman Russ Annihilator'].cost, 1)
+    const entry = sa['Leman Russ Annihilator']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(sa['Leman Russ Annihilator'].quality),
-      new ReinforcedArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 25,
-      armour: 4,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('5+')))),
-      new MultipleChoiceWeapon(
-        new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
-        new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
-          ff: -1
-        })))
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -329,29 +215,12 @@ class SolarAuxiliaCloseSupportLemanRussAnnihilator extends SolarAuxiliaLemanRuss
 
 class SolarAuxiliaLemanRussExecutioner extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Leman Russ Executioner'].cost, 1)
+    const entry = sa['Leman Russ Executioner']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(sa['Leman Russ Executioner'].quality),
-      new ReinforcedArmour(),
-      new ThickRearArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 20,
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('plasma-cannon', new RangedWeapon('30cm', new AntiPersonnel('4+'), new AntiTank('4+'), new Fleshbane())),
-      new MultipleChoiceWeapon(
-        new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
-        new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
-          ff: -1
-        })))
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -388,91 +257,48 @@ export class SolarAuxiliaInfantrySupportTankUnit extends MultipleChoiceUnit {
 
 export class SolarAuxiliaValdor extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Malcador Valdor'].cost * 3, 3)
+    const entry = sa['Malcador Valdor']
+    super(detachment, entry.cost * 3, 3)
 
-    this.rules = [
-      new PricingQuality(sa['Malcador Valdor'].quality),
-      new ReinforcedArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 20,
-      armour: 4,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('neutron-beam-laser', new RangedWeapon('45cm', new MacroWeapon('3+'), new Disrupt())),
-      new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+')))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class SolarAuxiliaOgrynCharoniteSquad extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Ogryn Charonite Squad'].cost * 2, 2)
+    const entry = sa['Ogryn Charonite Squad']
+    super(detachment, entry.cost * 2, 2)
 
     this.transportCost = 2
-    this.rules = [
-      new PricingQuality(sa['Ogryn Charonite Squad'].quality)
-    ]
-    this.stats = {
-      type: 'INF',
-      speed: 15,
-      armour: 3,
-      cc: 3,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('charonite-claws', new AssaultWeapon(new MacroWeapon(), new ExtraAttacks('+1')))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class SolarAuxiliaArvusLighter extends InfantryTransportUnit {
   constructor(detachment) {
-    super(detachment, sa['Arvus Lighter'].cost)
+    const entry = sa['Arvus Lighter']
+    super(detachment, entry.cost)
 
     this.transportCapacity = 2
-    this.rules = [
-      new PricingQuality(sa['Arvus Lighter'].quality),
-      new Skimmer(),
-      new Planetfall()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 30,
-      armour: 5,
-      cc: 7,
-      ff: 6
-    }
-    this.weapons = [
-      new Weapon('multi-laser', new SmallArms('15cm'))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class SolarAuxiliaDracosan extends InfantryTransportUnit {
   constructor(detachment) {
-    super(detachment, sa['Dracosan with las cannon'].cost)
+    const entry = sa['Dracosan with las cannon']
+    super(detachment, entry.cost)
 
-    this.transportCapacity = 4
-    this.rules = [
-      new PricingQuality(sa['Dracosan with las cannon'].quality),
-      new DamageCapacity(2),
-      new ReinforcedArmour(),
-      new CriticalHit('solar-auxilia-dracosan-critical-hit')
-    ]
-    this.stats = {
-      type: 'WE',
-      speed: 20,
-      armour: 4,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new AntiTank('4+')))
-    ]
+    this.transportCapacity = 5
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -583,25 +409,12 @@ export class SolarAuxiliaOrbitalSupportUnit extends MultipleChoiceUnit {
 
 export class SolarAuxiliaMedusa extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Medusa'].cost * 3, 3)
+    const entry = sa['Medusa']
+    super(detachment, entry.cost * 3, 3)
 
-    this.rules = [
-      new PricingQuality(sa['Medusa'].quality)
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 20,
-      armour: 5,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('medusa-siege-cannon',
-        new RangedWeapon('30cm', new MacroWeapon('4+'), new IgnoreCover()),
-        new SmallArms('15cm', new MacroWeapon(), new IgnoreCover())
-      ),
-      new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+')))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -657,201 +470,78 @@ export class SolarAuxiliaArtilleryTankBatteryUnit extends MultipleChoiceUnit {
 
 export class SolarAuxiliaMalcador extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Malcador Battle Tank'].cost * 4, 4)
+    const entry = sa['Malcador Battle Tank']
+    super(detachment, entry.cost * 4, 4)
 
-    this.rules = [
-      new PricingQuality(sa['Malcador Battle Tank'].quality),
-      new ReinforcedArmour(),
-      new ThickRearArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 15,
-      armour: 4,
-      cc: 6,
-      ff: 6
-    }
-    //TODO: PointsModifier don't seem to work
-    this.weapons = [
-      new MultipleChoiceWeapon(
-        new Weapon('battle-cannon', new RangedWeapon('75cm', new AntiPersonnel('4+'), new AntiTank('4+'), new FixedForwardFireArc())),
-        new Weapon('vanquisher-cannon', new RangedWeapon('75cm', new AntiPersonnel('6+'), new AntiTank('3+'), new FixedForwardFireArc())),
-        new Weapon('twin-linked-lascannon', new RangedWeapon('45cm', new MultipleShot('2x', new AntiTank('5+'), new FixedForwardFireArc())))
-      ),
-      new MultipleChoiceWeapon(
-        new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc(), new StatsModifier({
-          ff: -1
-        }))),
-        new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'), new FixedForwardFireArc())),
-        new Weapon('demolisher-cannon',
-          new PointsModifier(30 * 4),
-          new RangedWeapon('30cm', new AntiPersonnel('3+'), new AntiTank('4+'), new IgnoreCover(), new Disrupt(), new FixedForwardFireArc()),
-          new SmallArms('15cm', new IgnoreCover()),
-          new StatsModifier({
-            ff: -1
-          })
-        )
-      ),
-      new MultipleChoiceWeapon(
-        new Weapon('sponson-autocannons', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('6+'))),
-        new Weapon('sponson-heavy-bolters', new RangedWeapon('30m', new AntiPersonnel('5+')), new StatsModifier({ ff: -1 })),
-        new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+')))
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 class SolarAuxiliaMalcadorInfernus extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Malcador Infernus'].cost, 1)
+    const entry = sa['Malcador Infernus']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(sa['Malcador Infernus'].quality),
-      new ReinforcedArmour(),
-      new ThickRearArmour()
-    ]
-    this.stats = {
-      type: 'AV',
-      speed: 20,
-      armour: 4,
-      cc: 6,
-      ff: 3
-    }
-    this.weapons = [
-      new Weapon('infernus-cannon', new RangedWeapon('30cm', new AntiPersonnel('3+'))),
-      new Weapon('sponson-autocannons', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('6+')))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 class SolarAuxiliaBaneblade extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Baneblade'].cost, 1)
+    const entry = sa['Baneblade']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(sa['Baneblade'].quality),
-      new ReinforcedArmour(),
-      new DamageCapacity(3),
-      new CriticalHit('solar-auxilia-baneblade-critical-hit')
-    ]
-    this.stats = {
-      type: 'WE',
-      speed: 15,
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('baneblade-cannon', new RangedWeapon('75cm', new AntiPersonnel('3+'), new AntiTank('3+'))),
-      new Weapon('3-twin-linked-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('4+'))),
-      new Weapon('autocannon', new RangedWeapon('45cm', new AntiPersonnel('5+'), new AntiTank('6+'))),
-      new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('5+'))),
-      new Weapon('demolisher-cannon',
-        new RangedWeapon('30cm', new AntiPersonnel('3+'), new AntiTank('4+'), new IgnoreCover(), new FixedForwardFireArc()),
-        new SmallArms('15cm', new IgnoreCover(), new FixedForwardFireArc())
-      )
-    ]
+    this.rules = [...rulesFromEntry(entry), new CriticalHit('solar-auxilia-baneblade-critical-hit')]
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 class SolarAuxiliaShadowsword extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Shadowsword'].cost, 1)
+    const entry = sa['Shadowsword']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(sa['Shadowsword'].quality),
-      new ReinforcedArmour(),
-      new DamageCapacity(3),
-      new CriticalHit('solar-auxilia-shadowsword-critical-hit')
-    ]
-    this.stats = {
-      type: 'WE',
-      speed: 15,
-      armour: 4,
-      cc: 6,
-      ff: 6
-    }
-    this.weapons = [
-      new Weapon('volcano-cannon', new RangedWeapon('90cm', new MacroWeapon('2+'), new TitanKiller('D3'), new FixedForwardFireArc())),
-      new Weapon('2-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('5+')))
-    ]
+    this.rules = [...rulesFromEntry(entry), new CriticalHit('solar-auxilia-shadowsword-critical-hit')]
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 class SolarAuxiliaStormblade extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Stromblade'].cost, 1)
+    const entry = sa['Stromblade']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(sa['Stromblade'].quality),
-      new ReinforcedArmour(),
-      new DamageCapacity(3),
-      new CriticalHit('solar-auxilia-stormblade-critical-hit')
-    ]
-    this.stats = {
-      type: 'WE',
-      speed: 15,
-      armour: 4,
-      cc: 6,
-      ff: 6
-    }
-    this.weapons = [
-      new Weapon('plasma-blastgun', new RangedWeapon('45cm', new MultipleShot('2x', new MacroWeapon('2+'), new SlowFiring(), new FixedForwardFireArc()))),
-      new Weapon('2-twin-linked-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('4+'))),
-      new Weapon('sponson-lascannons', new RangedWeapon('45cm', new AntiTank('4+'))),
-      new Weapon('heavy-bolter', new RangedWeapon('30cm', new AntiPersonnel('5+'), new FixedForwardFireArc()))
-    ]
+    this.rules = [...rulesFromEntry(entry), new CriticalHit('solar-auxilia-stormblade-critical-hit')]
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 class SolarAuxiliaStormhammer extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Stormhammer'].cost, 1)
+    const entry = sa['Stormhammer']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(sa['Stormhammer'].quality),
-      new ReinforcedArmour(),
-      new DamageCapacity(3),
-      new CriticalHit('solar-auxilia-stormhammer-critical-hit')
-    ]
-    this.stats = {
-      type: 'WE',
-      speed: 15,
-      armour: 4,
-      cc: 6,
-      ff: 4
-    }
-    this.weapons = [
-      new Weapon('stormhammer-cannon', new RangedWeapon('60cm', new AntiPersonnel('3+'), new AntiTank('3+'))),
-      new Weapon('6-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('5+'))),
-      new Weapon('lascannon', new RangedWeapon('45cm', new AntiTank('5+'))),
-      new Weapon('2-battlecannon', new RangedWeapon('75cm', new AntiPersonnel('3+'), new AntiTank('4+'), new FixedForwardFireArc()))
-    ]
+    this.rules = [...rulesFromEntry(entry), new CriticalHit('solar-auxilia-stormhammer-critical-hit')]
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 class SolarAuxiliaStormsword extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Stormsword'].cost, 1)
+    const entry = sa['Stormsword']
+    super(detachment, entry.cost, 1)
 
-    this.rules = [
-      new PricingQuality(sa['Stormsword'].quality),
-      new DamageCapacity(2),
-      new ReinforcedArmour(),
-      new CriticalHit('solar-auxilia-stormsword-critical-hit')
-    ]
-    this.stats = {
-      type: 'WE',
-      speed: 15,
-      armour: 4,
-      cc: 6,
-      ff: 5
-    }
-    this.weapons = [
-      new Weapon('stormsword-siege-cannon', new RangedWeapon('30cm', new BarragePoints(3), new Disrupt(), new IgnoreCover())),
-      new Weapon('2-twin-linked-heavy-bolters', new RangedWeapon('30cm', new AntiPersonnel('4+')))
-
-    ]
+    this.rules = [...rulesFromEntry(entry), new CriticalHit('solar-auxilia-stormsword-critical-hit')]
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -975,23 +665,15 @@ export class SolarAuxiliaTarantulaHyperios extends Unit {
 
 export class SolarAuxiliaAvengerStrikeFighter extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Avenger Strike Fighter'].cost * 2, 2)
+    const entry = sa['Avenger Strike Fighter']
+    super(detachment, entry.cost * 2, 2)
 
-    this.rules = [
-      new PricingQuality(sa['Avenger Strike Fighter'].quality)
-    ]
-    this.stats = {
-      type: 'AC',
-      speed: 'fighter-bomber',
-      armour: 5,
-      cc: 7,
-      ff: 7
-    }
-    this.weapons = [
-      new Weapon('avenger-cannon', new RangedWeapon('30cm', new MultipleShot('2x', new AntiPersonnel('4+'), new AntiTank('2+')), new FixedForwardFireArc())),
-      new Weapon('sponson-lascannons', new RangedWeapon('30cm', new AntiTank('5+'), new AntiAircraft('5+'), new FixedForwardFireArc())),
-      new Weapon('heavy-stubber', new RangedWeapon('30cm', new AntiAircraft('6+'), new RearFireArc()))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.stats.speed = 'fighter-bomber'
+    this.stats.cc = 7
+    this.stats.ff = 7
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
@@ -1019,45 +701,29 @@ export class SolarAuxiliaPrimarisStrikeFighter extends Unit {
 
 export class SolarAuxiliaThunderboltFighter extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Thunderbolt'].cost * 2, 2)
+    const entry = sa['Thunderbolt']
+    super(detachment, entry.cost * 2, 2)
 
-    this.rules = [
-      new PricingQuality(sa['Thunderbolt'].quality)
-    ]
-    this.stats = {
-      type: 'AC',
-      speed: 'fighter',
-      armour: 6,
-      cc: 7,
-      ff: 7,
-    }
-    this.weapons = [
-      new Weapon('multilaser', new RangedWeapon('30cm', new AntiTank('6+'), new AntiPersonnel('5+'), new AntiAircraft('5+'), new FixedForwardFireArc())),
-      new Weapon('rockers', new RangedWeapon('30cm', new AntiTank('4+'), new FixedForwardFireArc())),
-      new Weapon('storm-bolters', new RangedWeapon('15cm', new AntiPersonnel('4+'), new AntiAircraft('5+'), new FixedForwardFireArc()))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.stats.speed = 'fighter'
+    this.stats.cc = 7
+    this.stats.ff = 7
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
 export class SolarAuxiliaMarauderBomber extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Marauder Bomber'].cost * 2, 2)
+    const entry = sa['Marauder Bomber']
+    super(detachment, entry.cost * 2, 2)
 
-    this.rules = [
-      new PricingQuality(sa['Marauder Bomber'].quality)
-    ]
-    this.stats = {
-      type: 'AC',
-      speed: 'bomber',
-      armour: 4,
-      cc: 7,
-      ff: 7,
-    }
-    this.weapons = [
-      new Weapon('twin-lascannon', new RangedWeapon('45cm', new AntiTank('4+'), new AntiAircraft('4+'), new FixedForwardFireArc())),
-      new Weapon('bomb-rack', new RangedWeapon('15cm', new BarragePoints(3), new FixedForwardFireArc())),
-      new Weapon('twin-heavy-bolter', new RangedWeapon('15cm', new AntiAircraft('5+')))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.stats.speed = 'bomber'
+    this.stats.cc = 7
+    this.stats.ff = 7
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
