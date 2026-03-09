@@ -80,28 +80,13 @@ export class SolarAuxiliaTacticalCommandSection extends Unit {
 
 export class SolarAuxiliaVeletarisStormSection extends Unit {
   constructor(detachment) {
-    super(detachment, sa['Veletaris Storm Section'].cost * 7, 7)
+    const entry = sa['Veletaris Storm Section']
+    super(detachment, entry.cost * 7, 7)
 
     this.transportCost = 1
-    this.rules = [
-      new PricingQuality(sa['Veletaris Storm Section'].quality)
-    ]
-    this.stats = {
-      type: 'INF',
-      speed: 15,
-      armour: 5,
-      cc: 5,
-      ff: 4
-    }
-    this.weapons = [
-      new MultipleChoiceWeapon(
-        new Weapon('volkite-chargers', new SmallArms('15cm', new AntiPersonnel('5+'), new AntiTank('6+'))),
-        new Weapon('power-axes', new StatsModifier({
-          cc: -1,
-          ff: 2
-        }), new AssaultWeapon(new MacroWeapon()))
-      )
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
