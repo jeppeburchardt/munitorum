@@ -55,39 +55,18 @@
                 "type": "INF",
                 "speed": "15cm",
                 "armour": 5,
-                "cc": 5,
-                "ff": 4,
+                "cc": 4,
+                "ff": 6,
                 "traits": []
             },
             "weapons": [
                 {
-                    "name": "Volkite Chargers | Power Axes",
-                    "options": [
-                        {
-                            "name": "Volkite Chargers",
-                            "type": "Small Arms",
-                            "range": "(15cm)",
-                            "firepower": {
-                                "ap": "5+",
-                                "at": "6+"
-                            },
-                            "traits": [],
-                            "cost_delta": 0
-                        },
-                        {
-                            "name": "Power Axes",
-                            "type": "Assault Weapons",
-                            "range": "(bc)",
-                            "traits": [
-                                "Macro-Weapon",
-                                "Extra Attack +1"
-                            ],
-                            "unit_stat_modifiers": {
-                                "cc": -1,
-                                "ff": 2
-                            },
-                            "cost_delta": 0
-                        }
+                    "name": "Power Axes",
+                    "type": "Assault Weapons",
+                    "range": "(bc)",
+                    "traits": [
+                        "Macro-Weapon",
+                        "Extra Attack +1"
                     ]
                 }
             ]
