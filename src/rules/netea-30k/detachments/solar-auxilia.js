@@ -21,6 +21,7 @@ import {
   SolarAuxiliaSuperHeavyTankUnit,
   SolarAuxiliaSuperHeavyTankSquadronUnit,
   SolarAuxiliaCloseSupportTankUnit,
+  SolarAuxiliaStrikeSquadronUnit,
   SolarAuxiliaValdor,
   SolarAuxiliaTarantula,
   SolarAuxiliaTarantulaHyperios,
@@ -112,7 +113,7 @@ export class SolarAuxiliaStrikeCompany extends SolarAuxiliaDetachment {
     super(list)
 
     this.setMandatoryUnits(
-      new SolarAuxiliaLemanRuss(this)
+      new SolarAuxiliaStrikeSquadronUnit(this)
     )
   }
 }

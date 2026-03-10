@@ -135,6 +135,17 @@ export class SolarAuxiliaLemanRuss extends Unit {
   }
 }
 
+export class SolarAuxiliaLemanRussVanquisher extends Unit {
+  constructor(detachment) {
+    const entry = sa['Leman Russ Vanquisher']
+    super(detachment, entry.cost, 6, 8)
+
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
+  }
+}
+
 class SolarAuxiliaLemanRussDemolisher extends Unit {
   constructor(detachment) {
     const entry = sa['Leman Russ Demolisher']
@@ -230,6 +241,14 @@ export class SolarAuxiliaCloseSupportTankUnit extends MultipleChoiceUnit {
   }
 }
 
+export class SolarAuxiliaStrikeSquadronUnit extends MultipleChoiceUnit {
+  constructor(detachment) {
+    super(detachment,
+      new SolarAuxiliaLemanRuss(detachment),
+      new SolarAuxiliaLemanRussVanquisher(detachment)
+    )
+  }
+}
 
 export class SolarAuxiliaInfantrySupportTankUnit extends MultipleChoiceUnit {
   constructor(detachment) {
@@ -718,11 +737,13 @@ withType(SolarAuxiliaVeletarisStormSection)
 withType(SolarAuxiliaInfantrySection)
 withType(SolarAuxiliaInfantrySupportTankUnit)
 withType(SolarAuxiliaLemanRuss)
+withType(SolarAuxiliaLemanRussVanquisher)
 withType(SolarAuxiliaLemanRussDemolisher)
 withType(SolarAuxiliaLemanRussExterminator)
 withType(SolarAuxiliaLemanRussExecutioner)
 withType(SolarAuxiliaLemanRussAnnihilator)
 withType(SolarAuxiliaCloseSupportTankUnit)
+withType(SolarAuxiliaStrikeSquadronUnit)
 withType(SolarAuxiliaMalcador)
 withType(SolarAuxiliaMalcadorInfernus)
 withType(SolarAuxiliaOgrynCharoniteSquad)
