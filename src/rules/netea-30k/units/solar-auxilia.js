@@ -565,9 +565,9 @@ class SolarAuxiliaBanebladeSquadronUnit extends SolarAuxiliaBaneblade {
   constructor(detachment) {
     super(detachment)
 
-    this.cost = sa['Baneblade'].cost * 3
-    this.min = 3
-    this.quantity = 3
+    this.cost = sa['Baneblade'].cost * 2
+    this.min = 2
+    this.quantity = 2
   }
 }
 
@@ -575,9 +575,9 @@ class SolarAuxiliaShadowswordSquadronUnit extends SolarAuxiliaShadowsword {
   constructor(detachment) {
     super(detachment)
 
-    this.cost = sa['Shadowsword'].cost * 3
-    this.min = 3
-    this.quantity = 3
+    this.cost = sa['Shadowsword'].cost * 2
+    this.min = 2
+    this.quantity = 2
   }
 }
 
@@ -585,9 +585,9 @@ class SolarAuxiliaStormbladeSquadronUnit extends SolarAuxiliaStormblade {
   constructor(detachment) {
     super(detachment)
 
-    this.cost = sa['Stromblade'].cost * 3
-    this.min = 3
-    this.quantity = 3
+    this.cost = sa['Stromblade'].cost * 2
+    this.min = 2
+    this.quantity = 2
   }
 }
 
@@ -595,9 +595,9 @@ class SolarAuxiliaStormhammerSquadronUnit extends SolarAuxiliaStormhammer {
   constructor(detachment) {
     super(detachment)
 
-    this.cost = sa['Stormhammer'].cost * 3
-    this.min = 3
-    this.quantity = 3
+    this.cost = sa['Stormhammer'].cost * 2
+    this.min = 2
+    this.quantity = 2
   }
 }
 
@@ -605,9 +605,9 @@ class SolarAuxiliaStormswordSquadronUnit extends SolarAuxiliaStormsword {
   constructor(detachment) {
     super(detachment)
 
-    this.cost = sa['Stormsword'].cost * 3
-    this.min = 3
-    this.quantity = 3
+    this.cost = sa['Stormsword'].cost * 2
+    this.min = 2
+    this.quantity = 2
   }
 }
 
