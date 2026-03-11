@@ -694,23 +694,15 @@ export class SolarAuxiliaAvengerStrikeFighter extends Unit {
 
 export class SolarAuxiliaPrimarisStrikeFighter extends Unit {
   constructor(detachment) {
-    super(detachment, 225, 2)
+    const entry = sa['Lightning Fighter']
+    super(detachment, entry.cost * 2, 2)
 
-    this.rules = [
-      new PricingQuality('Legacy')
-    ]
-    this.stats = {
-      type: 'AC',
-      speed: 'fighter',
-      armour: 6,
-      cc: 7,
-      ff: 7
-    }
-    this.weapons = [
-      new Weapon('kraken-heavy-missiles', new RangedWeapon('30cm', new AntiTank('4+'), new SingleShot(), new FixedForwardFireArc())),
-      new Weapon('sponson-lascannons', new RangedWeapon('30cm', new AntiTank('5+'), new AntiAircraft('5+'), new FixedForwardFireArc())),
-      new Weapon('sponson-autocannons', new RangedWeapon('30cm', new AntiPersonnel('5+'), new AntiTank('6+'), new AntiAircraft('5+'), new FixedForwardFireArc()))
-    ]
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.stats.speed = 'fighter'
+    this.stats.cc = 7
+    this.stats.ff = 7
+    this.weapons = weaponsFromEntry(entry)
   }
 }
 
