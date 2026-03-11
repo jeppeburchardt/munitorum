@@ -1099,6 +1099,61 @@ export class LegionTarantula extends Unit {
   }
 }
 
+export class LegionAscalon extends LegionUnit {
+  constructor(detachment) {
+    const entry = la['Ascalon Super Heavy Tank']
+    super(detachment, entry.cost, 1)
+
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
+  }
+}
+
+export class LegionFalchion extends LegionUnit {
+  constructor(detachment) {
+    const entry = la['Falchion Super Heavy Tank Destroyer']
+    super(detachment, entry.cost, 1)
+
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
+  }
+}
+
+export class LegionFellblade extends LegionUnit {
+  constructor(detachment) {
+    const entry = la['Fellblade Super Heavy Tank']
+    super(detachment, entry.cost, 1)
+
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
+  }
+}
+
+export class LegionGlaive extends LegionUnit {
+  constructor(detachment) {
+    const entry = la['Glaive Super Heavy Tank']
+    super(detachment, entry.cost, 1)
+
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
+  }
+}
+
+export class LegionSuperHeavySupportTankUnit extends MultipleChoiceUnit {
+  constructor(detachment) {
+    super(detachment,
+      new LegionAscalon(detachment),
+      new LegionFalchion(detachment),
+      new LegionFellblade(detachment),
+      new LegionGlaive(detachment)
+    )
+  }
+}
+
 withType(LegionArtilleryUnit)
 withType(LegionAssaultSquad)
 withType(LegionAssaultSupportSquad)
@@ -1163,3 +1218,8 @@ withType(LegionArquitorBombard)
 withType(LegionSabreStrikeTank)
 withType(LgeionKratosTank)
 withType(LegionTarantula)
+withType(LegionAscalon)
+withType(LegionFalchion)
+withType(LegionFellblade)
+withType(LegionGlaive)
+withType(LegionSuperHeavySupportTankUnit)
