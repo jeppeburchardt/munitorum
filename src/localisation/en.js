@@ -7,8 +7,8 @@ export default {
     'imperious-dominatus': 'Imperious Dominatus',
     'imperious-dominatus-description': 'Warfare in the Age of Horus',
 
-    'netea-30k': 'Epic 30K', 
-    'netea-30k-description': 'Army lists for Net Epic Armageddon aligned with the latest epic scale releases', 
+    'netea-30k': 'Epic 30K',
+    'netea-30k-description': 'Army lists for Net Epic Armageddon aligned with the latest epic scale releases',
 
     'netea-epicau-horus-heresy': 'EpicAU Horus Heresy',
     'netea-epicau-horus-heresy-description': 'Horus Heresy supplement for Net Epic Armageddon developed by the EpicAU community',
@@ -147,6 +147,7 @@ export default {
     'legion-fellblade-detachment': 'Fellblade Detachment',
     'legion-gunship': 'Fire Raptor Gunship',
     'legion-glaive': 'Glaive Super Heavy Tank',
+    'legion-ascalon': 'Ascalon Super Heavy Tank',
     'legion-glaive-detachment': 'Glaive Detachment',
     'legion-gunship-wing': 'Gunship Wing',
     'legion-heavy-support-squad': 'Heavy Support Squad',
@@ -250,8 +251,8 @@ export default {
     'legion-breacher-centurion-squad': 'Centurion Breacher Squad',
     'legion-breacher-decurion-squad': 'Decurion Breacher Squad',
     'legion-breacher-veteran-squad': 'Veteran Breacher Squad',
-    'legion-kratos-detachment':'Kratos Heavy Tank Detachmenet',
-    'lgeion-kratos-tank':'Kratos Heavy Tank',
+    'legion-kratos-detachment': 'Kratos Heavy Tank Detachmenet',
+    'lgeion-kratos-tank': 'Kratos Heavy Tank',
     'legion-tarantula-battery': 'Tarantula Battery',
     'legion-tarantula': 'Tarantula',
 

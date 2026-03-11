@@ -29,7 +29,7 @@ import {
   LegionSabreStrikeTank,
   LgeionKratosTank,
   LegionTarantula,
-  LegionSuperHeavySupportTankUnit
+  LegionSuperHeavyTankUnit
 } from '../units/space-marine-legion'
 import {
   Upgrade,
@@ -56,7 +56,7 @@ import SpaceMarineLegionDetachment from './space-marine-legion-detachment'
 import withType from '../with-type'
 
 export class LegionArtilleryBattery extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -72,7 +72,7 @@ export class LegionArtilleryBattery extends SpaceMarineLegionDetachment {
 }
 
 export class LegionAssaultDetachment extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -91,7 +91,7 @@ export class LegionAssaultDetachment extends SpaceMarineLegionDetachment {
 }
 
 export class LegionAssaultSupportDetachment extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -109,7 +109,7 @@ export class LegionAssaultSupportDetachment extends SpaceMarineLegionDetachment 
 }
 
 class ContemptorDreadnoughtUpgrade extends Upgrade {
-  getAvailableUpgrades (detachment) {
+  getAvailableUpgrades(detachment) {
     if (detachment.units.filter(item => item.type === LegionContemptorDreadnought.type || item.type === LegionContemptorDreadnoughtTalonUnit.type).length === 6) {
       return []
     }
@@ -121,7 +121,7 @@ class ContemptorDreadnoughtUpgrade extends Upgrade {
 }
 
 export class LegionContemptorDreadnoughtTalon extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -143,7 +143,7 @@ export class LegionContemptorDreadnoughtTalon extends SpaceMarineLegionDetachmen
 }
 
 export class LegionGunshipWing extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -153,7 +153,7 @@ export class LegionGunshipWing extends SpaceMarineLegionDetachment {
 }
 
 export class LegionInterceptorAttackWing extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -163,7 +163,7 @@ export class LegionInterceptorAttackWing extends SpaceMarineLegionDetachment {
 }
 
 export class LegionJavelinAttackSpeederSquadron extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -181,7 +181,7 @@ export class LegionJavelinAttackSpeederSquadron extends SpaceMarineLegionDetachm
 }
 
 class LegionLandRaiderProteusSquadronUpgrade extends Upgrade {
-  getAvailableUpgrades (detachment) {
+  getAvailableUpgrades(detachment) {
     if (detachment.units.filter(item => item.type === LegionLandRaiderProteusSquadronUnit.type || item.type === LegionLandRaiderProteus.type).length === 6) {
       return []
     }
@@ -193,7 +193,7 @@ class LegionLandRaiderProteusSquadronUpgrade extends Upgrade {
 }
 
 export class LegionLandRaiderProteusSquadron extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -213,7 +213,7 @@ export class LegionLandRaiderProteusSquadron extends SpaceMarineLegionDetachment
 }
 
 export class LegionLandSpeederSquadron extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -231,7 +231,7 @@ export class LegionLandSpeederSquadron extends SpaceMarineLegionDetachment {
 }
 
 export class LegionLeviathanDreadnoughtTalon extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -252,7 +252,7 @@ export class LegionLeviathanDreadnoughtTalon extends SpaceMarineLegionDetachment
 }
 
 export class LegionOutriderSquadron extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -267,7 +267,7 @@ export class LegionOutriderSquadron extends SpaceMarineLegionDetachment {
 }
 
 class PredatorUpgrade extends Upgrade {
-  getAvailableUpgrades (detachment) {
+  getAvailableUpgrades(detachment) {
     if (detachment.units.length === 6) {
       return []
     }
@@ -279,7 +279,7 @@ class PredatorUpgrade extends Upgrade {
 }
 
 export class LegionPredatorStrikeSquadron extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -299,7 +299,7 @@ export class LegionPredatorStrikeSquadron extends SpaceMarineLegionDetachment {
 }
 
 export class LegionRapierWeaponsBattery extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -319,7 +319,7 @@ export class LegionRapierWeaponsBattery extends SpaceMarineLegionDetachment {
 }
 
 class LegionSicaranBattleTankSquadronUnitUpgrade extends Upgrade {
-  getAvailableUpgrades (detachment) {
+  getAvailableUpgrades(detachment) {
     if (detachment.units.filter(item => item.type === LegionSicaranBattleTankSquadronUnit.type).length === 6) {
       return []
     }
@@ -331,7 +331,7 @@ class LegionSicaranBattleTankSquadronUnitUpgrade extends Upgrade {
 }
 
 export class LegionSicaranBattleTankSquadron extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -351,7 +351,7 @@ export class LegionSicaranBattleTankSquadron extends SpaceMarineLegionDetachment
 }
 
 export class LegionSkyHunterAttackSquadron extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -366,7 +366,7 @@ export class LegionSkyHunterAttackSquadron extends SpaceMarineLegionDetachment {
 }
 
 export class LegionSpacecraft extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -376,7 +376,7 @@ export class LegionSpacecraft extends SpaceMarineLegionDetachment {
 }
 
 export class LegionStormEagleAttackWing extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -386,7 +386,7 @@ export class LegionStormEagleAttackWing extends SpaceMarineLegionDetachment {
 }
 
 export class LegionSuperHeavyTankBattery extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -396,7 +396,7 @@ export class LegionSuperHeavyTankBattery extends SpaceMarineLegionDetachment {
 }
 
 export class LegionTacticalDetachment extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -426,7 +426,7 @@ export class LegionTacticalDetachment extends SpaceMarineLegionDetachment {
 }
 
 export class LegionTerminatorDetachment extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -452,7 +452,7 @@ export class LegionTerminatorDetachment extends SpaceMarineLegionDetachment {
 }
 
 export class LegionThunderhawkGunshipWing extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -462,7 +462,7 @@ export class LegionThunderhawkGunshipWing extends SpaceMarineLegionDetachment {
 }
 
 export class LegionVindicatorSquadron extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -483,7 +483,7 @@ export class LegionVindicatorSquadron extends SpaceMarineLegionDetachment {
 }
 
 export class LegionSabreStrikeSquadron extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -514,7 +514,7 @@ export class LegionKratosDetachment extends SpaceMarineLegionDetachment {
 }
 
 export class LegionTarantulaBattery extends SpaceMarineLegionDetachment {
-  constructor (list) {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
@@ -526,12 +526,12 @@ export class LegionTarantulaBattery extends SpaceMarineLegionDetachment {
   }
 }
 
-export class LegionSuperHeavySupportTank extends SpaceMarineLegionDetachment {
-  constructor (list) {
+export class LegionSuperHeavyTank extends SpaceMarineLegionDetachment {
+  constructor(list) {
     super(list)
 
     this.setMandatoryUnits(
-      new LegionSuperHeavySupportTankUnit(this)
+      new LegionSuperHeavyTankUnit(this)
     )
   }
 }
@@ -562,4 +562,4 @@ withType(LegionVindicatorSquadron)
 withType(LegionSabreStrikeSquadron)
 withType(LegionKratosDetachment)
 withType(LegionTarantulaBattery)
-withType(LegionSuperHeavySupportTank)
+withType(LegionSuperHeavyTank)

@@ -27,7 +27,7 @@ import {
   LegionSabreStrikeSquadron,
   LegionKratosDetachment,
   LegionTarantulaBattery,
-  LegionSuperHeavySupportTank
+  LegionSuperHeavyTank
 } from '../detachments/space-marine-legion'
 import LegioTitanicus from './legio-titanicus'
 import MechanicumTaghmata from './mechanicum-taghmata'
@@ -42,7 +42,7 @@ import {
 import withType from '../with-type'
 
 export default class SpaceMarineLegion extends Army {
-  constructor (game) {
+  constructor(game) {
     super(game, 'space-marine-legion')
 
     this.lineDetachments = [
@@ -69,13 +69,13 @@ export default class SpaceMarineLegion extends Army {
       LegionVindicatorSquadron,
       LegionSabreStrikeSquadron,
       LegionKratosDetachment,
-      LegionTarantulaBattery,
-      LegionSuperHeavySupportTank
+      LegionTarantulaBattery
     ]
     this.lordsOfWar = [
       LegionGunshipWing,
       LegionInterceptorAttackWing,
-      LegionSuperHeavyTankBattery
+      LegionSuperHeavyTankBattery,
+      LegionSuperHeavyTank
     ]
     this.allies = [
       LegioTitanicus,
@@ -91,7 +91,7 @@ export default class SpaceMarineLegion extends Army {
     )
   }
 
-  getStrategyRating (list) {
+  getStrategyRating(list) {
     return 5
   }
 }

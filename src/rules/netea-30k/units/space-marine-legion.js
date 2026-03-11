@@ -1143,7 +1143,7 @@ export class LegionGlaive extends LegionUnit {
   }
 }
 
-export class LegionSuperHeavySupportTankUnit extends MultipleChoiceUnit {
+export class LegionSuperHeavyTankUnit extends MultipleChoiceUnit {
   constructor(detachment) {
     super(detachment,
       new LegionAscalon(detachment),
@@ -1222,4 +1222,4 @@ withType(LegionAscalon)
 withType(LegionFalchion)
 withType(LegionFellblade)
 withType(LegionGlaive)
-withType(LegionSuperHeavySupportTankUnit)
+withType(LegionSuperHeavyTankUnit)
