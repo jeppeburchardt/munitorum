@@ -23,6 +23,7 @@ import {
   SolarAuxiliaCloseSupportTankUnit,
   SolarAuxiliaStrikeSquadronUnit,
   SolarAuxiliaValdor,
+  SolarAuxiliaAethonHeavySentinel,
   SolarAuxiliaTarantula,
   SolarAuxiliaTarantulaHyperios,
   SolarAuxiliaAvengerStrikeFighter,
@@ -202,6 +203,16 @@ export class SolarAuxiliaTarantulaBattery extends SolarAuxiliaDetachment {
   }
 }
 
+export class SolarAuxiliaAethonHeavySentinelSquad extends SolarAuxiliaDetachment {
+  constructor (list) {
+    super(list)
+
+    this.setMandatoryUnits(
+      new SolarAuxiliaAethonHeavySentinel(this)
+    )
+  }
+}
+
 export class SolarAuxiliaAvengerWing extends SolarAuxiliaDetachment {
   constructor (list) {
     super(list)
@@ -254,6 +265,7 @@ withType(SolarAuxiliaSuperHeavyTankSquadron)
 withType(SolarAuxiliaCloseSupportSquadron)
 withType(SolarAuxiliaTankHunterSquadron)
 withType(SolarAuxiliaTarantulaBattery)
+withType(SolarAuxiliaAethonHeavySentinelSquad)
 withType(SolarAuxiliaAvengerWing)
 withType(SolarAuxiliaPrimarisWing)
 withType(SolarAuxiliaThunderboltSquadron)

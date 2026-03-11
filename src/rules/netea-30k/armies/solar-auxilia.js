@@ -14,6 +14,7 @@ import {
   SolarAuxiliaCloseSupportSquadron,
   SolarAuxiliaTankHunterSquadron,
   SolarAuxiliaTarantulaBattery,
+  SolarAuxiliaAethonHeavySentinelSquad,
   SolarAuxiliaAvengerWing,
   SolarAuxiliaPrimarisWing,
   SolarAuxiliaThunderboltSquadron,
@@ -46,7 +47,8 @@ export default class SolarAuxilia extends Army {
       SolarAuxiliaSuperHeavyTankSquadron,
       SolarAuxiliaCloseSupportSquadron,
       SolarAuxiliaTankHunterSquadron,
-      SolarAuxiliaTarantulaBattery
+      SolarAuxiliaTarantulaBattery,
+      SolarAuxiliaAethonHeavySentinelSquad
     ]
     this.lordsOfWar = [
       SolarAuxiliaAvengerWing,

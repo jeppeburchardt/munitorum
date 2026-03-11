@@ -270,6 +270,17 @@ export class SolarAuxiliaValdor extends Unit {
   }
 }
 
+export class SolarAuxiliaAethonHeavySentinel extends Unit {
+  constructor(detachment) {
+    const entry = sa['Aethon Heavy Sentinel']
+    super(detachment, entry.cost * 4, 4)
+
+    this.rules = rulesFromEntry(entry)
+    this.stats = statsFromEntry(entry)
+    this.weapons = weaponsFromEntry(entry)
+  }
+}
+
 export class SolarAuxiliaOgrynCharoniteSquad extends Unit {
   constructor(detachment) {
     const entry = sa['Ogryn Charonite Squad']
