@@ -699,9 +699,6 @@ export class SolarAuxiliaPrimarisStrikeFighter extends Unit {
 
     this.rules = rulesFromEntry(entry)
     this.stats = statsFromEntry(entry)
-    this.stats.speed = 'fighter'
-    this.stats.cc = 7
-    this.stats.ff = 7
     this.weapons = weaponsFromEntry(entry)
   }
 }
