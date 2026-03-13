@@ -1,6 +1,7 @@
 * {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }
+
 /*
 h1, h2, h3, h4, h5, h6,
 h1 *, h2 *, h3 *, h4 *, h5 *, h6 * {
@@ -8,7 +9,9 @@ h1 *, h2 *, h3 *, h4 *, h5 *, h6 * {
   text-transform: uppercase;
 }
 */
-html, body, #root {
+html,
+body,
+#root {
   /*background: #262a2c;
   height: 100%;
   width: 100%;
@@ -23,4 +26,36 @@ html, body, #root {
 
 * {
   box-sizing: border-box;
+}
+
+@media print {
+  * {
+    color: black !important;
+    box-shadow: none !important;
+  }
+
+  svg[aria-hidden="true"] {
+    display: none;
+  }
+
+  svg path {
+    fill: black !important;
+  }
+
+  header {
+    position: static !important;
+  }
+
+  main {
+    margin-top: 0 !important;
+  }
+
+  nav {
+    display: none !important;
+  }
+
+  [aria-label="Open drawer"] {
+    display: none !important;
+  }
+
 }

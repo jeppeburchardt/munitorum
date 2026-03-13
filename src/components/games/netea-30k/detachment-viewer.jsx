@@ -23,7 +23,7 @@ class DetachmentViewer extends Component {
     classes: PropTypes.object.isRequired
   }
 
-  render () {
+  render() {
     const {
       classes,
       detachment,
@@ -68,6 +68,18 @@ class DetachmentViewer extends Component {
         <CardContent className={classes.cardContent}>
           <Validator errors={detachment.errors} />
           <Table>
+            <colgroup>
+              <col style={{ width: '5%' }} />   {/* icon col */}
+              <col style={{ width: '25%' }} />  {/* name col */}
+              <col style={{ width: '5%' }} />   {/* move */}
+              <col style={{ width: '5%' }} />   {/* armour */}
+              <col style={{ width: '5%' }} />   {/* armour */}
+              <col style={{ width: '5%' }} />   {/* armour */}
+              <col style={{ width: '5%' }} />   {/* armour */}
+              <col style={{ width: '20%' }} />   {/* weapon */}
+              <col style={{ width: '5%' }} />   {/* range */}
+              <col style={{ width: '20%' }} />   {/* firepower */}
+            </colgroup>
             <TableHead>
               <TableRow className={classes.tableViewRow}>
                 <TableCell padding='dense' colSpan={2} className={classes.tableViewNameHeader}>

@@ -5,7 +5,11 @@ const drawerWidth = 250
 const styles = theme => ({
   root: {
     display: 'flex',
-    width: '100%'
+    width: '100%',
+    '@media print': {
+      width: 'auto !important',
+      display: 'block !important'
+    }
   },
   errorDisplay: {
     marginTop: theme.spacing.unit,
@@ -32,6 +36,9 @@ const styles = theme => ({
     marginLeft: drawerWidth,
     [theme.breakpoints.up('md')]: {
       width: `calc(100% - ${drawerWidth}px)`
+    },
+    '@media print': {
+      marginLeft: '0 !important'
     }
   },
   toolBar: {
@@ -100,13 +107,18 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 9
   },
   card: {
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
+    '@media print': {
+      border: ' 1px solid black',
+      breakInside: 'avoid',
+      pageBreakInside: 'avoid'
+    }
   },
   cardHeader: {
     paddingRight: theme.spacing.unit * 2
   },
   cardContent: {
-    padding: 0
+    padding: '0 !important',
   },
   cardFooter: {
     paddingLeft: 15,
@@ -166,13 +178,15 @@ const styles = theme => ({
     padding: 0,
     '&:last-child': {
       paddingRight: theme.spacing.unit
-    }
+    },
+    verticalAlign: 'top'
   },
   tableViewCell: {
     paddingTop: theme.spacing.unit / 4,
     paddingBottom: theme.spacing.unit / 4,
     paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit
+    paddingRight: theme.spacing.unit,
+    verticalAlign: 'top'
   },
   tableViewRow: {
     height: 36
@@ -187,13 +201,15 @@ const styles = theme => ({
   tableViewIconCell: {
     padding: 0,
     paddingLeft: theme.spacing.unit,
-    width: 24
+    width: 24,
+    verticalAlign: 'top'
   },
   tableViewNameCell: {
     paddingTop: theme.spacing.unit / 2,
     paddingBottom: theme.spacing.unit / 2,
     paddingLeft: 0,
-    paddingRight: theme.spacing.unit
+    paddingRight: theme.spacing.unit,
+    verticalAlign: 'top'
   },
   inlineButton: {
     padding: 0,
@@ -241,7 +257,10 @@ const styles = theme => ({
     height: 10,
     borderRadius: '50%',
     marginRight: 4,
-    flexShrink: 0
+    flexShrink: 0,
+    '@media print': {
+      display: 'none'
+    }
   },
   fpLink: {
     color: theme.palette.text.secondary,
