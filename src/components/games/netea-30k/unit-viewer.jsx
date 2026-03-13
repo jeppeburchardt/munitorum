@@ -124,6 +124,7 @@ class UnitViewer extends Component {
   render() {
     let {
       name,
+      quantity,
       stats,
       weapons,
       rules,
@@ -255,7 +256,7 @@ class UnitViewer extends Component {
             </TableCell>
             <TableCell colSpan={9} padding='dense' className={classes.tableViewNameCell}>
               <Typography component='p'>
-                {t(name)}
+                {quantity}x {t(name)}
                 <RulesDisplay rules={rules} classes={classes} t={t} />
               </Typography>
               <NotesDisplay rules={rules} classes={classes} t={t} />
@@ -289,7 +290,7 @@ class UnitViewer extends Component {
           </TableCell>
           <TableCell padding='dense' rowSpan={weaponCount} className={classes.tableViewNameCell}>
             <Typography component='p'>
-              {t(name)}
+              {quantity}x {t(name)}
               <RulesDisplay rules={rules} />
             </Typography>
             <NotesDisplay rules={rules} />
@@ -327,6 +328,7 @@ const mapStateToProps = (state, { unit }) => {
   return {
     unit,
     name: unit.getName(),
+    quantity: unit.getQuantity(),
     stats: unit.getStats(),
     weapons: unit.getChosenWeapons(),
     rules: unit.getRules(),
